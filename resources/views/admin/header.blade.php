@@ -1,24 +1,26 @@
 <!doctype html>
 <html lang="en">
-   <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <link rel="stylesheet" href="{{url('assets/css/admin_app.min.css')}}" />
-      <link rel="icon" type="image/x-icon" href="{{url('/assets/img/favicon.png')}}">
-      <?php
-//        dd($header);
-        if (isset($header['css']) && count($header['css']) > 0)
-            for ($i = 0; $i < count($header['css']); $i++)
-                if (strpos($header['css'][$i], "http://") !== FALSE)
-                    echo '<link rel="stylesheet" type="text/css" href="' . $header['css'][$i] . '"/>';
-                else
-                    echo '<link rel="stylesheet" type="text/css" href="' . url("/") . "public/" . $header['css'][$i] . '"/>';
-      ?>
-        
-      <title>{{$header['title']}}</title>
-   </head>
-   <body>
-   <div class="loader" id="loader">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{{url('assets/css/admin_app.min.css')}}" />
+    <link rel="icon" type="image/x-icon" href="{{url('/assets/img/favicon.png')}}">
+    <?php
+    //        dd($header);
+    if (isset($header['css']) && count($header['css']) > 0)
+        for ($i = 0; $i < count($header['css']); $i++)
+            if (strpos($header['css'][$i], "http://") !== FALSE)
+                echo '<link rel="stylesheet" type="text/css" href="' . $header['css'][$i] . '"/>';
+            else
+                echo '<link rel="stylesheet" type="text/css" href="' . url("/") . "public/" . $header['css'][$i] . '"/>';
+    ?>
+
+    <title>{{$header['title']}}</title>
+</head>
+
+<body>
+    <div class="loader" id="loader">
         <div class="loader-inner">
             <span></span>
             <span></span>
@@ -42,11 +44,11 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li>
-                            <a class="dropdown-item py-2" href="">
+                            <a class="dropdown-item py-2" href="{{url('admin/profile')}}">
                                 <i class="fa fa-user me-2"></i>Profile</a>
                         </li>
                         <li>
-                            <a class="dropdown-item py-2" href="">
+                            <a class="dropdown-item py-2" href="{{url('admin/logout')}}">
                                 <i class="fa-solid fa-right-from-bracket me-2"></i>Logout</a>
                         </li>
                     </ul>
@@ -56,10 +58,10 @@
 
             <!-- Sidebar Toggle-->
             <button class="btn p-3 d-block d-lg-none" id="sidebarToggle">
-                    <span class="navbar-toggler-bars"></span>
-                    <span class="navbar-toggler-bars"></span>
-                    <span class="navbar-toggler-bars"></span>
-                </button>
+                <span class="navbar-toggler-bars"></span>
+                <span class="navbar-toggler-bars"></span>
+                <span class="navbar-toggler-bars"></span>
+            </button>
         </nav>
     </header>
     @include('admin.sidebar')

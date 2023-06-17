@@ -117,6 +117,27 @@ html {
     cursor: pointer;
 }
 
+.fs-12 {
+    font-size: 12px;
+}
+
+.fs-14 {
+    font-size: 14px;
+}
+
+.inner-space {
+    padding: 80px 0;
+}
+
+.outer-space {
+    margin: 80px 0;
+}
+
+.divider {
+    background: linear-gradient(90deg, transparent, #fff, transparent);
+    height: 1px;
+}
+
 .loader {
     position: fixed;
     left: 0;
@@ -206,6 +227,17 @@ html {
 .gradient-btn:hover {
     background-position: right center;
     transition: 0.5s;
+}
+
+.featured-logo {
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--bs-secondary);
+    box-shadow: 0 0 10px 0 rgba(50, 247, 170, 0.5);
+}
+
+.featured-logo img {
+    filter: brightness(0) invert(1);
 }
 
 .layout-sidenav {
@@ -461,12 +493,16 @@ html {
 .flip-clock__piece {
     display: inline-block;
     margin: 0 5px;
+    text-align: center;
 }
 
 .flip-clock__slot {
-    font-size: 14px;
+    font-size: 12px;
     color: #fff;
     margin-top: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: "Roboto-Light", sans-serif;
 }
 
 .card_panel {
@@ -487,8 +523,8 @@ html {
 .card__back::after {
     display: block;
     height: 0.72em;
-    color: #ccc;
-    background: var(--bs-dark);
+    color: var(--bs-secondary);
+    background: var(--bs-light);
     padding: 0.25em 0.25em;
     border-radius: 0.15em 0.15em 0 0;
     backface-visibility: hidden;
@@ -497,12 +533,12 @@ html {
 }
 
 .card__bottom {
-    color: #FFF;
+    color: var(--bs-secondary);
     position: absolute;
     top: 50%;
     left: 0;
     border-top: solid 1px #0c1631;
-    background: var(--bs-dark);
+    background: var(--bs-light);
     border-radius: 0 0 0.15em 0.15em;
     pointer-events: none;
     overflow: hidden;
@@ -544,6 +580,11 @@ html {
     animation: flipBottom 0.6s cubic-bezier(0.15, 0.45, 0.28, 1);
 }
 
+.presale-timer {
+    background: rgba(23, 37, 77, 0.95);
+    border-radius: 20px;
+}
+
 @keyframes flipTop {
     0% {
         transform: rotateX(0deg);
@@ -574,6 +615,69 @@ html {
         transform: rotateX(0deg);
         z-index: 5;
     }
+}
+
+.ws-header {
+    background: linear-gradient(270deg, var(--bs-secondary), var(--bs-dark) 50%);
+}
+
+.section-title {
+    font-family: 'Roboto-Black', sans-serif;
+}
+
+.hero-banner {
+    padding: 150px 0;
+}
+
+.hero-video::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: linear-gradient(0deg, var(--bs-dark), transparent, var(--bs-dark));
+}
+
+.hero-banner .hero-video {
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    right: 0;
+}
+
+.hero-banner .hero-video video {
+    object-fit: fill;
+}
+
+.accordion-button::after {
+    background-color: rgba(255, 255, 255, 1);
+    height: 50px;
+    width: 50px;
+    background-position: center;
+}
+
+.accordion-button:not(.collapsed)::after {
+    transform: rotateX(-180deg);
+}
+
+.border-green {
+    border: 1px solid var(--bs-secondary);
+}
+
+.meet-us-video::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: radial-gradient(transparent, var(--bs-light) 70%);
 }
 
 

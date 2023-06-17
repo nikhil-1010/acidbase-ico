@@ -2,11 +2,7 @@
 <footer class="p-4 mt-auto border-top border-secondary position-sticky bottom-0">
                 <div class="container-fluid">
                     <div class="d-flex flex-wrap gap-3 align-items-center justify-content-between">
-                        <h6 class="text-white m-0 fw-light">Chirps © All rights reserved.
-                            <script>
-                                document.write(new Date().getFullYear());
-                            </script>
-                        </h6>
+                        <h6 class="text-white m-0 fw-light">{{config('constant.PLATFORM_NAME')}} © All rights reserved. {{date('Y')}}</h6>
                         <div class="d-flex align-items-center gap-4 ms-auto">
                             <a target="_blank" href="https://www.facebook.com"><i
                                     class="fa-brands fa-facebook-f text-secondary fs-6"></i></a>
@@ -32,7 +28,7 @@ if (isset($footer['js'])) {
         if (strpos($footer['js'][$i], "https://") !== FALSE || strpos($footer['js'][$i], "http://") !== FALSE)
             echo '<script type="text/javascript" src="' . $footer['js'][$i] . '"></script>';
         else
-            echo '<script type="text/javascript" src="' . \URL::to('public/assets/js/' . $footer['js'][$i]) . '"></script>';
+            echo '<script type="text/javascript" src="' . \URL::to('/assets/js/' . $footer['js'][$i]) . '"></script>';
     }
 }
 ?>

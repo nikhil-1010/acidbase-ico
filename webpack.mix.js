@@ -18,12 +18,19 @@ const mix = require('laravel-mix');
 
 mix.scripts([
     "resources/assets/js/jquery.min.js",
+    "resources/assets/js/jquery.form.min.js",
     "resources/assets/js/bootstrap.bundle.min.js",
+    "resources/assets/js/slick.js",
+    "resources/assets/js/chart.min.js",
     "resources/assets/js/common.js",
     "resources/assets/js/custom.js",
 ], 'public/assets/js/admin_app.min.js')
+.scripts([
+    "resources/assets/js/admin/profile.js",
+], "public/assets/js/admin/profile.min.js")
 .styles([
     "resources/assets/css/all.min.css",
+    "resources/assets/css/slick-slider.css",
     "resources/assets/css/bootstrap.min.css",
     "resources/assets/css/style.css",
 ], "public/assets/css/admin_app.min.css")

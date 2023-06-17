@@ -1,7 +1,92 @@
 //AOS animation
 jQuery(document).ready(function () {
     $('.loader').fadeOut("slow");
+    $('.process-overview-slider').slick({
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      autoplay: false,
+      dots: true,
+      arrows: false,
+      infinite: false,
+      pauseOnHover: true,
+      responsive: [{
+              breakpoint: 1200,
+              settings: {
+                  slidesToShow: 3
+              }
+          },
+          {
+              breakpoint: 991,
+              settings: {
+                  slidesToShow: 2
+              }
+          },
+          {
+              breakpoint: 560,
+              settings: {
+                  slidesToShow: 1
+              }
+          }
+      ]
+  });
 });
+
+// Tokonomics Pie Chart
+var oilCanvas = document.getElementById("oilChart");
+
+var oilData = {
+    labels: [
+        "Team",
+        "Strategic Reserve",
+        "Public Sale",
+        "Community Rewards",
+        "Beta/Testnet Incentives",
+        "Advisors",
+        "Grants",
+        "Partnerships",
+        "Marketing",
+        "Liquidity Provision"
+    ],
+    datasets: [{
+        data: [15, 15, 30, 10, 2.5, 5, 6, 6, 8, 2.5],
+        backgroundColor: [
+            "#f1548e",
+            "#f97316",
+            "#1251a0",
+            "#22c55e",
+            "#2271eb",
+            "#702b91",
+            "#f64a73",
+            "#22c55e",
+            "#2cdcb8",
+            "#2b29ae"
+        ]
+    }]
+};
+
+var options = {
+    elements: {
+        arc: {
+            borderWidth: 0,
+        }
+    },
+    legend: {
+        display: false,
+    },
+    tooltips: {
+        callbacks: {
+            label: tooltipItem => `${tooltipItem.yLabel}: ${tooltipItem.xLabel}`,
+            title: () => null,
+        }
+    },
+};
+
+var pieChart = new Chart(oilCanvas, {
+    type: 'pie',
+    data: oilData,
+    options: options
+});
+
 
 window.addEventListener('DOMContentLoaded', event => {
 

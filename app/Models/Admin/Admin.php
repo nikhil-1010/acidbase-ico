@@ -90,4 +90,19 @@ class Admin extends Model implements Authenticatable {
             return $res;
         }
     }
+    public static function updateProfile($param)
+    {
+        $admin_detail = self::where("id", \Auth::guard('admin')->user()->id)->first();
+        
+        if (is_null($admin_detail)) {
+            return $res;
+        }
+        
+        $admin_detail->username = $param['admin_name'];
+        $admin_detail->email = $param['admin_email'];
+        if($admin_detail->save()){
+            return \General::success_res('Profile update successfully.');
+        }
+        return \General::error_res('something went wrong!');
+    }
 }
