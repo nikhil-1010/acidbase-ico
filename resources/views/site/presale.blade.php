@@ -74,7 +74,7 @@
             <div class="container">
                 <div class="d-flex gap-2 flex-wrap justify-content-between align-items-center">
                     <h2 class="text-white fw-bold display-5 m-0">Portfolio</h2>
-                    <h3 class="text-white-50 ms-auto fw-bold m-0">Balance: 100CHRP</h3>
+                    <h3 class="text-white-50 ms-auto fw-bold m-0">Balance: 100 USDT</h3>
                 </div>
             </div>
         </section>
@@ -85,14 +85,9 @@
                     <div class="row g-2">
                         <div class="col-lg-4 col-xl-3">
                             <div class="flex-lg-column nav-pills me-3 d-flex gap-3 flex-wrap" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                <button class="btn border px-4 py-3 fs-6 rounded-pill text-start fw-lighter text-white gradient-btn border-0" type="button"><i class="fa-solid fa-seedling me-3"></i>Seed Round
-                        </button>
-                                <button class="btn border px-4 py-3 fs-6 rounded-pill text-start fw-lighter text-white" type="button"><i class="fa-solid fa-briefcase me-3"></i>Private Sale A
-                        </button>
-                                <button class="btn border px-4 py-3 fs-6 rounded-pill text-start fw-lighter text-white" type="button"><i class="fa-solid fa-briefcase me-3"></i>Private Sale B
-                        </button>
-                                <button class="btn border px-4 py-3 fs-6 rounded-pill text-start fw-lighter text-white" type="button"><i class="fa-solid fa-user-tie me-3"></i>Public Sale
-                        </button>
+                                <button class="btn border px-4 py-3 fs-6 rounded-pill text-start fw-lighter text-white gradient-btn border-0" type="button"><i class="fa-solid fa-seedling me-3"></i>Seed Round</button>
+                                <button class="btn border px-4 py-3 fs-6 rounded-pill text-start fw-lighter text-white" type="button"><i class="fa-solid fa-briefcase me-3"></i>Private Round</button>
+                                <button class="btn border px-4 py-3 fs-6 rounded-pill text-start fw-lighter text-white" type="button"><i class="fa-solid fa-user-tie me-3"></i>Public Round</button>
                             </div>
                         </div>
                         <div class="col-lg-8 col-xl-9">
