@@ -35,7 +35,7 @@
         <header class="py-2 py-md-3">
             <nav class="navbar navbar-expand-lg">
                 <div class="container">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="{{url('/')}}">
                         <img src="assets/img/logo.png" alt="" class="navbar-horizontal-logo">
                     </a>
 

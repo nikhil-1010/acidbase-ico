@@ -29,5 +29,21 @@ class SiteController extends Controller
 
         return view("site.home", $view_data);
     }
+    public function getPresale()
+    {
+        $view_data = [
+            "header" => [
+                'title'=>'Presale | '.self::$platform
+            ],
+            "body" => [
+                'id' => 'presale',
+            ],
+            "footer" => [
+                'js' => ['home.min.js']
+            ]
+        ];
+
+        return view("site.presale", $view_data);
+    }
 
 }

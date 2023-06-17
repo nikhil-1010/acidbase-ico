@@ -33,7 +33,7 @@
         <header class="py-2 py-md-3 ws-header">
             <nav class="navbar navbar-expand-lg">
                 <div class="container">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="{{url('')}}">
                         <img src="{{url('assets/img/logo.png')}}" alt="" class="navbar-horizontal-logo">
                     </a>
 
@@ -89,7 +89,7 @@
                     </div>
                     <div class="col-lg-4">
                         <p class="fw-lighter fs-4">A revolutionary platform that harnesses the power of Artificial Intelligence to create your digital legacy.</p>
-                        <a href="" class="btn text-white gradient-btn rounded-pill fs-5 fw-bold px-5 py-4 text-uppercase">Entr Presale</a>
+                        <a href="{{url('presale')}}" class="btn text-white gradient-btn rounded-pill fs-5 fw-bold px-5 py-4 text-uppercase">Enter Presale</a>
                     </div>
                 </div>
             </div>
@@ -580,7 +580,7 @@
             <div class="container">
                 <div class="row align-items-center justify-content-between g-4 g-lg-0">
                     <div class="col-lg-6">
-                        <a class="navbar-brand" href="index.html">
+                        <a class="navbar-brand" href="{{url('/')}}">
                             <img src="{{url('assets/img/logo.png')}}" alt="" class="navbar-horizontal-logo">
                         </a>
                         <p class="m-0 text-white mt-3 fw-lighter fs-5">Acidbase token (ACB) will be used to access services and products offered by the Acidbase platform.</p>
