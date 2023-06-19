@@ -257,3 +257,30 @@ function getAjax(url,data,cb){
         }, 
     });
 }
+
+function number_format(value){
+    var vall = value;
+    value =value.toString();
+    if(value.indexOf('.') > -1){
+        var vlaues = parseFloat(value).toFixed(8).split('.');
+        var floatValue=parseFloat(vlaues[1]);
+        // console.log(floatValue);
+        if(floatValue > 0){
+            var val = vlaues[1].rtrim();
+            // console.log(val);
+            if(val.length > 8){
+                return parseFloat(vall).toFixed(8);
+            }else{
+                return vlaues[0] + "." + val;
+            }
+        }else{
+            return vlaues[0];
+        }
+    }else{
+        return value;
+    }
+}
+String.prototype.rtrim = function() {
+    var trimmed = this.replace(/0+$/g, '');
+    return trimmed;
+};

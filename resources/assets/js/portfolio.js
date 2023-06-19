@@ -377,7 +377,7 @@ jQuery(document).ready(async function ($) {
    if (localStorage.getItem("WEB3_CONNECT_CACHED_PROVIDER") != null) {
       await init();
       await onConnect();
-      // RefreshPageDetail(); //function To execute
+      RefreshPageDetail(); //function To execute
    } else {
       $("#connect-wallet-div").addClass("d-none");
       $("#disconnect-wallet-div").removeClass("d-none");
@@ -489,22 +489,23 @@ async function RefreshPageDetail() {
       $("#disconnect-wallet-div").addClass("d-none");
       // filters.investor_address = $(".Wallet_address").val();
       // filterData(pre_history_url,'presale-payment-history-table');
-      filters.investor_address = $(".Wallet_address").val();
-      filterData(public_history_url, "publicsale-payment-history-table");
-      filters.investor_address = $(".Wallet_address").val();
-      filterData(seed_history_url, "seed-payment-history-table");
-      filters.investor_address = $(".Wallet_address").val();
-      filterData(privateA_history_url, "privateA-payment-history-table");
-      filters.investor_address = $(".Wallet_address").val();
-      filterData(privateB_history_url, "privateB-payment-history-table");
+      // filters.investor_address = $(".Wallet_address").val();
+      // filterData(public_history_url, "publicsale-payment-history-table");
+      // filters.investor_address = $(".Wallet_address").val();
+      // filterData(seed_history_url, "seed-payment-history-table");
+      // filters.investor_address = $(".Wallet_address").val();
+      // filterData(privateA_history_url, "privateA-payment-history-table");
+      // filters.investor_address = $(".Wallet_address").val();
+      // filterData(privateB_history_url, "privateB-payment-history-table");
 
-      SeedContract = new web3.eth.Contract(SeedAbi, SeedContractAddress);
-      PrivateAContract = new web3.eth.Contract(PrivateAAbi,PrivateAContractAddress);
-      PrivateBContract = new web3.eth.Contract(PrivateBAbi,PrivateBContractAddress);
-      PublicSaleContract = new web3.eth.Contract(PublicSaleAbi,PublicSaleContractAddress);
+      // SeedContract = new web3.eth.Contract(SeedAbi, SeedContractAddress);
+      // PrivateAContract = new web3.eth.Contract(PrivateAAbi,PrivateAContractAddress);
+      // PrivateBContract = new web3.eth.Contract(PrivateBAbi,PrivateBContractAddress);
+      // PublicSaleContract = new web3.eth.Contract(PublicSaleAbi,PublicSaleContractAddress);
 
       hideShowTabs();
    }
+   debugger
    $('#seed_coin_dropdown li:first').trigger('click');
    $('#privateA_coin_dropdown li:first').trigger('click');
    $('#privateB_coin_dropdown li:first').trigger('click');

@@ -73,7 +73,7 @@
             <div class="container">
                 <div class="d-flex gap-2 flex-wrap justify-content-between align-items-center">
                     <h2 class="text-white fw-bold display-5 m-0">Portfolio</h2>
-                    <h3 class="text-white-50 ms-auto fw-bold m-0">Balance: 100 USDT</h3>
+                    <h3 class="text-white-50 ms-auto fw-bold m-0">Balance: <span id="token-balance">0</span> ACB</h3>
                 </div>
             </div>
         </section>
@@ -163,12 +163,9 @@
     var is_live = `{{env('APP_ENV')}}`;
     var c_id = `{{env('CHAIN_ID')}}`;
     var TokenContractAddress = `{{env('TOKEN_CONTRACT')}}`;
-    var PreSaleContractAddress = `{{env('PRE_SALE_CONTRACT')}}`;
-    var PublicSaleContractAddress = `{{env('PUBLIC_SALE_CONTRACT')}}`;
     var SeedContractAddress = `{{env('SEED_CONTRACT')}}`;
-    var PrivateAContractAddress = `{{env('PRIVATE_A_CONTRACT')}}`;
-    var PrivateBContractAddress = `{{env('PRIVATE_B_CONTRACT')}}`;
-    var KolContractAddress = `{{env('KOL_CONTRACT')}}`;
+    var PrivateSaleContractAddress = `{{env('PRIVATE_SALE_CONTRACT')}}`;
+    var PublicSaleContractAddress = `{{env('PUBLIC_SALE_CONTRACT')}}`;
 </script>
 <?php
 if (isset($footer['js'])) {
