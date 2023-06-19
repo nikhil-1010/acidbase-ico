@@ -161,6 +161,18 @@
     </div>
 
 </body>
-
-<script src="{{url('assets/js/admin_app.min.js')}}"></script>
+<script>
+    var is_live = `{{env('APP_ENV')}}`;
+    var c_id = `{{env('CHAIN_ID')}}`;
+</script>
+<?php
+if (isset($footer['js'])) {
+    for ($i = 0; $i < count($footer['js']); $i++) {
+        if (strpos($footer['js'][$i], "https://") !== FALSE || strpos($footer['js'][$i], "http://") !== FALSE)
+            echo '<script type="text/javascript" src="' . $footer['js'][$i] . '"></script>';
+        else
+            echo '<script type="text/javascript" src="' . \URL::to('/assets/js/' . $footer['js'][$i]) . '"></script>';
+    }
+}
+?>
 </html>

@@ -73,6 +73,7 @@ function init() {
 async function fetchAccountData() {
    // Get a Web3 instance for the wallet
    web3 = new Web3(provider);
+   debugger
    // Get connected chain id from Ethereum node
    const chainId = await web3.eth.getChainId();
    var chainID = Number(c_id);
@@ -124,7 +125,7 @@ async function fetchAccountData() {
 
 async function onConnect() {
       try {
-  
+         debugger
        provider = await web3Modal.connect();
        $("#ConnectMetamask").hide();
        $("#dis-connect").removeClass("d-none");

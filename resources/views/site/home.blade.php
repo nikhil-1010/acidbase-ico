@@ -6,19 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="stylesheet" href="{{url('assets/css/admin_app.min.css')}}" />
-      <link rel="icon" type="image/x-icon" href="{{url('assets/img/favicon.png')}}">
-      <?php
-//        dd($header);
-        if (isset($header['css']) && count($header['css']) > 0)
-            for ($i = 0; $i < count($header['css']); $i++)
-                if (strpos($header['css'][$i], "http://") !== FALSE)
-                    echo '<link rel="stylesheet" type="text/css" href="' . $header['css'][$i] . '"/>';
-                else
-                    echo '<link rel="stylesheet" type="text/css" href="' . url("/") . "public/" . $header['css'][$i] . '"/>';
-      ?>
-        
-      <title>{{$header['title']}}</title>
+    <link rel="icon" type="image/x-icon" href="{{url('assets/img/favicon.png')}}">
+    <?php
+    //        dd($header);
+    if (isset($header['css']) && count($header['css']) > 0)
+        for ($i = 0; $i < count($header['css']); $i++)
+            if (strpos($header['css'][$i], "http://") !== FALSE)
+                echo '<link rel="stylesheet" type="text/css" href="' . $header['css'][$i] . '"/>';
+            else
+                echo '<link rel="stylesheet" type="text/css" href="' . url("/") . "public/" . $header['css'][$i] . '"/>';
+    ?>
+
+    <title>{{$header['title']}}</title>
 </head>
+
 <body>
     <div class="bg-dark">
 
@@ -89,7 +90,7 @@
                     </div>
                     <div class="col-lg-4">
                         <p class="fw-lighter fs-4">A revolutionary platform that harnesses the power of Artificial Intelligence to create your digital legacy.</p>
-                        <a href="{{url('presale')}}" class="btn text-white gradient-btn rounded-pill fs-5 fw-bold px-5 py-4 text-uppercase">Enter Presale</a>
+                        <a href="{{url('portfolio')}}" class="btn text-white gradient-btn rounded-pill fs-5 fw-bold px-5 py-4 text-uppercase">Enter Presale</a>
                     </div>
                 </div>
             </div>
@@ -463,7 +464,7 @@
                         <div class="accordion accordion-flush" id="accordionFlushExample">
                             <div class="accordion-item bg-transparent border-white">
                                 <button id="flush-headingOne" class="accordion-button shadow-none bg-transparent fw-lighter fs-5 text-white px-0 py-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                        What is Acidbase?
+                                    What is Acidbase?
                                 </button>
                                 <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                     <div class="accordion-body text-start px-0 fw-lighter fs-14">Acidbase is a revolutionary platform that harnesses the power of artificial intelligence (AI) to create AI-driven digital personas that immortalize individuals and enable them to interact with future generations. The
@@ -616,10 +617,7 @@
                             <a href="" class="text-white"><i class="fa-brands fa-reddit"></i></a>
                             <a href="" class="text-white"><i class="fa-brands fa-linkedin"></i></a>
                         </div>
-                        <p class="m-0 fw-lighter ms-auto">© Copyright
-                            <script>
-                                document.write(new Date().getFullYear());
-                            </script> acidbase. All rights reserved.
+                        <p class="m-0 fw-lighter ms-auto">© Copyright {{date('Y')}} acidbase. All rights reserved.
                         </p>
                     </div>
                 </div>
@@ -628,5 +626,15 @@
     </div>
 </body>
 
-<script src="{{url('assets/js/admin_app.min.js')}}"></script>
+<?php
+if (isset($footer['js'])) {
+    for ($i = 0; $i < count($footer['js']); $i++) {
+        if (strpos($footer['js'][$i], "https://") !== FALSE || strpos($footer['js'][$i], "http://") !== FALSE)
+            echo '<script type="text/javascript" src="' . $footer['js'][$i] . '"></script>';
+        else
+            echo '<script type="text/javascript" src="' . \URL::to('/assets/js/' . $footer['js'][$i]) . '"></script>';
+    }
+}
+?>
+
 </html>

@@ -1,5 +1,8 @@
 {
     "/assets/js/admin_app.min.js": "/assets/js/admin_app.min.js",
+    "/assets/js/portfolio.min.js": "/assets/js/portfolio.min.js",
+    "/assets/js/home.min.js": "/assets/js/home.min.js",
+    "/assets/js/web3.min.js": "/assets/js/web3.min.js",
     "/assets/js/admin/profile.min.js": "/assets/js/admin/profile.min.js",
     "/assets/css/admin_app.min.css": "/assets/css/admin_app.min.css"
 }

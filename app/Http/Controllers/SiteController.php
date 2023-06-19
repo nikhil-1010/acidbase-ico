@@ -29,21 +29,21 @@ class SiteController extends Controller
 
         return view("site.home", $view_data);
     }
-    public function getPresale()
+    public function getPortfolio()
     {
         $view_data = [
             "header" => [
-                'title'=>'Presale | '.self::$platform
+                'title'=>'Portfolio | '.self::$platform
             ],
             "body" => [
-                'id' => 'presale',
+                'id' => 'portfolio',
             ],
             "footer" => [
-                'js' => ['home.min.js']
+                'js' => ['web3.min.js','portfolio.min.js']
             ]
         ];
 
-        return view("site.presale", $view_data);
+        return view("site.portfolio", $view_data);
     }
 
 }

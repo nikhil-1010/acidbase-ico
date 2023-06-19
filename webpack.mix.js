@@ -20,11 +20,34 @@ mix.scripts([
     "resources/assets/js/jquery.min.js",
     "resources/assets/js/jquery.form.min.js",
     "resources/assets/js/bootstrap.bundle.min.js",
+    "resources/assets/js/common.js",
+    "resources/assets/js/custom.js",
+], 'public/assets/js/admin_app.min.js')
+.scripts([
+
+    "resources/assets/js/jquery.min.js",
+    "resources/assets/js/jquery.form.min.js",
+    "resources/assets/js/bootstrap.bundle.min.js",
+    "resources/assets/js/common.js",
+    "resources/assets/js/custom.js",
+    "resources/assets/js/portfolio.js",
+    "resources/assets/js/walletconnect.js",
+], "public/assets/js/portfolio.min.js")
+.scripts([
+    "resources/assets/js/jquery.min.js",
+    "resources/assets/js/jquery.form.min.js",
+    "resources/assets/js/bootstrap.bundle.min.js",
     "resources/assets/js/slick.js",
     "resources/assets/js/chart.min.js",
     "resources/assets/js/common.js",
     "resources/assets/js/custom.js",
-], 'public/assets/js/admin_app.min.js')
+    "resources/assets/js/home.js",
+], "public/assets/js/home.min.js")
+.scripts([
+    "./resources/assets/js/web3.min.js",
+    "./resources/assets/js/web3modal.js",
+    "./resources/assets/js/web3-provider.min.js",
+], './public/assets/js/web3.min.js')
 .scripts([
     "resources/assets/js/admin/profile.js",
 ], "public/assets/js/admin/profile.min.js")

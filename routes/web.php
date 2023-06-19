@@ -15,4 +15,4 @@ use App\Http\Controllers\SiteController;
 */
 
 Route::get('/',[SiteController::class,"getHome"]);
-Route::get('/presale',[SiteController::class,"getPresale"]);
+Route::get('/portfolio',[SiteController::class,"getPortfolio"]);
