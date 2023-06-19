@@ -377,7 +377,7 @@ jQuery(document).ready(async function ($) {
    if (localStorage.getItem("WEB3_CONNECT_CACHED_PROVIDER") != null) {
       await init();
       await onConnect();
-      RefreshPageDetail(); //function To execute
+      // RefreshPageDetail(); //function To execute
    } else {
       $("#connect-wallet-div").addClass("d-none");
       $("#disconnect-wallet-div").removeClass("d-none");
@@ -427,36 +427,36 @@ jQuery(document).ready(async function ($) {
    }
 
    
-   SeedContract = new web3.eth.Contract(SeedAbi, SeedContractAddress);
-   PrivateAContract = new web3.eth.Contract(PrivateAAbi,PrivateAContractAddress);
-   PrivateBContract = new web3.eth.Contract(PrivateBAbi,PrivateBContractAddress);
-   PublicSaleContract = new web3.eth.Contract(PublicSaleAbi,PublicSaleContractAddress);
+   // SeedContract = new web3.eth.Contract(SeedAbi, SeedContractAddress);
+   // PrivateAContract = new web3.eth.Contract(PrivateAAbi,PrivateAContractAddress);
+   // PrivateBContract = new web3.eth.Contract(PrivateBAbi,PrivateBContractAddress);
+   // PublicSaleContract = new web3.eth.Contract(PublicSaleAbi,PublicSaleContractAddress);
 });
 
 $("#btn-connect").click(async function (event) {
    await init();
    await onConnect();
-   await RefreshPageDetail(); //function To execute
+   // await RefreshPageDetail(); //function To execute
 });
 
 $(document).on("click", "#disconnect-btn", async function (event) {
    $("#disconnect-metamask-modal").modal("hide");
    onDisconnect();
-   await RefreshPageDetail(); //function To execute
+   // await RefreshPageDetail(); //function To execute
 });
 
 try {
    ethereum.on("accountsChanged", async (_chainId) => {
       await init();
       await onConnect();
-      await RefreshPageDetail(); //function To execute
+      // await RefreshPageDetail(); //function To execute
    });
 } catch (e) {}
 try {
    ethereum.on("chainChanged", async (_chainId) => {
       await init();
       await onConnect();
-      await RefreshPageDetail(); //function To execute
+      // await RefreshPageDetail(); //function To execute
    });
 } catch (e) {}
 

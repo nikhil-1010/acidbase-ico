@@ -36,12 +36,12 @@
             <nav class="navbar navbar-expand-lg">
                 <div class="container">
                     <a class="navbar-brand" href="{{url('/')}}">
-                        <img src="assets/img/logo.png" alt="" class="navbar-horizontal-logo">
+                        <img src="{{url('assets/img/logo.png')}}" alt="" class="navbar-horizontal-logo">
                     </a>
 
                     <div class="d-flex gap-2 order-lg-1">
-                        <button type="button" class="btn gradient-btn text-white rounded-pill fw-bold fs-6 text-uppercase px-4 py-3 d-none d-sm-block" data-bs-toggle="modal" data-bs-target="#changeNetwork">Connect To Wallet
-                    </button>
+                        <button type="button" class="btn gradient-btn text-white rounded-pill fw-bold fs-6 text-uppercase px-4 py-3 d-none" id="btn-connect">Connect To Wallet</button>
+                        <button type="button" class="btn gradient-btn text-white rounded-pill fw-bold fs-6 text-uppercase px-4 py-3 d-none meta_address" id="btn-disconnect">Connect To Wallet</button>
                         <button class="border navbar-toggler py-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-bars"></span>
                         <span class="navbar-toggler-bars"></span>
@@ -61,8 +61,7 @@
                             <li class="nav-item">
                                 <a class="nav-link text-secondary fw-lighter" href="#">How to Buy?</a>
                             </li>
-                            <button type="button" class="btn gradient-btn text-white rounded-pill fw-bold fs-6 text-uppercase px-4 py-3 d-block d-sm-none" data-bs-toggle="modal" data-bs-target="#changeNetwork">Connect To Wallet
-                            </button>
+                            <button type="button" class="btn gradient-btn text-white rounded-pill fw-bold fs-6 text-uppercase px-4 py-3 d-block d-sm-none" data-bs-toggle="modal" data-bs-target="#changeNetwork">Connect To Wallet</button>
                         </ul>
                     </div>
 
@@ -142,7 +141,7 @@
         </div>
 
         <!-- Modal -->
-        <div class="modal fade" id="changeNetwork" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="changeNetworkLabel" aria-hidden="true">
+        <div class="modal fade" id="change-chain-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="changeNetworkLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content bg-dark p-4 border border-secondary">
                     <div class="modal-body text-center text-white">
@@ -152,8 +151,7 @@
                         </div>
                         <h2 id="changeNetworkLabel" class="fw-bold m-0 display-5">Oops...</h2>
                         <p class="my-4 fs-6">It appears that you are on a different chain id, please check and select the correct one.</p>
-                        <button type="button" class="btn gradient-btn text-white rounded-pill fw-bold fs-6 text-uppercase px-4 py-3" data-bs-dismiss="modal">Change MetaMask Network
-                    </button>
+                        <button type="button" class="btn gradient-btn text-white rounded-pill fw-bold fs-6 text-uppercase px-4 py-3" id="change-network-btn">Change MetaMask Network</button>
                     </div>
                 </div>
             </div>
@@ -164,6 +162,13 @@
 <script>
     var is_live = `{{env('APP_ENV')}}`;
     var c_id = `{{env('CHAIN_ID')}}`;
+    var TokenContractAddress = `{{env('TOKEN_CONTRACT')}}`;
+    var PreSaleContractAddress = `{{env('PRE_SALE_CONTRACT')}}`;
+    var PublicSaleContractAddress = `{{env('PUBLIC_SALE_CONTRACT')}}`;
+    var SeedContractAddress = `{{env('SEED_CONTRACT')}}`;
+    var PrivateAContractAddress = `{{env('PRIVATE_A_CONTRACT')}}`;
+    var PrivateBContractAddress = `{{env('PRIVATE_B_CONTRACT')}}`;
+    var KolContractAddress = `{{env('KOL_CONTRACT')}}`;
 </script>
 <?php
 if (isset($footer['js'])) {

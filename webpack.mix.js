@@ -30,6 +30,7 @@ mix.scripts([
     "resources/assets/js/bootstrap.bundle.min.js",
     "resources/assets/js/common.js",
     "resources/assets/js/custom.js",
+    "resources/assets/js/config.js",
     "resources/assets/js/portfolio.js",
     "resources/assets/js/walletconnect.js",
 ], "public/assets/js/portfolio.min.js")
