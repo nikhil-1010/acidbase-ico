@@ -54,21 +54,22 @@ function init() {
    });
 }
 
-// $(document).ready(async function () {
-//     if (localStorage.getItem("WEB3_CONNECT_CACHED_PROVIDER") != null) {
-//         init();
-//         onConnect();
-//         $("#dis-connect").removeClass("d-none");
-//     } else {
-//         const cId = await web3.eth.getChainId();
-//         var chainID = Number(c_id);
-//         if (cId != chainID) {
-//             $("#change-network").modal("show");
-//         }
-//         $("#connect").removeClass("d-none");
-//         return false;
-//     }
-// });
+$(document).ready(async function () {
+   debugger
+    if (localStorage.getItem("WEB3_CONNECT_CACHED_PROVIDER") != null) {
+        init();
+        onConnect();
+        $("#dis-connect").removeClass("d-none");
+    } else {
+      //   const cId = await web3.eth.getChainId();
+      //   var chainID = Number(c_id);
+      //   if (cId != chainID) {
+      //       $("#change-network").modal("show");
+      //   }
+        $("#btn-connect").removeClass("d-none");
+        return false;
+    }
+});
 
 async function fetchAccountData() {
    // Get a Web3 instance for the wallet
