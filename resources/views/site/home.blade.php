@@ -220,7 +220,7 @@
                         <p class="m-0 fw-lighter opacity-50">Acidbase utilizes advanced NLP and computer vision models to extract features from text, image, and audio data, capturing your essence.</p>
                     </div>
                 </div>
-                <div class="slide">
+                <div class="slide"> 
                     <div class="bg-black bg-opacity-25 p-3 p-md-4 p-lg-5 border-green text-start text-white shadow-lg h-100">
                         <div class="text-center display-3 mb-5 text-secondary"><i class="fa-solid fa-id-card-clip"></i></div>
                         <h5 class="text-uppercase fw-lighter">Model Training and Personalization</h5>
