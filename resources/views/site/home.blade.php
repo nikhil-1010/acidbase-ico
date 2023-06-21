@@ -31,7 +31,9 @@
             </div>
         </div>
 
-        <header class="py-2 py-md-3 ws-header">
+        <div class="back-to-top position-fixed start-0 bottom-0 m-4 cursor-pointer fs-1 text-secondary"><i class="fa-solid fa-circle-arrow-up"></i></div>
+
+        <header class="py-2 py-md-3 ws-header position-sticky top-0">
             <nav class="navbar navbar-expand-lg">
                 <div class="container">
                     <a class="navbar-brand" href="{{url('/')}}">
@@ -49,16 +51,16 @@
                         <ul class="navbar-nav ms-auto gap-lg-3">
                             <hr class="bg-white d-lg-none">
                             <li class="nav-item">
-                                <a class="nav-link text-white fw-lighter active" aria-current="page" href="#">Home</a>
+                                <a class="nav-link text-white fw-lighter active" aria-current="page" href="{{url('#home')}}">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white fw-lighter" href="#">Features</a>
+                                <a class="nav-link text-white fw-lighter" href="{{url('#feature')}}">Features</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white fw-lighter" href="#">Tokenomics</a>
+                                <a class="nav-link text-white fw-lighter" href="{{url('#tokenomics')}}">Tokenomics</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white fw-lighter" href="#">Team</a>
+                                <a class="nav-link text-white fw-lighter" href="{{url('#team')}}">Team</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white fw-lighter" href="#">Whitepaper</a>
@@ -77,7 +79,7 @@
             </nav>
         </header>
 
-        <section class="hero-banner text-white position-relative overflow-hidden">
+        <section class="hero-banner text-white position-relative overflow-hidden" id="home">
             <div class="hero-video position-absolute top-0 bottom-0 m-auto">
                 <video width="100%" height="100%" poster="{{url('assets/img/green-waves.png')}}" muted="" autoplay="" loop="" playsinline="">
                     <source src="{{url('assets/img/green-waves.mp4')}}" type="video/mp4">
@@ -93,19 +95,18 @@
                         <div class="presale-end-panel text-center mt-5 mt-lg-0">
                             <h2 class="text-white">Our Presale Ends in</h2>
                             <div id='flip_timer' class="my-4"></div>
-                            <a href="{{url('portfolio')}}" class="btn text-white gradient-btn rounded-pill fs-5 fw-bold py-3 px-5 text-uppercase">Enter Presale</a>
+                            <a href="" class="btn text-white gradient-btn rounded-pill fs-5 fw-bold py-3 px-5 text-uppercase">Entr Presale</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-
         <section class="inner-space pt-0 text-white">
             <div class="container">
                 <div class="row gy-4 align-items-center justify-content-center">
                     <div class="col-12 col-lg-4">
-                        <div class="bg-light p-5 shadow-lg h-100">
+                        <div class="bg-light p-5 shadow-lg h-100 rounded-5">
                             <div class="d-flex gap-4 align-items-center mb-4">
                                 <img src="{{url('assets/img/artificial-intelligence.png')}}" alt="AI" />
                                 <h5 class="text-secondary text-uppercase m-0">
@@ -123,7 +124,7 @@
                         </div>
                     </div>
                     <div class="col-12 col-lg-4">
-                        <div class="bg-light p-5 shadow-lg h-100">
+                        <div class="bg-light p-5 shadow-lg h-100 rounded-5">
                             <div class="d-flex gap-4 align-items-center mb-4">
                                 <img src="{{url('assets/img/robot.png')}}" alt="AI" />
                                 <h5 class="m-0 text-secondary text-uppercase">
@@ -138,7 +139,7 @@
             </div>
         </section>
 
-        <section class="inner-space bg-black bg-opacity-25">
+        <section class="inner-space bg-black bg-opacity-25" id="feature">
             <div class="container">
                 <div class="row g-3">
                     <div class="col-lg-4 col-md-6">
@@ -147,35 +148,35 @@
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="text-white px-3">
-                            <img src="{{url('assets/img/cube.png')}}" alt="cube" class="border p-4 mb-4" />
+                            <img src="{{url('assets/img/cube.png')}}" alt="cube" class="border p-4 mb-4 rounded-pill" />
                             <h5>Connect with the past</h5>
                             <p class="m-0 fw-lighter opacity-50">Engage in meaningful conversations with digitally preserved loved ones unlocking insights into thoughts, feelings, and experiences.</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="text-white px-3">
-                            <img src="{{url('assets/img/brain.png')}}" alt="brain" class="border p-4 mb-4" />
+                            <img src="{{url('assets/img/brain.png')}}" alt="brain" class="border p-4 mb-4 rounded-pill" />
                             <h5>Share wisdom with future generations</h5>
                             <p class="m-0 fw-lighter opacity-50">Allow descendants to interact with their ancestors and benefit from their knowledge, experience, and guidance.</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="text-white px-3">
-                            <img src="{{url('assets/img/rotate.png')}}" alt="cube" class="border p-4 mb-4" />
+                            <img src="{{url('assets/img/rotate.png')}}" alt="cube" class="border p-4 mb-4 rounded-pill" />
                             <h5>Personalized learning</h5>
                             <p class="m-0 fw-lighter opacity-50">Gain tailored advice and mentorship from historical figures or innovative thinkers, fostering personal growth and development.</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="text-white px-3">
-                            <img src="{{url('assets/img/integration.png')}}" alt="cube" class="border p-4 mb-4" />
+                            <img src="{{url('assets/img/integration.png')}}" alt="cube" class="border p-4 mb-4 rounded-pill" />
                             <h5>Ethical implications</h5>
                             <p class="m-0 fw-lighter opacity-50">Explore the moral philosophical and societal questions surrounding AI immortality, driving important conversations and research.</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="text-white px-3">
-                            <img src="{{url('assets/img/research.png')}}" alt="cube" class="border p-4 mb-4" />
+                            <img src="{{url('assets/img/research.png')}}" alt="cube" class="border p-4 mb-4 rounded-pill" />
                             <h5>Enhanced scientific research</h5>
                             <p class="m-0 fw-lighter opacity-50">Utilize the digital representation of individuals to better understand the complex interplay between genetics, personality and human experience. personality and human experience.</p>
                         </div>
@@ -189,7 +190,7 @@
             <p class="fw-lighter text-white mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             <div class="process-overview-slider">
                 <div class="slide">
-                    <div class="bg-black bg-opacity-25 p-3 p-md-4 p-lg-5 border-green text-start text-white shadow-lg h-100">
+                    <div class="bg-black bg-opacity-25 p-3 p-md-4 p-lg-5 border-green text-start text-white shadow-lg h-100 rounded-5">
                         <div class="text-center display-3 mb-5 text-secondary"><i class="fa-solid fa-shield-halved"></i></div>
                         <h5 class="text-uppercase fw-lighter">Purchase AcidBase<br>Tokens</h5>
                         <hr>
@@ -197,7 +198,7 @@
                     </div>
                 </div>
                 <div class="slide">
-                    <div class="bg-black bg-opacity-25 p-3 p-md-4 p-lg-5 border-green text-start text-white shadow-lg h-100">
+                    <div class="bg-black bg-opacity-25 p-3 p-md-4 p-lg-5 border-green text-start text-white shadow-lg h-100 rounded-5">
                         <div class="text-center display-3 mb-5 text-secondary"><i class="fa-solid fa-wallet"></i></div>
                         <h5 class="text-uppercase fw-lighter">Connect wallet to the Acidbase Platform</h5>
                         <hr>
@@ -205,7 +206,7 @@
                     </div>
                 </div>
                 <div class="slide">
-                    <div class="bg-black bg-opacity-25 p-3 p-md-4 p-lg-5 border-green text-start text-white shadow-lg h-100">
+                    <div class="bg-black bg-opacity-25 p-3 p-md-4 p-lg-5 border-green text-start text-white shadow-lg h-100 rounded-5">
                         <div class="text-center display-3 mb-5 text-secondary"><i class="fa-solid fa-arrow-right-arrow-left"></i></div>
                         <h5 class="text-uppercase fw-lighter">Share Personal Data & Train Your AI Model</h5>
                         <hr>
@@ -213,15 +214,15 @@
                     </div>
                 </div>
                 <div class="slide">
-                    <div class="bg-black bg-opacity-25 p-3 p-md-4 p-lg-5 border-green text-start text-white shadow-lg h-100">
+                    <div class="bg-black bg-opacity-25 p-3 p-md-4 p-lg-5 border-green text-start text-white shadow-lg h-100 rounded-5">
                         <div class="text-center display-3 mb-5 text-secondary"><i class="fa-solid fa-ranking-star"></i></div>
                         <h5 class="text-uppercase fw-lighter">Feature Extraction & Data Representation</h5>
                         <hr>
                         <p class="m-0 fw-lighter opacity-50">Acidbase utilizes advanced NLP and computer vision models to extract features from text, image, and audio data, capturing your essence.</p>
                     </div>
                 </div>
-                <div class="slide"> 
-                    <div class="bg-black bg-opacity-25 p-3 p-md-4 p-lg-5 border-green text-start text-white shadow-lg h-100">
+                <div class="slide">
+                    <div class="bg-black bg-opacity-25 p-3 p-md-4 p-lg-5 border-green text-start text-white shadow-lg h-100 rounded-5">
                         <div class="text-center display-3 mb-5 text-secondary"><i class="fa-solid fa-id-card-clip"></i></div>
                         <h5 class="text-uppercase fw-lighter">Model Training and Personalization</h5>
                         <hr>
@@ -229,7 +230,7 @@
                     </div>
                 </div>
                 <div class="slide">
-                    <div class="bg-black bg-opacity-25 p-3 p-md-4 p-lg-5 border-green text-start text-white shadow-lg h-100">
+                    <div class="bg-black bg-opacity-25 p-3 p-md-4 p-lg-5 border-green text-start text-white shadow-lg h-100 rounded-5">
                         <div class="text-center display-3 mb-5 text-secondary"><i class="fa-solid fa-code"></i></div>
                         <h5 class="text-uppercase fw-lighter">Model Storage, Deployment, & Blockchain Integration</h5>
                         <hr>
@@ -237,7 +238,7 @@
                     </div>
                 </div>
                 <div class="slide">
-                    <div class="bg-black bg-opacity-25 p-3 p-md-4 p-lg-5 border-green text-start text-white shadow-lg h-100">
+                    <div class="bg-black bg-opacity-25 p-3 p-md-4 p-lg-5 border-green text-start text-white shadow-lg h-100 rounded-5">
                         <div class="text-center display-3 mb-5 text-secondary"><i class="fa-solid fa-clipboard-list"></i></div>
                         <h5 class="text-uppercase fw-lighter">Tokenization & Access to Your Trained AI Model</h5>
                         <hr>
@@ -245,7 +246,7 @@
                     </div>
                 </div>
                 <div class="slide">
-                    <div class="bg-black bg-opacity-25 p-3 p-md-4 p-lg-5 border-green text-start text-white shadow-lg h-100">
+                    <div class="bg-black bg-opacity-25 p-3 p-md-4 p-lg-5 border-green text-start text-white shadow-lg h-100 rounded-5">
                         <div class="text-center display-3 mb-5 text-secondary"><i class="fa-solid fa-handshake"></i></div>
                         <h5 class="text-uppercase fw-lighter">User Interaction and<br>Engagement</h5>
                         <hr>
@@ -255,7 +256,7 @@
             </div>
         </section>
 
-        <section class="inner-space bg-light text-center">
+        <section class="inner-space bg-light text-center" id="tokenomics">
             <div class="container">
                 <h2 class="section-title display-5 text-uppercase text-secondary">TOKENOMICS</h2>
                 <p class="fw-lighter text-white mb-4">Acidbase's native token is ACB. The total token supply is <span class="text-secondary">1,000,000,000 ACB</span>.</p>
@@ -500,7 +501,7 @@
             </div>
         </section>
 
-        <section class="inner-space bg-light">
+        <section class="inner-space bg-light" id="team">
             <div class="container">
                 <div class="row g-4 align-items-center justify-content-between">
                     <div class="col-lg-6">
@@ -615,7 +616,7 @@
                     <div class="col-lg-7 col-md-6">
                         <h2 class="section-title display-5 text-uppercase text-secondary">Launch Into the future with Acidbase today!</h2>
                         <p class="fw-lighter text-white mb-4">Acidbase token (ACB) will be used to access services and products offered by the Acidbase platform. It can also be used for governance purposes, such as voting on proposals and decisions related to the platform's development</p>
-                        <a href="{{url('portfolio')}}" class="btn text-white gradient-btn rounded-pill fs-5 fw-bold py-3 px-5 text-uppercase">Enter Presale</a>
+                        <a href="" class="btn text-white gradient-btn rounded-pill fs-5 fw-bold py-3 px-5 text-uppercase">Entr Presale</a>
                     </div>
                     <div class="col-lg-4 col-md-5">
                         <img src="{{url('assets/img/robot-present.png')}}" alt="" class="img-fluid w-100 updown-animation">
@@ -655,12 +656,12 @@
                     </div>
                     <div class="col-lg-5">
                         <h5 class="text-uppercase text-white fw-bold mb-3">Subscribe acidbase!</h5>
-                        <form class="d-flex align-items-center gap-2 border p-2 rounded-3">
+                        <form class="d-flex align-items-center gap-2 border p-2 rounded-pill">
                             <div class="form-floating w-100 text-white">
                                 <input type="email" class="form-control bg-transparent border-0" id="floatingInputGrid" placeholder="name@example.com" value="" required>
                                 <label for="floatingInputGrid">Email address</label>
                             </div>
-                            <button type="button" class="btn gradient-btn rounded-3 text-white fs-3 px-3"><i class="fa-solid fa-arrow-right"></i></button>
+                            <button type="button" class="btn gradient-btn rounded-pill text-white fs-3 px-3"><i class="fa-solid fa-arrow-right"></i></button>
                         </form>
                     </div>
                 </div>

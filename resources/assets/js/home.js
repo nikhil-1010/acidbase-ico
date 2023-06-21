@@ -1,33 +1,55 @@
-$(document).ready(function() {
-    $('.process-overview-slider').slick({
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        autoplay: false,
-        dots: true,
-        arrows: false,
-        infinite: false,
-        pauseOnHover: true,
-        responsive: [{
-                breakpoint: 1200,
-                settings: {
-                    slidesToShow: 3
-                }
-            },
-            {
-                breakpoint: 991,
-                settings: {
-                    slidesToShow: 2
-                }
-            },
-            {
-                breakpoint: 560,
-                settings: {
-                    slidesToShow: 1
-                }
-            }
-        ]
-    });
+// Slick Slider
+$(document).ready(function () {
+	$('.process-overview-slider').slick({
+		slidesToShow: 4,
+		slidesToScroll: 1,
+		autoplay: false,
+		dots: true,
+		arrows: false,
+		infinite: false,
+		pauseOnHover: true,
+		responsive: [{
+			breakpoint: 1200,
+			settings: {
+				slidesToShow: 3
+			}
+		},
+		{
+			breakpoint: 991,
+			settings: {
+				slidesToShow: 2
+			}
+		},
+		{
+			breakpoint: 560,
+			settings: {
+				slidesToShow: 1
+			}
+		}
+		]
+	}).on('setPosition', function (event, slick) {
+		slick.$slides.css('height', slick.$slideTrack.height() + 'px');
+	});
 });
+
+//back to top js
+$(document).ready(function () {
+	$(window).scroll(function () {
+		if ($(this).scrollTop() > 700) {
+			$('.back-to-top').fadeIn();
+		} else {
+			$('.back-to-top').fadeOut();
+		}
+	});
+	// scroll body to 0px on click
+	$('.back-to-top').click(function () {
+		$('body,html').animate({
+			scrollTop: 0
+		}, 500);
+		return false;
+	});
+});
+
 // Tokonomics Pie Chart
 var oilCanvas = document.getElementById("oilChart");
 
@@ -46,33 +68,33 @@ var oilData = {
 		"Liquidity Provision"
 	],
 	datasets: [{
-        data: [15, 15, 30, 10, 2.5, 5, 6, 6, 8, 2.5],
-        backgroundColor: [
-            "#f1548e40",
-            "#f9731640",
-            "#1251a040",
-            "#22c55e40",
-            "#2271eb40",
-            "#702b9140",
-            "#f64a7340",
-            "#22c55e40",
-            "#2cdcb840",
-            "#2b29ae40"
-        ],
-        borderColor: [
-            "#f1548e",
-            "#f97316",
-            "#1251a0",
-            "#22c55e",
-            "#2271eb",
-            "#702b91",
-            "#f64a73",
-            "#22c55e",
-            "#2cdcb8",
-            "#2b29ae"
-        ],
-        borderWidth: 2,
-    }]
+		data: [15, 15, 30, 10, 2.5, 5, 6, 6, 8, 2.5],
+		backgroundColor: [
+			"#f1548e40",
+			"#f9731640",
+			"#1251a040",
+			"#22c55e40",
+			"#2271eb40",
+			"#702b9140",
+			"#f64a7340",
+			"#22c55e40",
+			"#2cdcb840",
+			"#2b29ae40"
+		],
+		borderColor: [
+			"#f1548e",
+			"#f97316",
+			"#1251a0",
+			"#22c55e",
+			"#2271eb",
+			"#702b91",
+			"#f64a73",
+			"#22c55e",
+			"#2cdcb8",
+			"#2b29ae"
+		],
+		borderWidth: 2,
+	}]
 };
 
 var options = {
