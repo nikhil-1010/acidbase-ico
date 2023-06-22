@@ -95,7 +95,7 @@
                         <div class="presale-end-panel text-center mt-5 mt-lg-0">
                             <h2 class="text-white">Our Presale Ends in</h2>
                             <div id='flip_timer' class="my-4"></div>
-                            <a href="" class="btn text-white gradient-btn rounded-pill fs-5 fw-bold py-3 px-5 text-uppercase">Entr Presale</a>
+                            <a href="{{url('portfolio')}}" class="btn text-white gradient-btn rounded-pill fs-5 fw-bold py-3 px-5 text-uppercase">Enter Presale</a>
                         </div>
                     </div>
                 </div>
@@ -616,7 +616,7 @@
                     <div class="col-lg-7 col-md-6">
                         <h2 class="section-title display-5 text-uppercase text-secondary">Launch Into the future with Acidbase today!</h2>
                         <p class="fw-lighter text-white mb-4">Acidbase token (ACB) will be used to access services and products offered by the Acidbase platform. It can also be used for governance purposes, such as voting on proposals and decisions related to the platform's development</p>
-                        <a href="" class="btn text-white gradient-btn rounded-pill fs-5 fw-bold py-3 px-5 text-uppercase">Entr Presale</a>
+                        <a href="{{url('portfolio')}}" class="btn text-white gradient-btn rounded-pill fs-5 fw-bold py-3 px-5 text-uppercase">Enter Presale</a>
                     </div>
                     <div class="col-lg-4 col-md-5">
                         <img src="{{url('assets/img/robot-present.png')}}" alt="" class="img-fluid w-100 updown-animation">
