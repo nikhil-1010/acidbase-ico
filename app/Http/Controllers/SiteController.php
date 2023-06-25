@@ -45,5 +45,47 @@ class SiteController extends Controller
 
         return view("site.portfolio", $view_data);
     }
+    public function getTransactionNotify()
+    {
+        $view_data = [
+            "header" => [
+                'title'=>'Portfolio | '.self::$platform
+            ],
+            "body" => [
+                'id' => 'portfolio',
+            ],
+            "footer" => [
+                'js' => ['web3.min.js','portfolio.min.js']
+            ]
+        ];
+
+        return view("site.portfolio", $view_data);
+    }
+    public function postSeedTransactionFilter(){
+        $param = \Input::all();
+        $param['sale_type'] = config('constant.SALE_TYPE.SEED');
+        $data = \App\Models\User\Transaction::filter($param);
+        $res['blade'] = view("site.seed_transaction_history", $data)->render();
+        $res['total_record'] = $data['total_record'];
+        return $res;
+    }
+    public function postPrivateTransactionFilter(){
+        $param = \Input::all();
+        
+        $param['sale_type'] = config('constant.SALE_TYPE.PRIVATE');
+        $data = \App\Models\User\Transaction::filter($param);
+        $res['blade'] = view("site.private_transaction_history", $data)->render();
+        $res['total_record'] = $data['total_record'];
+        return $res;
+    }
+    public function postPublicTransactionFilter(){
+        $param = \Input::all();
+        
+        $param['sale_type'] = config('constant.SALE_TYPE.PUBLIC');
+        $data = \App\Models\User\Transaction::filter($param);
+        $res['blade'] = view("site.public_transaction_history", $data)->render();
+        $res['total_record'] = $data['total_record'];
+        return $res;
+    }
 
 }

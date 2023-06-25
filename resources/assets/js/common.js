@@ -1,3 +1,10 @@
+var filters = {
+    totalItems: 0,
+    itemPerPage: 50,
+    currentPage: 1,
+    totalPages: 1,
+};
+var multipleFilter = [];
 function changeRecordPerPage(url,table){
     var id = '';
     if(typeof table !== 'undefined'){

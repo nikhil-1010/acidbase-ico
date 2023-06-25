@@ -88,14 +88,22 @@
             <div class="container h-100 position-relative">
                 <div class="row align-items-center justify-content-center h-100">
                     <div class="col-lg-7">
-                        <h1 class="section-title display-2 text-uppercase">Immortalise your legacy with Acidbase, Live Forever</h1>
+                        <h1 class="section-title display-2 text-uppercase d-inline-block">
+                            <span class="d-flex d-md-inline-flex md:inline-flex mb-2 mb-md-3 flex-column overflow-hidden hero-words">
+                                <span class="d-flex h-100 hero-words-animate">Immortalise</span>
+                                <span class="d-flex h-100 hero-words-animate">Eternalise</span>
+                                <span class="d-flex h-100 hero-words-animate">Memorialise</span>
+                                <span class="d-flex h-100 hero-words-animate">Immortalise</span>
+                                <span class="d-flex h-100 hero-words-animate">Memorialise</span>
+                            </span> your legacy with Acidbase, Live Forever
+                        </h1>
                         <p class="fw-lighter fs-3">A revolutionary platform that harnesses the power of Artificial Intelligence to create your digital legacy.</p>
                     </div>
                     <div class="col-lg-5">
                         <div class="presale-end-panel text-center mt-5 mt-lg-0">
                             <h2 class="text-white">Our Presale Ends in</h2>
                             <div id='flip_timer' class="my-4"></div>
-                            <a href="{{url('portfolio')}}" class="btn text-white gradient-btn rounded-pill fs-5 fw-bold py-3 px-5 text-uppercase">Enter Presale</a>
+                            <a href="" class="btn text-white gradient-btn rounded-pill fs-5 fw-bold py-3 px-5 text-uppercase">Entr Presale</a>
                         </div>
                     </div>
                 </div>
@@ -186,7 +194,7 @@
         </section>
 
         <section class="inner-space text-center">
-            <h2 class="section-title display-5 text-uppercase text-secondary">PROCESS OVERVIEW</h2>
+            <h2 class="section-title display-5 text-uppercase text-secondary d-inline-block">PROCESS OVERVIEW</h2>
             <p class="fw-lighter text-white mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             <div class="process-overview-slider">
                 <div class="slide">
@@ -258,7 +266,7 @@
 
         <section class="inner-space bg-light text-center" id="tokenomics">
             <div class="container">
-                <h2 class="section-title display-5 text-uppercase text-secondary">TOKENOMICS</h2>
+                <h2 class="section-title display-5 text-uppercase text-secondary d-inline-block">TOKENOMICS</h2>
                 <p class="fw-lighter text-white mb-4">Acidbase's native token is ACB. The total token supply is <span class="text-secondary">1,000,000,000 ACB</span>.</p>
                 <div class="row g-4 align-items-center justify-content-center">
                     <div class="col-lg-4 col-md-8 text-start">
@@ -338,7 +346,7 @@
 
         <section class="inner-space">
             <div class="container">
-                <h2 class="section-title display-5 text-uppercase text-secondary text-center">ROADMAP</h2>
+                <h2 class="section-title display-5 text-uppercase text-secondary text-center d-inline-block">ROADMAP</h2>
                 <p class="fw-lighter text-white mb-4 text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 <!-- <div class="d-flex flex-column gap-4 gap-lg-0 text-start text-white position-relative">
                     <div class="row gx-0 align-items-center">
@@ -438,7 +446,7 @@
                         <div class="row clearfix left">
                             <div class="col-lg-5 box left first reveal">
                                 <span class="heading green">PHASE 1</span>
-                                <br/>
+                                <br />
                                 <div class="milestones vertical-line right">
                                     <span class="text-right">Market Research & Targeting</span>
                                     <span class="text-right">Expert Team Assembly</span>
@@ -449,7 +457,7 @@
                             </div>
                             <div class="col-lg-5 box right first reveal">
                                 <span class="heading green">PHASE 2</span>
-                                <br/>
+                                <br />
                                 <div class="milestones vertical-line left">
                                     <span class="text-right">Token Presale Launch</span>
                                     <span class="text-right">Token distribution: Presale & TGE</span>
@@ -460,7 +468,7 @@
                         <div class="row clearfix left">
                             <div class="col-lg-5 box left second reveal">
                                 <span class="heading green">PHASE 3</span>
-                                <br/>
+                                <br />
                                 <div class="milestones vertical-line right">
                                     <span class="text-right">Alpha platform release</span>
                                     <span class="text-right">Personalized AI personas</span>
@@ -475,7 +483,7 @@
                             </div>
                             <div class="col-lg-5 box right second reveal">
                                 <span class="heading green">PHASE 4</span>
-                                <br/>
+                                <br />
                                 <div class="milestones vertical-line left">
                                     <span class="text-right">Language & Cultural Expansion</span>
                                     <span class="text-right">Enhanced integration with blockchain</span>
@@ -487,7 +495,7 @@
                         <div class="row clearfix left">
                             <div class="col-lg-5 box left third reveal">
                                 <span class="heading green">PHASE 5</span>
-                                <br/>
+                                <br />
                                 <div class="milestones vertical-line right">
                                     <span class="text-right">Global User Scaling</span>
                                     <span class="text-right">Strategic Partnerships</span>
@@ -524,14 +532,14 @@
 
         <section class="inner-space text-center text-white">
             <div class="container">
-                <h2 class="section-title display-5 text-uppercase text-secondary">faqs</h2>
+                <h2 class="section-title display-5 text-uppercase text-secondary d-inline-block">faqs</h2>
                 <p class="fw-lighter mb-5">Are you curious about how Acidbase can benefit you? Here are the most common questions and answers.</p>
                 <div class="row gx-4">
                     <div class="col-lg-6">
                         <div class="accordion faq-panel" id="accordionFlushExample">
                             <div class="accordion-item">
                                 <button id="flush-headingOne" class="accordion-button shadow-none bg-transparent fw-lighter fs-5 text-white px-0 py-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                        What is Acidbase?
+                                    What is Acidbase?
                                 </button>
                                 <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                     <div class="accordion-body text-start px-0 fw-lighter fs-14">Acidbase is a revolutionary platform that harnesses the power of artificial intelligence (AI) to create AI-driven digital personas that immortalize individuals and enable them to interact with future generations. The
@@ -627,7 +635,7 @@
 
         <section class="text-center text-white inner-space">
             <div class="container">
-                <h2 class="section-title text-secondary display-4 text-uppercase mb-4">Featured In</h2>
+            <h2 class="section-title text-secondary display-4 text-uppercase mb-4 d-inline-block">Featured In</h2>
                 <div class="row g-4">
                     <div class="col-lg-3 col-sm-6">
                         <div class="px-4 py-3 featured-logo"><img src="{{url('assets/img/coindesk.png')}}" alt="coindesk" class="img-fluid" /></div>

@@ -18,19 +18,20 @@
       ?>
         
       <title>{{$header['title']}}</title>
+      <input type="hidden" name="" id="token" value="{{csrf_token()}}">
 </head>
 
 <body>
-
+        
     <div class="bg-dark main-content position-relative">
 
-        <div class="loader" id="loader">
+        <!-- <div class="loader" id="loader">
             <div class="loader-inner">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-        </div>
+        </div> -->
 
         <header class="py-2 py-md-3">
             <nav class="navbar navbar-expand-lg">
@@ -89,9 +90,14 @@
                                 <button class="btn border px-4 py-3 fs-6 rounded-pill text-start fw-lighter text-white" type="button"><i class="fa-solid fa-user-tie me-3"></i>Public Round</button>
                             </div>
                         </div>
-                        <div class="col-lg-8 col-xl-9">
+                        <div class="col-lg-8 col-xl-9 d-none" id="disconnect-wallet-div">
                             <div class="d-flex align-items-center justify-content-center h-100">
                                 <p class="m-0 fs-5 fw-lighter text-center text-white py-5">Please connect your wallet account to view your portfolio</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-xl-9 d-none" id="connect-wallet-div">
+                            <div class="d-flex align-items-center justify-content-center h-100">
+                                <p class="m-0 fs-5 fw-lighter text-center text-white py-5">wallet connected</p>
                             </div>
                         </div>
                     </div>
@@ -103,10 +109,7 @@
         <footer class="py-3 mt-auto border-top border-secondary position-absolute w-100 bottom-0">
             <div class="container">
                 <div class="d-flex flex-wrap gap-3 align-items-center justify-content-between">
-                    <p class="text-white m-0 fw-lighter">© Copyright
-                        <script>
-                            document.write(new Date().getFullYear());
-                        </script> acidbase. All rights reserved.
+                    <p class="text-white m-0 fw-lighter">© Copyright {{date('Y')}} acidbase. All rights reserved.
                     </p>
                     <div class="d-flex align-items-center gap-2 ms-auto">
                         <a target="_blank" href="https://www.facebook.com"><i
@@ -166,6 +169,16 @@
     var SeedContractAddress = `{{env('SEED_CONTRACT')}}`;
     var PrivateSaleContractAddress = `{{env('PRIVATE_SALE_CONTRACT')}}`;
     var PublicSaleContractAddress = `{{env('PUBLIC_SALE_CONTRACT')}}`;
+    var SeedStartDate = `1687535196`;
+    var SeedEndDate = `1687966839`;
+    var PrivateStartDate = `1687966839`;
+    var PrivateEndDate = `1687976839`;
+    var PublicStartDate = `1687976839`;
+    var PublicEndDate = `1687986839`;
+    var currentTime = `{{time()}}`;
+    var seedTransactionHistoryUrl = `{{url('seed-trasaction-filter')}}`
+    var PrivateTransactionHistoryUrl = `{{url('private-trasaction-filter')}}`
+    var PublicTransactionHistoryUrl = `{{url('public-trasaction-filter')}}`
 </script>
 <?php
 if (isset($footer['js'])) {

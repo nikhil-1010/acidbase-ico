@@ -13,28 +13,14 @@
 /* font family */
 
 @font-face {
-    font-family: Roboto-Light;
-    src: url(../fonts/Roboto-Light.ttf)
+    font-family: 'PlusJakartaSans';
+    src: url('../../assets/fonts/PlusJakartaSans-VariableFont_wght.ttf') format("truetype-variations");
+    font-weight: 1 999;
 }
 
 @font-face {
-    font-family: Roboto-Regular;
-    src: url(../fonts/Roboto-Regular.ttf)
-}
-
-@font-face {
-    font-family: Roboto-Medium;
-    src: url(../fonts/Roboto-Medium.ttf)
-}
-
-@font-face {
-    font-family: Roboto-Bold;
-    src: url(../fonts/Roboto-Bold.ttf)
-}
-
-@font-face {
-    font-family: Roboto-Black;
-    src: url(../fonts/Roboto-Black.ttf)
+    font-family: Hogira-Black;
+    src: url(../fonts/Hogira-Black.otf)
 }
 
 
@@ -92,8 +78,9 @@
 }
 
 * {
-    font-family: "Roboto-Regular", sans-serif;
+    font-family: "PlusJakartaSans", sans-serif;
     outline: none !important;
+    font-weight: 100;
 }
 
 html {
@@ -103,14 +90,6 @@ html {
 .main-content {
     min-height: 100vh;
     padding-bottom: 100px;
-}
-
-.fw-lighter {
-    font-family: "Roboto-Light", sans-serif;
-}
-
-.fw-bold {
-    font-family: "Roboto-Bold", sans-serif;
 }
 
 .cursor-pointer {
@@ -514,7 +493,7 @@ option {
     margin-top: 5px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    font-family: "Roboto-Light", sans-serif;
+    font-family: "PlusJakartaSans", sans-serif;
 }
 
 .card_panel {
@@ -526,7 +505,7 @@ option {
 }
 
 .card b {
-    font-family: "Roboto-Black", sans-serif !important;
+    font-family: "Hogira-Black", sans-serif !important;
 }
 
 .card__top,
@@ -542,6 +521,7 @@ option {
     backface-visibility: hidden;
     transform-style: preserve-3d;
     width: 1.8em;
+    font-family: "Hogira-Black", sans-serif !important;
 }
 
 .card__bottom {
@@ -641,8 +621,18 @@ option {
     z-index: 99999;
 }
 
-.section-title {
-    font-family: 'Roboto-Black', sans-serif;
+.section-title,
+.section-title span {
+    font-family: 'Hogira-Black', sans-serif;
+    background: linear-gradient(to right, var(--bs-secondary) 0%, var(--bs-primary) 50%, #fff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.section-title span {
+    background: white;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .hero-banner {
@@ -774,6 +764,7 @@ option {
     opacity: 1;
     border: 2px solid var(--bs-secondary);
     position: relative;
+    margin-bottom: 20px;
 }
 
 section.roadmap .box.left {
@@ -949,6 +940,47 @@ section.roadmap .row.right {
     color: #fff !important;
 }
 
+.hero-words {
+    overflow: hidden !important;
+    height: 70px;
+}
+
+.hero-words-animate {
+    animation: spin_words 6s infinite;
+    padding-right: 20px;
+    color: white;
+}
+
+@keyframes spin_words {
+    10% {
+        transform: translateY(-112%);
+    }
+    25% {
+        transform: translateY(-100%);
+    }
+    35% {
+        transform: translateY(-212%);
+    }
+    50% {
+        transform: translateY(-200%);
+    }
+    60% {
+        transform: translateY(-312%);
+    }
+    75% {
+        transform: translateY(-300%);
+    }
+    85% {
+        transform: translateY(-412%);
+    }
+    100% {
+        transform: translateY(-400%);
+    }
+}
+
+
+/* Responsive */
+
 @media (max-width: 1400px) {
     section.roadmap .box.left::before {
         right: -114px;
@@ -991,16 +1023,25 @@ section.roadmap .row.right {
     .hero-banner {
         padding: 100px 0;
     }
+    .hero-words {
+        height: 50px;
+    }
 }
 
 @media (max-width: 576px) {
     .hero-banner {
         padding: 75px 0;
     }
+    .hero-words {
+        height: 40px;
+    }
 }
 
 @media (max-width: 480px) {
     .hero-banner {
         padding: 50px 0;
+    }
+    .hero-words {
+        height: 35px;
     }
 }
