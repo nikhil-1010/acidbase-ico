@@ -82,7 +82,7 @@
         <section class="hero-banner text-white position-relative overflow-hidden" id="home">
             <div class="hero-video position-absolute top-0 bottom-0 m-auto">
                 <video width="100%" height="100%" poster="{{url('assets/img/green-waves.png')}}" muted="" autoplay="" loop="" playsinline="">
-                    <source src="{{url('assets/img/green-waves.mp4')}}" type="video/mp4">
+                    <source src="{{url('assets/img/green-waves1.mp4')}}" type="video/mp4">
                 </video>
             </div>
             <div class="container h-100 position-relative">
@@ -103,7 +103,7 @@
                         <div class="presale-end-panel text-center mt-5 mt-lg-0">
                             <h2 class="text-white">Our Presale Ends in</h2>
                             <div id='flip_timer' class="my-4"></div>
-                            <a href="" class="btn text-white gradient-btn rounded-pill fs-5 fw-bold py-3 px-5 text-uppercase">Entr Presale</a>
+                            <a href="" class="btn text-white gradient-btn rounded-pill fs-5 fw-bold py-3 px-5 text-uppercase">Enter Presale</a>
                         </div>
                     </div>
                 </div>
