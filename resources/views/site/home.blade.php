@@ -103,7 +103,7 @@
                         <div class="presale-end-panel text-center mt-5 mt-lg-0">
                             <h2 class="text-white">Our Presale Ends in</h2>
                             <div id='flip_timer' class="my-4"></div>
-                            <a href="" class="btn text-white gradient-btn rounded-pill fs-5 fw-bold py-3 px-5 text-uppercase">Enter Presale</a>
+                            <a href="{{url('portfolio')}}" class="btn text-white gradient-btn rounded-pill fs-5 fw-bold py-3 px-5 text-uppercase">Enter Presale</a>
                         </div>
                     </div>
                 </div>

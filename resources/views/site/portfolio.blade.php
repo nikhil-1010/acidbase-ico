@@ -97,7 +97,7 @@
                         </div>
                         <div class="col-lg-8 col-xl-9 d-none" id="connect-wallet-div">
                             <div class="d-flex align-items-center justify-content-center h-100">
-                                <p class="m-0 fs-5 fw-lighter text-center text-white py-5">wallet connected</p>
+                                <div id='flip_timer' class="my-4"></div>
                             </div>
                         </div>
                     </div>

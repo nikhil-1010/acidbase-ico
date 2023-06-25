@@ -346,8 +346,8 @@ async function RefreshPageDetail() {
       filterData(PrivateTransactionHistoryUrl, "private-payment-history-table");
 
       SeedContract = new web3.eth.Contract(SeedAbi, SeedContractAddress);
-      PrivateAContract = new web3.eth.Contract(PrivateAAbi,PrivateSaleContractAddress);
-      PublicSaleContract = new web3.eth.Contract(PublicSaleAbi,PublicSaleContractAddress);
+      // PrivateAContract = new web3.eth.Contract(PrivateAAbi, PrivateSaleContractAddress);
+      // PublicSaleContract = new web3.eth.Contract(PublicSaleAbi, PublicSaleContractAddress);
 
       hideShowTabs();
    }
@@ -358,11 +358,11 @@ async function RefreshPageDetail() {
    TokenContract = new web3.eth.Contract(TokenAbi, TokenContractAddress);
    await getTokenBalance(TokenContract, selectedAccount);
    // await getTokenUsdPrice(TokenContract);
-   // await getSeedInvestorDetail(SeedContract, selectedAccount);
+   await getSeedInvestorDetail(SeedContract, selectedAccount);
    // await getPrivateAInvestorDetail(PrivateAContract, selectedAccount);
-   // await getPrivateBInvestorDetail(PrivateBContract, selectedAccount);
    // await getPublicSaleInvestorDetail(PublicSaleContract, selectedAccount);
    if (hash == "seed") {
+      debugger
       if (today <= seeddate) {
          await getSeedInvestorDetail(SeedContract, selectedAccount);
       }
@@ -414,10 +414,10 @@ async function getPublicSaleInvestorDetail(contract, address) {
    console.log("Publicsale Investor");
    console.log(PublicInvestor);
    locked_token = number_format(
-      web3.utils.fromWei(PublicInvestor["lockedUbi"], "ether")
+      web3.utils.fromWei(PublicInvestor["lockedAcb"], "ether")
    );
    released_token = number_format(
-      web3.utils.fromWei(PublicInvestor["releasedUbi"], "ether")
+      web3.utils.fromWei(PublicInvestor["releasedAcb"], "ether")
    );
    $("#publicsale-locked-balance").html(locked_token);
    $("#publicsale-release-balance").html(released_token);
@@ -443,13 +443,13 @@ async function getPublicSaleInvestorDetail(contract, address) {
 
       // PublicInvestor = await getInvestorDetail(contract, address);
       if (!PublicInvestor["tokenGenerated"]) {
-         if (PublicInvestor["lockedUbi"] != 0) {
+         if (PublicInvestor["lockedAcb"] != 0) {
             $("#publicsale-tg-now-div").removeClass("d-none");
          }
       }
 
       console.log("Public Vesting Time Over Claim button show");
-      if (parseInt(PublicInvestor["lockedUbi"]) == 0 && parseInt(PublicInvestor["releasedUbi"]) == 0) {
+      if (parseInt(PublicInvestor["lockedAcb"]) == 0 && parseInt(PublicInvestor["releasedAcb"]) == 0) {
          $("#publicsale_over_div").removeClass("d-none");
          $("#publicsale_claim_over_div").addClass("d-none");
          $('#publicsale-buy-btn-div').addClass('d-none');
@@ -471,7 +471,7 @@ async function getPublicSaleInvestorDetail(contract, address) {
             // PublicInvestor = await getInvestorDetail(contract, address);
             console.log("Investor Call");
             if (!PublicInvestor["tokenGenerated"]) {
-               if (PublicInvestor["lockedUbi"] != 0) {
+               if (PublicInvestor["lockedAcb"] != 0) {
                   $("#publicsale-tg-now-div").removeClass("d-none");
                   $("#publicsale-claim-now-div").addClass("d-none");
                }
@@ -483,7 +483,7 @@ async function getPublicSaleInvestorDetail(contract, address) {
                   $("#publicsale-claim-now-div").removeClass("d-none");
                   $("#publicsale-tg-now-div").addClass("d-none");
                } else {
-                  if (parseInt(PublicInvestor["releasedUbi"]) == parseInt(PublicInvestor["lockedUbi"])) {
+                  if (parseInt(PublicInvestor["releasedAcb"]) == parseInt(PublicInvestor["lockedAcb"])) {
                      $("#publicsale_claim_over_div").removeClass("d-none");
                      $("#publicsale_over_div").addClass("d-none");
                      $("#publicsale-claim-now-div").addClass("d-none");
@@ -525,10 +525,10 @@ async function getSeedInvestorDetail(contract, address) {
    console.log("Seed Investor");
    console.log(SeedInvestor);
    locked_token = number_format(
-      web3.utils.fromWei(SeedInvestor["lockedUbi"], "ether")
+      web3.utils.fromWei(SeedInvestor["lockedAcb"], "ether")
    );
    released_token = number_format(
-      web3.utils.fromWei(SeedInvestor["releasedUbi"], "ether")
+      web3.utils.fromWei(SeedInvestor["releasedAcb"], "ether")
    );
    $("#seed-locked-balance").html(locked_token);
    $("#seed-release-balance").html(released_token);
@@ -555,7 +555,7 @@ async function getSeedInvestorDetail(contract, address) {
       $("#seed-buy-btn-div").addClass("d-none");
       // SeedInvestor = await getInvestorDetail(contract, address);
       if (!SeedInvestor["tokenGenerated"]) {
-         if (SeedInvestor["lockedUbi"] != 0) {
+         if (SeedInvestor["lockedAcb"] != 0) {
             $("#seed-tg-now-div").removeClass("d-none");
          } else {
             $("#seed-tg-now-div").addClass("d-none");
@@ -563,7 +563,7 @@ async function getSeedInvestorDetail(contract, address) {
       }
 
       console.log("Seed Vesting Time Over Claim button show");
-      if (parseInt(SeedInvestor["lockedUbi"]) == 0 && parseInt(SeedInvestor["releasedUbi"]) == 0) {
+      if (parseInt(SeedInvestor["lockedAcb"]) == 0 && parseInt(SeedInvestor["releasedAcb"]) == 0) {
          $("#seed_over_div").removeClass("d-none");
          $("#seed_claim_over_div").addClass("d-none");
          // $("#seed-tab").prop("disabled", true);
@@ -585,7 +585,7 @@ async function getSeedInvestorDetail(contract, address) {
             // SeedInvestor = await getInvestorDetail(contract, address);
             console.log("Investor Call");
             if (!SeedInvestor["tokenGenerated"]) {
-               if (SeedInvestor["lockedUbi"] != 0) {
+               if (SeedInvestor["lockedAcb"] != 0) {
                   $("#seed-tg-now-div").removeClass("d-none");
                   $("#seed_over_div").addClass("d-none");
                   $("#seed-claim-now-div").addClass("d-none");
@@ -600,7 +600,7 @@ async function getSeedInvestorDetail(contract, address) {
                   $("#seed-claim-now-div").removeClass("d-none");
                   $("#seed-tg-now-div").addClass("d-none");
                } else {
-                  if (parseInt(SeedInvestor["releasedUbi"]) == parseInt(SeedInvestor["lockedUbi"])) {
+                  if (parseInt(SeedInvestor["releasedAcb"]) == parseInt(SeedInvestor["lockedAcb"])) {
                      $("#seed_claim_over_div").removeClass("d-none");
                      $("#seed_over_div").addClass("d-none");
                      $("#seed-claim-now-div").addClass("d-none");
@@ -630,9 +630,17 @@ async function getSeedInvestorDetail(contract, address) {
    }
 
    if (SeedTimer - Date.now() > 0) {
-      seedTimer = setInterval(function () {
-         makeSeedTimer(SeedTimer);
-      }, 1000);
+      debugger
+      //var deadline = new Date(Date.parse(new Date()) + 12 * 24 * 60 * 60 * 1000);
+      var deadline = new Date(SeedTimer);
+      var c = new Clock(deadline, function () {
+         console.log('sfdsfdsf');
+      });
+      var page_timer = $('#flip_timer');
+      page_timer.append(c.el);
+      // seedTimer = setInterval(function () {
+      //    makeSeedTimer(SeedTimer);
+      // }, 1000);
    }
    $(".box-loader").hide();
 }
@@ -647,10 +655,10 @@ async function getPrivateAInvestorDetail(contract, address) {
    console.log("PrivateA Investor");
    console.log(PrivateAInvestor);
    locked_token = number_format(
-      web3.utils.fromWei(PrivateAInvestor["lockedUbi"], "ether")
+      web3.utils.fromWei(PrivateAInvestor["lockedAcb"], "ether")
    );
    released_token = number_format(
-      web3.utils.fromWei(PrivateAInvestor["releasedUbi"], "ether")
+      web3.utils.fromWei(PrivateAInvestor["releasedAcb"], "ether")
    );
    $("#privateA-locked-balance").html(locked_token);
    $("#privateA-release-balance").html(released_token);
@@ -691,13 +699,13 @@ async function getPrivateAInvestorDetail(contract, address) {
 
       // PrivateAInvestor = await getInvestorDetail(contract, address);
       if (!PrivateAInvestor["tokenGenerated"]) {
-         if (PrivateAInvestor["lockedUbi"] != 0) {
+         if (PrivateAInvestor["lockedAcb"] != 0) {
             $("#privateA-tg-now-div").removeClass("d-none");
          }
       }
 
       console.log("Private A Vesting Time Over Claim button show!");
-      if (parseInt(PrivateAInvestor["lockedUbi"]) == 0 && parseInt(PrivateAInvestor["releasedUbi"]) == 0) {
+      if (parseInt(PrivateAInvestor["lockedAcb"]) == 0 && parseInt(PrivateAInvestor["releasedAcb"]) == 0) {
          console.log("if call");
          $("#privateA_claim_over_div").addClass("d-none");
          $("#privateA_over_div").removeClass("d-none");
@@ -721,7 +729,7 @@ async function getPrivateAInvestorDetail(contract, address) {
             // PrivateAInvestor = await getInvestorDetail(contract, address);
             console.log("Investor Call");
             if (!PrivateAInvestor["tokenGenerated"]) {
-               if (PrivateAInvestor["lockedUbi"] != 0) {
+               if (PrivateAInvestor["lockedAcb"] != 0) {
                   $("#privateA-tg-now-div").removeClass("d-none");
                   $("#privateA-claim-now-div").addClass("d-none");
                }
@@ -734,7 +742,7 @@ async function getPrivateAInvestorDetail(contract, address) {
                   $("#privateA-tg-now-div").addClass("d-none");
                   $("#privateA-claim-now-div").removeClass("d-none");
                } else {
-                  if (parseInt(PrivateAInvestor["releasedUbi"]) == parseInt(PrivateAInvestor["lockedUbi"])) {
+                  if (parseInt(PrivateAInvestor["releasedAcb"]) == parseInt(PrivateAInvestor["lockedAcb"])) {
                      $("#privateA_claim_over_div").removeClass("d-none");
                      $("#privateA_over_div").addClass("d-none");
                      $("#privateA-claim-now-div").addClass("d-none");
@@ -784,10 +792,10 @@ async function getPrivateBInvestorDetail(contract, address) {
    console.log("PrivateB Investor");
    console.log(PrivateBInvestor);
    locked_token = number_format(
-      web3.utils.fromWei(PrivateBInvestor["lockedUbi"], "ether")
+      web3.utils.fromWei(PrivateBInvestor["lockedAcb"], "ether")
    );
    released_token = number_format(
-      web3.utils.fromWei(PrivateBInvestor["releasedUbi"], "ether")
+      web3.utils.fromWei(PrivateBInvestor["releasedAcb"], "ether")
    );
    $("#privateB-locked-balance").html(locked_token);
    $("#privateB-release-balance").html(released_token);
@@ -824,13 +832,13 @@ async function getPrivateBInvestorDetail(contract, address) {
 
       // PrivateBInvestor = await getInvestorDetail(contract, address);
       if (!PrivateBInvestor["tokenGenerated"]) {
-         if (PrivateBInvestor["lockedUbi"] != 0) {
+         if (PrivateBInvestor["lockedAcb"] != 0) {
             $("#privateB-tg-now-div").removeClass("d-none");
          }
       }
 
       console.log("Private B Vesting Time Over Claim button show");
-      if (parseInt(PrivateBInvestor["lockedUbi"]) == 0 && parseInt(PrivateBInvestor["releasedUbi"]) == 0) {
+      if (parseInt(PrivateBInvestor["lockedAcb"]) == 0 && parseInt(PrivateBInvestor["releasedAcb"]) == 0) {
          $("#privateB_over_div").removeClass("d-none");
          $("#privateB_claim_over_div").addClass("d-none");
          // $("#private-sale-b-tab").prop("disabled", true);
@@ -853,7 +861,7 @@ async function getPrivateBInvestorDetail(contract, address) {
             // PrivateBInvestor = await getInvestorDetail(contract, address);
             console.log("Investor Call");
             if (!PrivateBInvestor["tokenGenerated"]) {
-               if (PrivateBInvestor["lockedUbi"] != 0) {
+               if (PrivateBInvestor["lockedAcb"] != 0) {
                   $("#privateB-tg-now-div").removeClass("d-none");
                   $("#privateB-claim-now-div").addClass("d-none");
                }
@@ -866,7 +874,7 @@ async function getPrivateBInvestorDetail(contract, address) {
                   $("#privateB-claim-now-div").removeClass("d-none");
                   $("#privateB-tg-now-div").addClass("d-none");
                } else {
-                  if (parseInt(PrivateBInvestor["releasedUbi"]) == parseInt(PrivateBInvestor["lockedUbi"])) {
+                  if (parseInt(PrivateBInvestor["releasedAcb"]) == parseInt(PrivateBInvestor["lockedAcb"])) {
                      $("#privateB_claim_over_div").removeClass("d-none");
                      $("#privateB_over_div").addClass("d-none");
                      $("#privateB-claim-now-div").addClass("d-none");
@@ -1984,9 +1992,9 @@ $("#seed-pay-now-btn").click(async function (e) {
       $("#seed-pay-now-btn").prop("disabled", false);
       return;
    }
-   ubi_amount = $('#seed_token_amount').val();
-   if (ubi_amount == '') {
-      Toast('Please, Enter UBi amount', 3000, 0);
+   acb_amount = $('#seed_token_amount').val();
+   if (acb_amount == '') {
+      Toast('Please, Enter ACB amount', 3000, 0);
       $("#seed_pay_now_spinner").addClass("d-none");
       $("#seed-pay-now-btn").prop("disabled", false);
       return false;
@@ -1999,10 +2007,10 @@ $("#seed-pay-now-btn").click(async function (e) {
    tokenDecimals = await TokenContract.methods.decimals().call();
 
    multiplier = Math.pow(10, tokenDecimals);
-   ubi_amount = BigInt(ubi_amount * multiplier);
-   ubi_amount = ubi_amount.toString();
+   acb_amount = BigInt(acb_amount * multiplier);
+   acb_amount = acb_amount.toString();
    console.log(coin_data.contract_address, usd_amount);
-   var data = SeedContract.methods.addInvestor(coin_data.contract_address, ubi_amount).encodeABI();
+   var data = SeedContract.methods.addInvestor(coin_data.contract_address, acb_amount).encodeABI();
    transactionParameters = {
       from: selectedAccount,
       to: SeedContractAddress,
@@ -2094,9 +2102,9 @@ $("#privateA-pay-now-btn").click(async function (e) {
    $("#privateA_pay_now_spinner").removeClass("d-none");
    $("#privateA-pay-now-btn").prop("disabled", true);
 
-   ubi_amount = $('#privateA_token_amount').val();
-   if (ubi_amount == '') {
-      Toast('Please, Enter UBi amount', 3000, 0);
+   acb_amount = $('#privateA_token_amount').val();
+   if (acb_amount == '') {
+      Toast('Please, Enter ACB amount', 3000, 0);
       $("#privateA_pay_now_spinner").addClass("d-none");
       $("#privateA-pay-now-btn").prop("disabled", false);
       return false;
@@ -2108,10 +2116,10 @@ $("#privateA-pay-now-btn").click(async function (e) {
    tokenDecimals = await TokenContract.methods.decimals().call();
 
    multiplier = Math.pow(10, tokenDecimals);
-   ubi_amount = BigInt(ubi_amount * multiplier);
-   ubi_amount = ubi_amount.toString();
+   acb_amount = BigInt(acb_amount * multiplier);
+   acb_amount = acb_amount.toString();
    console.log(coin_data.contract_address, usd_amount);
-   var data = PrivateAContract.methods.addInvestor(coin_data.contract_address, ubi_amount).encodeABI();
+   var data = PrivateAContract.methods.addInvestor(coin_data.contract_address, acb_amount).encodeABI();
    transactionParameters = {
       from: selectedAccount,
       to: PrivateSaleContractAddress,
@@ -2218,9 +2226,9 @@ $("#privateB-pay-now-btn").click(async function (e) {
    $("#privateB_pay_now_spinner").removeClass("d-none");
    $("#privateB-pay-now-btn").prop("disabled", true);
 
-   ubi_amount = $('#privateB_token_amount').val();
-   if (ubi_amount == '') {
-      Toast('Please, Enter UBi amount', 3000, 0);
+   acb_amount = $('#privateB_token_amount').val();
+   if (acb_amount == '') {
+      Toast('Please, Enter ACB amount', 3000, 0);
       $("#privateB_pay_now_spinner").addClass("d-none");
       $("#privateB-pay-now-btn").prop("disabled", false);
       return false;
@@ -2232,10 +2240,10 @@ $("#privateB-pay-now-btn").click(async function (e) {
    tokenDecimals = await TokenContract.methods.decimals().call();
 
    multiplier = Math.pow(10, tokenDecimals);
-   ubi_amount = BigInt(ubi_amount * multiplier);
-   ubi_amount = ubi_amount.toString();
+   acb_amount = BigInt(acb_amount * multiplier);
+   acb_amount = acb_amount.toString();
    console.log(coin_data.contract_address, usd_amount);
-   var data = PrivateBContract.methods.addInvestor(coin_data.contract_address, ubi_amount).encodeABI();
+   var data = PrivateBContract.methods.addInvestor(coin_data.contract_address, acb_amount).encodeABI();
    transactionParameters = {
       from: selectedAccount,
       to: PrivateBContractAddress,
@@ -2319,9 +2327,9 @@ $("#publicsale-pay-now-btn").click(async function (e) {
    $("#publicsale_pay_now_spinner").removeClass("d-none");
    $("#publicsale-pay-now-btn").prop("disabled", true);
 
-   ubi_amount = $('#publicsale_token_amount').val();
-   if (ubi_amount == '') {
-      Toast('Please, Enter UBi amount', 3000, 0);
+   acb_amount = $('#publicsale_token_amount').val();
+   if (acb_amount == '') {
+      Toast('Please, Enter ACB amount', 3000, 0);
       $("#publicsale_pay_now_spinner").addClass("d-none");
       $("#publicsale-pay-now-btn").prop("disabled", false);
       return false;
@@ -2332,10 +2340,10 @@ $("#publicsale-pay-now-btn").click(async function (e) {
    tokenDecimals = await TokenContract.methods.decimals().call();
 
    multiplier = Math.pow(10, tokenDecimals);
-   ubi_amount = BigInt(ubi_amount * multiplier);
-   ubi_amount = ubi_amount.toString();
+   acb_amount = BigInt(acb_amount * multiplier);
+   acb_amount = acb_amount.toString();
    console.log(coin_data.contract_address, usd_amount);
-   var data = PublicSaleContract.methods.addInvestor(coin_data.contract_address, ubi_amount).encodeABI();
+   var data = PublicSaleContract.methods.addInvestor(coin_data.contract_address, acb_amount).encodeABI();
    transactionParameters = {
       from: selectedAccount,
       to: PublicSaleContractAddress,
@@ -2412,7 +2420,7 @@ $("#seed-claim-now-btn").click(function (event) {
    $("#seed-claim-now-btn").prop("disabled", true);
    var from = selectedAccount;
    var to = SeedContractAddress;
-   var data = SeedContract.methods.claimUbi().encodeABI();
+   var data = SeedContract.methods.claimAcb().encodeABI();
    transactionParameters = {
       to: to,
       from: from,
@@ -2992,8 +3000,60 @@ async function HideAllTab(contract, address, tabName) {
    // var seriesContracts = await isTokenGenerateStarted(contract);
    // if (seriesContracts) {
    //    Investor = await getInvestorDetail(contract, address);
-   //    if (parseInt(Investor["lockedUbi"]) == 0 && parseInt(Investor["releasedUbi"]) == 0) {
+   //    if (parseInt(Investor["lockedAcb"]) == 0 && parseInt(Investor["releasedAcb"]) == 0) {
    //       // $("#" + tabName + "-tab").prop("disabled", true);
    //    }
    // }
 }
+
+
+
+function CountdownTracker(label, value) {
+
+   var el = document.createElement('span');
+
+   el.className = 'flip-clock__piece';
+   el.innerHTML = '<b class="flip-clock__card card_panel"><b class="card__top"></b><b class="card__bottom"></b><b class="card__back"><b class="card__bottom"></b></b></b>' +
+      '<span class="flip-clock__slot">' + label + '</span>';
+
+   this.el = el;
+
+   var top = el.querySelector('.card__top'),
+      bottom = el.querySelector('.card__bottom'),
+      back = el.querySelector('.card__back'),
+      backBottom = el.querySelector('.card__back .card__bottom');
+
+   this.update = function (val) {
+      val = ('0' + val).slice(-2);
+      if (val !== this.currentValue) {
+
+         if (this.currentValue >= 0) {
+            back.setAttribute('data-value', this.currentValue);
+            bottom.setAttribute('data-value', this.currentValue);
+         }
+         this.currentValue = val;
+         top.innerText = this.currentValue;
+         backBottom.setAttribute('data-value', this.currentValue);
+
+         this.el.classList.remove('flip');
+         void this.el.offsetWidth;
+         this.el.classList.add('flip');
+      }
+   }
+
+   this.update(value);
+}
+
+function getTimeRemaining(endtime) {
+   var t = Date.parse(endtime) - Date.parse(new Date());
+   return {
+      'Total': t,
+      'Days': Math.floor(t / (1000 * 60 * 60 * 24)),
+      'Hours': Math.floor((t / (1000 * 60 * 60)) % 24),
+      'Minutes': Math.floor((t / 1000 / 60) % 60),
+      'Seconds': Math.floor((t / 1000) % 60)
+   };
+}
+
+
+

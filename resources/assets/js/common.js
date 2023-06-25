@@ -291,3 +291,47 @@ String.prototype.rtrim = function() {
     var trimmed = this.replace(/0+$/g, '');
     return trimmed;
 };
+
+function Clock(countdown, callback) {
+	countdown = countdown ? new Date(Date.parse(countdown)) : false;
+	callback = callback || function () { };
+
+	var updateFn = getTimeRemaining;
+
+	this.el = document.createElement('div');
+	this.el.className = 'flip-clock';
+
+	var trackers = {},
+		t = updateFn(countdown),
+		key, timeinterval;
+
+	for (key in t) {
+		if (key === 'Total') { continue; }
+		trackers[key] = new CountdownTracker(key, t[key]);
+		this.el.appendChild(trackers[key].el);
+	}
+
+	var i = 0;
+	function updateClock() {
+		timeinterval = requestAnimationFrame(updateClock);
+
+		// throttle so it's not constantly updating the time.
+		if (i++ % 10) { return; }
+
+		var t = updateFn(countdown);
+		if (t.Total < 0) {
+			cancelAnimationFrame(timeinterval);
+			for (key in trackers) {
+				trackers[key].update(0);
+			}
+			callback();
+			return;
+		}
+
+		for (key in trackers) {
+			trackers[key].update(t[key]);
+		}
+	}
+
+	setTimeout(updateClock, 500);
+}
