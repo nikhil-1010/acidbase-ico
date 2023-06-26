@@ -286,13 +286,13 @@ jQuery(document).ready(async function ($) {
 $("#btn-connect").click(async function (event) {
    await init();
    await onConnect();
-   // await RefreshPageDetail(); //function To execute
+   await RefreshPageDetail(); //function To execute
 });
 
 $(document).on("click", "#disconnect-btn", async function (event) {
    $("#disconnect-metamask-modal").modal("hide");
    onDisconnect();
-   // await RefreshPageDetail(); //function To execute
+   await RefreshPageDetail(); //function To execute
 });
 
 try {
@@ -333,7 +333,6 @@ async function RefreshPageDetail() {
       clearInterval(privateBTimer);
       return false;
    } else {
-      debugger
       $("#connect-wallet-div").removeClass("d-none");
       $("#address").val(selectedAccount);
       $(".Wallet_address").val(selectedAccount);
@@ -362,7 +361,6 @@ async function RefreshPageDetail() {
    // await getPrivateAInvestorDetail(PrivateAContract, selectedAccount);
    // await getPublicSaleInvestorDetail(PublicSaleContract, selectedAccount);
    if (hash == "seed") {
-      debugger
       if (today <= seeddate) {
          await getSeedInvestorDetail(SeedContract, selectedAccount);
       }
@@ -561,7 +559,6 @@ async function getSeedInvestorDetail(contract, address) {
             $("#seed-tg-now-div").addClass("d-none");
          }
       }
-
       console.log("Seed Vesting Time Over Claim button show");
       if (parseInt(SeedInvestor["lockedAcb"]) == 0 && parseInt(SeedInvestor["releasedAcb"]) == 0) {
          $("#seed_over_div").removeClass("d-none");
@@ -629,18 +626,20 @@ async function getSeedInvestorDetail(contract, address) {
       }
    }
 
+   debugger
    if (SeedTimer - Date.now() > 0) {
-      debugger
       //var deadline = new Date(Date.parse(new Date()) + 12 * 24 * 60 * 60 * 1000);
       var deadline = new Date(SeedTimer);
       var c = new Clock(deadline, function () {
-         console.log('sfdsfdsf');
+         $('#seed-waiting-time-div').addClass('d-none');
       });
       var page_timer = $('#flip_timer');
       page_timer.append(c.el);
       // seedTimer = setInterval(function () {
       //    makeSeedTimer(SeedTimer);
       // }, 1000);
+   }else{
+      $('#seed-waiting-time-div').addClass('d-none');
    }
    $(".box-loader").hide();
 }
@@ -2713,7 +2712,7 @@ $(document).on("click", "#seed-payment-history-tab", function (event) {
    // $('#seed-buy-now-btn').addClass('d-none');
 
    filters.investor_address = $(".Wallet_address").val();
-   filterData(seed_history_url, "seed-payment-history-table");
+   filterData(seedTransactionHistoryUrl, "seed-payment-history-table");
 });
 
 //Private a

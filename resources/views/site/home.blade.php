@@ -60,6 +60,9 @@
                                 <a class="nav-link text-white fw-lighter" href="{{url('#tokenomics')}}">Tokenomics</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link text-white fw-lighter" href="{{url('#roadmap')}}">Roadmap</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link text-white fw-lighter" href="{{url('#team')}}">Team</a>
                             </li>
                             <li class="nav-item">
@@ -82,7 +85,7 @@
         <section class="hero-banner text-white position-relative overflow-hidden" id="home">
             <div class="hero-video position-absolute top-0 bottom-0 m-auto">
                 <video width="100%" height="100%" poster="{{url('assets/img/green-waves.png')}}" muted="" autoplay="" loop="" playsinline="">
-                    <source src="{{url('assets/img/green-waves1.mp4')}}" type="video/mp4">
+                    <source src="{{url('assets/img/green-waves.mp4')}}" type="video/mp4">
                 </video>
             </div>
             <div class="container h-100 position-relative">
@@ -344,10 +347,12 @@
             </div>
         </section>
 
-        <section class="inner-space">
+        <section class="inner-space" id="roadmap">
             <div class="container">
-                <h2 class="section-title display-5 text-uppercase text-secondary text-center d-inline-block">ROADMAP</h2>
-                <p class="fw-lighter text-white mb-4 text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <div class="text-center">
+                <h2 class="section-title display-5 text-uppercase text-secondary d-inline-block">ROADMAP</h2>
+                <p class="fw-lighter text-white mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
                 <!-- <div class="d-flex flex-column gap-4 gap-lg-0 text-start text-white position-relative">
                     <div class="row gx-0 align-items-center">
                         <div class="col-lg-6 col-md-4 order-md-1">

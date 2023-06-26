@@ -216,6 +216,11 @@ async function onDisconnect() {
 //         location.reload();
 //     }, 600);
 // });
+// $(document).on("click", "#disconnect-btn", async function (event) {
+//    $("#disconnect-metamask-modal").modal("hide");
+//    onDisconnect();
+//    await RefreshPageDetail(); //function To execute
+// });
 $("#btn-disconnect").click(function () {
    $("#disconnect-metamask-modal").modal("show");
 });

@@ -14,5 +14,11 @@ return [
         "PRIVATE"=>2,
         "PUBLIC"=>3
     ],
+
+    'TRX_STATUS' =>[
+        'PENDING'=>0,
+        'SUCCESS'=>1,
+        'FAIL'=>2,
+    ]
     
 ];
