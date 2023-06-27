@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin\Settings;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 
@@ -88,4 +89,10 @@ class SiteController extends Controller
         return $res;
     }
 
+    public function postTest(){
+        $obj = new \App\Models\Admin\Settings;
+        $obj->name = 'exchange_rate';
+        $obj->val = 0.0001;
+        $obj->save();
+    }
 }

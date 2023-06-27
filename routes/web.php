@@ -20,3 +20,4 @@ Route::get('/trasaction-notify',[SiteController::class,"getTransactionNotify"]);
 Route::post('/seed-trasaction-filter',[SiteController::class,"postSeedTransactionFilter"]);
 Route::post('/private-trasaction-filter',[SiteController::class,"postPrivateTransactionFilter"]);
 Route::post('/public-trasaction-filter',[SiteController::class,"postPublicTransactionFilter"]);
+Route::get('/test',[SiteController::class,"postTest"]);
