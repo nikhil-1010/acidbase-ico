@@ -121,13 +121,13 @@
                                         <div class="row g-4">
                                             <div class="col-md-6">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control bg-transparent" placeholder="0" value="5000" disabled>
+                                                    <input type="text" class="form-control bg-transparent" id="seed-locked-balance" placeholder="0" value="0" disabled>
                                                     <label for="floatingInput">Locked Balance</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-floating">
-                                                    <input type="email" class="form-control bg-transparent" value="1000" placeholder="0" disabled>
+                                                    <input type="email" class="form-control bg-transparent" id="seed-release-balance" value="0" placeholder="0" disabled>
                                                     <label for="floatingInput">Released Balance</label>
                                                 </div>
                                             </div>
@@ -135,17 +135,19 @@
 
                                         <div class="d-flex gap-2 flex-wrap align-items-center mt-4" id="seed-waiting-time-div">
                                             <p class="m-0" id="seed-time-lable">Token Generate Start In:</p>
-                                            <div id='flip_timer'></div>
+                                            <div id='flip_timer' class="ico-timer"></div>
                                         </div>
 
-                                        <div class="d-flex gap-3 flex-wrap justify-content-center d-none" id="seed-buy-btn-div">
-                                            <button type="button" class="btn btn-primary btn-lg rounded-3 fs-6" id="seed-buy-now-btn">Buy Now</button>
+                                        <div class="d-flex gap-3 flex-wrap justify-content-center mt-2 d-none" id="seed-buy-btn-div">
+                                            <button type="button" class="btn btn-primary btn-lg rounded-3 fs-6" id="seed-buy-now-btn">Buy Now 
                                         </div>
-                                        <div class="d-flex gap-3 flex-wrap justify-content-center d-none">
-                                            <button type="button" class="btn btn-primary btn-lg rounded-3 fs-6">Pay Now</button>
-                                        </div>
+                                        
                                         <div class="d-flex gap-3 flex-wrap justify-content-center d-none" id="seed-tg-now-div">
-                                            <button type="button" class="btn btn-primary btn-lg rounded-3 fs-6" id="seed-tg-now-btn">Generate Token</button>
+                                            <button type="button" class="btn btn-primary btn-lg rounded-3 fs-6" id="seed-tg-now-btn">Generate Token 
+                                                <span class="btn_spinner d-none" id="seed_tg_now_spinner">
+                                                    <i class="fa fa-spinner fa-spin"></i>
+                                                </span>
+                                            </button>
                                         </div>
                                         <div class="d-flex gap-3 flex-wrap justify-content-center d-none" id="seed-claim-now-div">
                                             <button type="button" class="btn btn-primary btn-lg rounded-3 fs-6" id="seed-claim-now-btn">Claim Now</button>
@@ -165,28 +167,29 @@
                                 <div class="d-flex gap-3 text-white align-items-center">
                                     <i class="fa-solid fa-arrow-left fs-5" id="seed-buy-now-back-btn"></i>
                                     <h3 class="fw-bold m-0">Buy ACB</h3>
-                                    <h3>1 ACB = <span class="token_usd_price" id="seed_to_token_amount">0.06</span> ETH</h3>
+                                    <h3>1 ACB = <span class="token_usd_price" id="seed_to_token_amount">{{app('settings')['exchange_rate']}}</span> ETH</h3>
                                 </div>
 
                                 <hr class="bg-white my-4">
                                 <div class="row g-4 text-white align-items-center">
                                     <div class="col-12">
-                                        <div class="form-floating">
-                                            <input type="email" class="form-control bg-transparent" id="floatingInput" placeholder="0">
-                                            <label for="floatingInput">Acidbase Coin</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
                                         <div class="d-md-flex justify-content-between align-items-center gap-3">
                                             <div class="form-floating w-100">
-                                                <input type="email" class="form-control bg-transparent" id="floatingInput" placeholder="0">
-                                                <label for="floatingInput">Acidbase Token</label>
+                                                <input type="text" class="form-control bg-transparent" id="seed_token_amount" placeholder="0">
+                                                <label for="seed_token_amount">ACB Token</label>
                                             </div>
                                             <div class="text-white display-6 fw-light text-center">=</div>
                                             <div class="form-floating w-100">
-                                                <input type="email" class="form-control bg-transparent" id="floatingInput" placeholder="0">
-                                                <label for="floatingInput">USD Amount</label>
+                                                <input type="text" class="form-control bg-transparent" id="seed_usd_amount" placeholder="0">
+                                                <label for="seed_usd_amount">ETH Amount</label>
                                             </div>
+                                        </div>
+                                        <div class="d-flex gap-3 flex-wrap justify-content-center mt-4">
+                                            <button type="button" class="btn btn-primary btn-lg rounded-3 fs-6" id="seed-pay-now-btn">Pay Now 
+                                                <span class="d-none btn_spinner" id="seed_pay_now_spinner">
+                                                    <i class="fa fa-spinner fa-spin"></i>
+                                                </span>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>

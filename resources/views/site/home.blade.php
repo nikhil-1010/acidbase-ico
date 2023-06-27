@@ -69,7 +69,7 @@
                                 <a class="nav-link text-white fw-lighter" href="#">Whitepaper</a>
                             </li>
                         </ul>
-                        <div class="rounded-pill fs-6 text-uppercase p-3 border border-2 gap-3 d-flex align-items-center justify-content-center">
+                        <div class="rounded-pill fs-6 text-uppercase p-3 border border-2 gap-3 d-flex align-items-center justify-content-center d-lg-none d-xl-flex">
                             <a href="" class="text-white"><i class="fa-brands fa-telegram"></i></a>
                             <a href="" class="text-white"><i class="fa-brands fa-discord"></i></a>
                             <a href="" class="text-white"><i class="fa-brands fa-twitter"></i></a>

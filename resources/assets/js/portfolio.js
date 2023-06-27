@@ -528,8 +528,8 @@ async function getSeedInvestorDetail(contract, address) {
    released_token = number_format(
       web3.utils.fromWei(SeedInvestor["releasedAcb"], "ether")
    );
-   $("#seed-locked-balance").html(locked_token);
-   $("#seed-release-balance").html(released_token);
+   $("#seed-locked-balance").val(locked_token);
+   $("#seed-release-balance").val(released_token);
 
    var SeedTimer;
 
@@ -1632,32 +1632,6 @@ $("#seed_token_amount").keyup(async function () {
    } else {
       $("#seed_usd_amount").val(number_usd(usd));
    }
-   coin_id = $('#seed_coin').val();
-   console.log('coin id : ', coin_id);
-   if (coin_id != '') {
-      coin_data = getCoin(coin_id);
-      ERC20Contract = new web3.eth.Contract(ERC20Abi, coin_data.contract_address);
-      tokenDecimals = await ERC20Contract.methods.decimals().call();
-      Allowance = await ERC20Contract.methods.allowance(selectedAccount, SeedContractAddress).call();
-      console.log('-------------------');
-      console.log(tokenDecimals, Allowance, usd);
-      console.log('-------------------');
-      Allowance = Allowance / Math.pow(10, tokenDecimals);
-      // usd = usd * Math.pow(10,tokenDecimals);
-      console.log(tokenDecimals, Allowance, usd);
-      if (Allowance == 0) {
-         $('#seed-allowance-btn').removeClass('d-none');
-         $('#seed-pay-now-btn').addClass('d-none');
-         return false;
-      }
-      if (Allowance < usd) {
-         $('#seed-allowance-btn').removeClass('d-none');
-         $('#seed-pay-now-btn').addClass('d-none');
-      } else {
-         $('#seed-allowance-btn').addClass('d-none');
-         $('#seed-pay-now-btn').removeClass('d-none');
-      }
-   }
 });
 $("#seed_usd_amount").keyup(async function () {
    val = $("#seed_usd_amount").val();
@@ -1668,32 +1642,6 @@ $("#seed_usd_amount").keyup(async function () {
       $("#seed_token_amount").val("");
    } else {
       $("#seed_token_amount").val(number_token(token));
-   }
-   coin_id = $('#seed_coin').val();
-   console.log('coin id : ', coin_id);
-   if (coin_id != '') {
-      coin_data = getCoin(coin_id);
-      ERC20Contract = new web3.eth.Contract(ERC20Abi, coin_data.contract_address);
-      tokenDecimals = await ERC20Contract.methods.decimals().call();
-      Allowance = await ERC20Contract.methods.allowance(selectedAccount, SeedContractAddress).call();
-      console.log('-------------------');
-      console.log(tokenDecimals, Allowance, usd);
-      console.log('-------------------');
-      Allowance = Allowance / Math.pow(10, tokenDecimals);
-      // usd = usd * Math.pow(10,tokenDecimals);
-      console.log(tokenDecimals, Allowance, usd);
-      if (Allowance == 0) {
-         $('#seed-allowance-btn').removeClass('d-none');
-         $('#seed-pay-now-btn').addClass('d-none');
-         return false;
-      }
-      if (Allowance < usd) {
-         $('#seed-allowance-btn').removeClass('d-none');
-         $('#seed-pay-now-btn').addClass('d-none');
-      } else {
-         $('#seed-allowance-btn').addClass('d-none');
-         $('#seed-pay-now-btn').removeClass('d-none');
-      }
    }
 });
 
@@ -1998,23 +1946,21 @@ $("#seed-pay-now-btn").click(async function (e) {
       $("#seed-pay-now-btn").prop("disabled", false);
       return false;
    }
-   ubi_usd_amount = $('.token_usd_price').text()
-   usd_amount = $("#seed_usd_amount").val();
-   coin_id = $('#seed_coin').val();
-   coin_data = getCoin(coin_id);
-   ERC20Contract = new web3.eth.Contract(ERC20Abi, coin_data.contract_address);
-   tokenDecimals = await TokenContract.methods.decimals().call();
 
-   multiplier = Math.pow(10, tokenDecimals);
-   acb_amount = BigInt(acb_amount * multiplier);
+   multiplier = Math.pow(10, 18);
+   acb_amount = web3.utils.toWei(acb_amount.toString(),'ether');
+   usd_amount = web3.utils.toWei(usd_amount.toString(),'ether');
+   console.log(acb_amount,usd_amount);
    acb_amount = acb_amount.toString();
-   console.log(coin_data.contract_address, usd_amount);
-   var data = SeedContract.methods.addInvestor(coin_data.contract_address, acb_amount).encodeABI();
+   usd_amount = usd_amount.toString();
+   console.log(acb_amount,usd_amount);
+
+   var data = SeedContract.methods.addInvestor().encodeABI();
    transactionParameters = {
       from: selectedAccount,
       to: SeedContractAddress,
       data: data,
-      value: '0x00'
+      value: usd_amount
    };
 
    web3.eth.sendTransaction(transactionParameters)
@@ -2953,12 +2899,12 @@ function number_usd(value) {
    var vall = value;
    value = value.toString();
    if (value.indexOf(".") > -1) {
-      var vlaues = parseFloat(value).toFixed(2).split(".");
+      var vlaues = parseFloat(value).toFixed(8).split(".");
       var floatValue = parseFloat(vlaues[1]);
       if (floatValue > 0) {
          var val = vlaues[1];
-         if (val.length > 2) {
-            return parseFloat(vall).toFixed(2);
+         if (val.length > 8) {
+            return parseFloat(vall).toFixed(8);
          } else {
             return vlaues[0] + "." + val;
          }
@@ -2977,7 +2923,7 @@ function number_token(value) {
       var floatValue = parseFloat(vlaues[1]);
       if (floatValue > 0) {
          var val = vlaues[1];
-         if (val.length > 2) {
+         if (val.length > 8) {
             return parseFloat(vall).toFixed(8);
          } else {
             return vlaues[0] + "." + val;

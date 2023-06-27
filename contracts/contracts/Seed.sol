@@ -18,6 +18,7 @@ contract Seed {
     uint256 public totalInvestment;
     uint256 public totalRelease;
     uint256 public tgePercentage;
+    uint256 public exchangeRate;
 
     struct Investor {
         uint256 lockedAcb;        //  Locked balance
@@ -29,20 +30,17 @@ contract Seed {
     }
 
     mapping(address => Investor) public investors;
-    mapping(address => uint256) public whiteListTokenAddress;
 
-    event AddInvestor(address token,address indexed investor, uint256 indexed amount,uint256 indexed usd_amount);
+    event AddInvestor(address indexed investor, uint256 indexed payin_amount,uint256 indexed payout_amount);
     event Claim(address indexed sender, address indexed investor, uint256 indexed amount);
 
     constructor() {
-        tokenGenerateTime = 1693353600;     // 30 aug 2023 UTC 00:00
-        vestingTimeStartFrom = 1696032000;  // 30 sept 2023 UTC 00:00
+        tokenGenerateTime = 1687794039;     // 30 aug 2023 UTC 00:00
+        vestingTimeStartFrom = 1687966839;  // 30 sept 2023 UTC 00:00
         vestingDuration = 23;
         tgePercentage = 8;
         owner = msg.sender;
-        acb_address = 0xc39326163e39900105d17334d25754179B5aaDb7;
-        whiteListTokenAddress[0xdAC17F958D2ee523a2206206994597C13D831ec7] = 1667;
-        whiteListTokenAddress[0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48] = 1667;
+        acb_address = 0x021483b34Fc6dA236777Ed158E568b448d4b78b7;
     }
 
     modifier isInvestorExist(){
@@ -107,10 +105,6 @@ contract Seed {
         owner = _address;
     }
 
-    function addWhiteTokenAddress(address _token,uint256 _exchangeRate) external onlyOwner{
-        whiteListTokenAddress[_token] = _exchangeRate;
-    }
-
     function isEligibleForClaim() public view isInvestorExist returns(bool _res){
         if(!isTokenGenerateEventStarted())
             return false;
@@ -128,17 +122,16 @@ contract Seed {
             return false;
     }
 
-    function addInvestor(address token, uint256 _acbAmount) external{
+    function addInvestor() payable external{
         require(!isTokenGenerateEventStarted()," Cannot add investor after Token generation started.");
-        uint256 exchangeRate = whiteListTokenAddress[token];
         require(exchangeRate != 0,"Invalid whitelist token address.");
         
-        uint256 decimal = IERC20(token).decimals();
         uint256 acb_decimal = IERC20(acb_address).decimals();
-        uint256 usd_amount = _acbAmount / ( (exchangeRate * (10**(acb_decimal-decimal)) / 100)) ;
+        // uint256 usd_amount = _acbAmount / ( (exchangeRate * (10**(acb_decimal-decimal)) / 100));
+        uint256 _acbAmount = (msg.value) * (exchangeRate * (10**acb_decimal));
 
-        (bool success, bytes memory data) = token.call(abi.encodeWithSelector(IERC20.transferFrom.selector, msg.sender, owner, usd_amount));
-        require(success && (data.length == 0 || abi.decode(data, (bool))), "ERROR : can't transfer");
+        // (bool success, bytes memory data) = token.call(abi.encodeWithSelector(IERC20.transferFrom.selector, msg.sender, owner, usd_amount));
+        // require(success && (data.length == 0 || abi.decode(data, (bool))), "ERROR : can't transfer");
 
         totalInvestment += _acbAmount;
         if(investors[msg.sender].lockedAcb != 0){
@@ -154,7 +147,7 @@ contract Seed {
                 balance:_acbAmount
             });
         }
-        emit AddInvestor(token,msg.sender,_acbAmount,usd_amount);
+        emit AddInvestor(msg.sender,msg.value,_acbAmount);
     }
 
     function generateToken() external isInvestorExist {

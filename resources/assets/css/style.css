@@ -764,7 +764,7 @@ option {
     opacity: 1;
     border: 2px solid var(--bs-secondary);
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 section.roadmap .box.left {
@@ -789,6 +789,17 @@ section.roadmap span {
     border-radius: 20px;
 }
 
+header .nav-link:hover {
+    color: #000 !important;
+}
+
+footer a.text-secondary:hover {
+    color: #fff !important;
+}
+
+.ico-timer .card_panel {
+    font-size: 48px;
+}
 
 /* Responsive CSS*/
 
