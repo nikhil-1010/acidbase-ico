@@ -93,6 +93,7 @@ class SiteController extends Controller
         $obj = new \App\Models\Admin\Settings;
         $obj->name = 'exchange_rate';
         $obj->val = 0.0001;
+        $obj->autoload = 1;
         $obj->save();
     }
 }
