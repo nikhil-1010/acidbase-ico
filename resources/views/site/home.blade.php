@@ -115,7 +115,7 @@
 
         <section class="inner-space pt-0 text-white">
             <div class="container">
-                <div class="row gy-4 align-items-center justify-content-center">
+                <div class="row gy-4 justify-content-center">
                     <div class="col-12 col-lg-4">
                         <div class="bg-light p-5 shadow-lg h-100 rounded-5">
                             <div class="d-flex gap-4 align-items-center mb-4">

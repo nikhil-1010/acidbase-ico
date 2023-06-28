@@ -81,14 +81,10 @@
 
         <section class="my-5 d-none" id="disconnect-wallet-div">
             <div class="container">
-                <div class="card p-4">
-                    <div class="row g-2">
-                        <div class="col-lg-8 col-xl-9">
+                <div class="card py-5">
                             <div class="d-flex align-items-center justify-content-center h-100">
                                 <p class="m-0 fs-5 fw-lighter text-center text-white py-5">Please connect your wallet account to view your portfolio</p>
                             </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -106,7 +102,7 @@
                             </div>
                         </div>
                         <div class="col-lg-8 col-xl-9">
-                            <div id="seed-div">
+                            <div id="seed-div" class="ico-tab">
 
                                 <ul class="nav nav-tabs nav-justified mb-0" id="tab" role="tablist">
                                     <li class="nav-item" role="presentation">
@@ -164,10 +160,9 @@
                                 </div>
                             </div>
                             <div class="buy-otg-box d-none" id="seed-buy-now-div">
-                                <div class="d-flex gap-3 text-white align-items-center">
-                                    <i class="fa-solid fa-arrow-left fs-5" id="seed-buy-now-back-btn"></i>
-                                    <h3 class="fw-bold m-0">Buy ACB</h3>
-                                    <h3>1 ACB = <span class="token_usd_price" id="seed_to_token_amount">{{app('settings')['exchange_rate']}}</span> ETH</h3>
+                                <div class="d-flex gap-3 text-white align-items-center justify-content-between">    
+                                    <h3 class="fw-bold m-0 text-uppercase"><i class="fa-solid fa-arrow-left fs-5 me-2 cursor-pointer" id="seed-buy-now-back-btn"></i> Buy ACB</h3>
+                                    <h6 class="m-0">1 ACB = <span class="token_usd_price" id="seed_to_token_amount">{{app('settings')['exchange_rate']}}</span> ETH</h3>
                                 </div>
 
                                 <hr class="bg-white my-4">
@@ -248,7 +243,7 @@
             </div>
         </div>
     </div>
-
+                <input type="hidden" class="Wallet_address">
 </body>
 <script>
     var is_live = `{{env('APP_ENV')}}`;
@@ -258,8 +253,8 @@
     var PrivateSaleContractAddress = `{{env('PRIVATE_SALE_CONTRACT')}}`;
     var PublicSaleContractAddress = `{{env('PUBLIC_SALE_CONTRACT')}}`;
     var SeedStartDate = `1687535196`;
-    var SeedEndDate = `1687966839`;
-    var PrivateStartDate = `1687966839`;
+    var SeedEndDate = `1688139965`;
+    var PrivateStartDate = `1688139965`;
     var PrivateEndDate = `1687976839`;
     var PublicStartDate = `1687976839`;
     var PublicEndDate = `1687986839`;
@@ -267,6 +262,7 @@
     var seedTransactionHistoryUrl = `{{url('seed-trasaction-filter')}}`
     var PrivateTransactionHistoryUrl = `{{url('private-trasaction-filter')}}`
     var PublicTransactionHistoryUrl = `{{url('public-trasaction-filter')}}`
+    var addTransactionUrl = `{{url('add-transaction')}}`
 </script>
 <?php
 if (isset($footer['js'])) {

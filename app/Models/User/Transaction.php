@@ -9,28 +9,25 @@ class Transaction extends Model
 {
     use HasFactory;
     protected $table = 'transaction';
-    protected $fillable = ['name', 'val', 'autoload'];
-    public $timestamps = false;
     protected $hidden = [];
-    protected $append = ['url_explorer'];
+    protected $appends = ['explorer'];
 
-    public function getExplorer()
+    public static function getExplorerAttribute($value)
     {
-        $url = 'https://sepolia.etherscan.io/tx/'.$this->trx_id;
+        $url = 'https://sepolia.etherscan.io/tx/';
         if(env('APP_ENV') != 'local'){
-            $url = 'https://etherscan.io/tx/'.$this->trx_id;
+            $url = 'https://etherscan.io/tx/';
         }
         return $url;
     }
 
-    public static  function addTransactionHistory($param = []){
+    public static function addTransactionHistory($param = []){
         $tx = new self;
-        $tx->sale_type = $param['sale_type'];
-        $tx->token_address = $param['token_address'];
         $tx->trx_id = $param['trx_id'];
-        $tx->investor = $param['investor_address'];
+        $tx->investor_address = $param['investor_address'];
+        $tx->paid_amount = $param['paid_amount'];
         $tx->token_amount = $param['token_amount'];
-        $tx->usd_amount = $param['usd_amount'];
+        $tx->sale_type = $param['sale_type'];
         if($tx->save()){
             return \General::success_res('Investor add successfully');
         }else{
@@ -45,7 +42,7 @@ class Transaction extends Model
             $obj->where('sale_type', $param['sale_type']);
         }
         if (isset($param['investor_address']) && $param['investor_address'] != '') {
-            $obj->where('investor', $param['investor_address']);
+            $obj->where('investor_address', $param['investor_address']);
         }
         $count = $obj->count();
         $len = $param['itemPerPage'];

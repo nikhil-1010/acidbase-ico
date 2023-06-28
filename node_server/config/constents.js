@@ -9,10 +9,10 @@ module.exports = {
     SITE_URL:process.env.SITE_URL,
     TOKEN: {
         TEST_RPC_URLS:{
-            3:"https://ropsten.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
+            3:"https://sepolia.infura.io/v3/adf1c58e72404762835ed1263dee74b0",
         },
         LIVE_RPC_URLS:{
-            3:"https://ropsten.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
+            3:"https://sepolia.infura.io/v3/adf1c58e72404762835ed1263dee74b0",
         },
         WSS_URL:process.env.ETH_WEBSOCKET_URL,
         SEED_CONTRACT_ADDRESS:process.env.SEED_CONTRACT,

@@ -80,7 +80,6 @@
 * {
     font-family: "PlusJakartaSans", sans-serif;
     outline: none !important;
-    font-weight: 100;
 }
 
 html {
@@ -764,7 +763,7 @@ option {
     opacity: 1;
     border: 2px solid var(--bs-secondary);
     position: relative;
-    margin-bottom: 40px;
+    margin-bottom: 70px;
 }
 
 section.roadmap .box.left {
@@ -789,17 +788,6 @@ section.roadmap span {
     border-radius: 20px;
 }
 
-header .nav-link:hover {
-    color: #000 !important;
-}
-
-footer a.text-secondary:hover {
-    color: #fff !important;
-}
-
-.ico-timer .card_panel {
-    font-size: 48px;
-}
 
 /* Responsive CSS*/
 
@@ -962,6 +950,11 @@ section.roadmap .row.right {
     color: white;
 }
 
+header .nav-link:hover,
+footer a.text-secondary:hover {
+    text-decoration: underline !important;
+}
+
 @keyframes spin_words {
     10% {
         transform: translateY(-112%);
@@ -987,6 +980,25 @@ section.roadmap .row.right {
     100% {
         transform: translateY(-400%);
     }
+}
+
+.ico-tab .nav-tabs li~li {
+    margin-left: 10px;
+}
+
+.ico-tab .nav-link {
+    color: #fff;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+.ico-tab .nav-tabs .nav-item.show .nav-link,
+.ico-tab .nav-tabs .nav-link.active {
+    color: var(--bs-light);
+}
+
+.ico-timer .card_panel {
+    font-size: 48px;
 }
 
 

@@ -299,14 +299,14 @@ try {
    ethereum.on("accountsChanged", async (_chainId) => {
       await init();
       await onConnect();
-      // await RefreshPageDetail(); //function To execute
+      await RefreshPageDetail(); //function To execute
    });
 } catch (e) { }
 try {
    ethereum.on("chainChanged", async (_chainId) => {
       await init();
       await onConnect();
-      // await RefreshPageDetail(); //function To execute
+      await RefreshPageDetail(); //function To execute
    });
 } catch (e) { }
 
@@ -337,11 +337,11 @@ async function RefreshPageDetail() {
       $("#address").val(selectedAccount);
       $(".Wallet_address").val(selectedAccount);
       $("#disconnect-wallet-div").addClass("d-none");
-      filters.investor_address = $(".Wallet_address").val();
+      filters.investor_address = selectedAccount;
       filterData(PrivateTransactionHistoryUrl, "publicsale-payment-history-table");
-      filters.investor_address = $(".Wallet_address").val();
+      filters.investor_address = selectedAccount;
       filterData(seedTransactionHistoryUrl, "seed-payment-history-table");
-      filters.investor_address = $(".Wallet_address").val();
+      filters.investor_address = selectedAccount;
       filterData(PrivateTransactionHistoryUrl, "private-payment-history-table");
 
       SeedContract = new web3.eth.Contract(SeedAbi, SeedContractAddress);
@@ -518,7 +518,7 @@ async function getPublicSaleInvestorDetail(contract, address) {
 async function getSeedInvestorDetail(contract, address) {
    // filters.investor_address = $("#address").val();
    // filterData(url,'presale-payment-history-table');
-   clearInterval(seedTimer);
+   $('.flip-clock').remove();
    SeedInvestor = await getInvestorDetail(contract, address);
    console.log("Seed Investor");
    console.log(SeedInvestor);
@@ -626,7 +626,6 @@ async function getSeedInvestorDetail(contract, address) {
       }
    }
 
-   debugger
    if (SeedTimer - Date.now() > 0) {
       //var deadline = new Date(Date.parse(new Date()) + 12 * 24 * 60 * 60 * 1000);
       var deadline = new Date(SeedTimer);
@@ -638,7 +637,7 @@ async function getSeedInvestorDetail(contract, address) {
       // seedTimer = setInterval(function () {
       //    makeSeedTimer(SeedTimer);
       // }, 1000);
-   }else{
+   } else {
       $('#seed-waiting-time-div').addClass('d-none');
    }
    $(".box-loader").hide();
@@ -1948,12 +1947,15 @@ $("#seed-pay-now-btn").click(async function (e) {
    }
 
    multiplier = Math.pow(10, 18);
-   acb_amount = web3.utils.toWei(acb_amount.toString(),'ether');
-   usd_amount = web3.utils.toWei(usd_amount.toString(),'ether');
-   console.log(acb_amount,usd_amount);
+   let tokenAmount = acb_amount;
+   let ethAmount = usd_amount;
+
+   acb_amount = web3.utils.toWei(acb_amount.toString(), 'ether');
+   usd_amount = web3.utils.toWei(usd_amount.toString(), 'ether');
+   console.log(acb_amount, usd_amount);
    acb_amount = acb_amount.toString();
    usd_amount = usd_amount.toString();
-   console.log(acb_amount,usd_amount);
+   console.log(acb_amount, usd_amount);
 
    var data = SeedContract.methods.addInvestor().encodeABI();
    transactionParameters = {
@@ -1965,7 +1967,23 @@ $("#seed-pay-now-btn").click(async function (e) {
 
    web3.eth.sendTransaction(transactionParameters)
       .once('transactionHash', function (payload) {
-         console.log(payload);
+         $("#seed_pay_now_spinner").addClass("d-none");
+         $("#seed-pay-now-btn").prop("disabled", false);
+         $("#seed_usd_amount").val('');
+         $("#seed_token_amount").val('');
+         let data = {
+            investor_address: selectedAccount,
+            trx_id: payload,
+            paid_amount: ethAmount,
+            token_amount: tokenAmount,
+            sale_type: 1
+         }
+         postAjax(addTransactionUrl, data, function (res) {
+            if(res.flag==1){
+               $('#seed-payment-history-tab').trigger('click');
+            }
+         });
+
          Toast('Your Transaction is being confirmed', 3000, 3);
       })
       .on("receipt", async function (receipt) {
@@ -2654,7 +2672,7 @@ $(document).on("click", "#seed-pay-now-back-btn", function (event) {
 });
 $(document).on("click", "#seed-payment-history-tab", function (event) {
    $("#seed-payment-history").removeClass("d-none");
-   $("#seed-pay-now-div").addClass("d-none");
+   $("#seed-buy-now-div").addClass("d-none");
    // $('#seed-buy-now-btn').addClass('d-none');
 
    filters.investor_address = $(".Wallet_address").val();

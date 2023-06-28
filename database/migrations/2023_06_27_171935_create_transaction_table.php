@@ -18,6 +18,7 @@ return new class extends Migration
             $table->double('paid_amount',20,8);
             $table->double('token_amount',50,8);
             $table->integer('sale_type');
+            $table->integer('status')->default(0);
             $table->dateTime('created_at')->useCurrent();
             $table->dateTime('updated_at')->useCurrent()->useCurrentOnUpdate();
         });

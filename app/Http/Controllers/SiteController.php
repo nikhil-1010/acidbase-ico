@@ -62,6 +62,11 @@ class SiteController extends Controller
 
         return view("site.portfolio", $view_data);
     }
+    public function postAddTransaction(){
+        $param = \Input::all();
+        $res = \App\Models\User\Transaction::addTransactionHistory($param);
+        return $res;
+    }
     public function postSeedTransactionFilter(){
         $param = \Input::all();
         $param['sale_type'] = config('constant.SALE_TYPE.SEED');
