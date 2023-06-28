@@ -2671,7 +2671,9 @@ $(document).on("click", "#seed-pay-now-back-btn", function (event) {
    $("#seed-pay-now-div").addClass("d-none");
 });
 $(document).on("click", "#seed-payment-history-tab", function (event) {
+   debugger
    $("#seed-payment-history").removeClass("d-none");
+   $("#seed-div").removeClass("d-none");
    $("#seed-buy-now-div").addClass("d-none");
    // $('#seed-buy-now-btn').addClass('d-none');
 
