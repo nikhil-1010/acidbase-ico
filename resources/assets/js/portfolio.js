@@ -234,8 +234,11 @@ jQuery(document).ready(async function ($) {
    }
 
    $("#seed-tab").click(async function () {
-      $("#private_sale_msg").addClass("d-none");
-      $("#public_sale_msg").addClass("d-none");
+      $("#seed").removeClass("d-none");
+      $("#privateA").addClass("d-none");
+      $(this).addClass("gradient-btn border-0");
+      $('#private-sale-a-tab').removeClass("gradient-btn border-0");
+      $('#publicsale-tab').removeClass("gradient-btn border-0");
 
       var url = window.location.href.split("#")[0] + "#seed";
       window.location.replace(url);
@@ -243,8 +246,11 @@ jQuery(document).ready(async function ($) {
       await getSeedInvestorDetail(SeedContract, selectedAccount);
    });
    $("#private-sale-a-tab").click(async function () {
-      $("#private_sale_msg").removeClass("d-none");
-      $("#public_sale_msg").addClass("d-none");
+      $("#privateA").removeClass("d-none");
+      $("#seed").addClass("d-none");
+      $(this).addClass("gradient-btn border-0");
+      $('#seed-tab').removeClass("gradient-btn border-0");
+      $('#publicsale-tab').removeClass("gradient-btn border-0");
       var url = window.location.href.split("#")[0] + "#privateA";
       window.location.replace(url);
       $(".box-loader").show();
@@ -345,7 +351,7 @@ async function RefreshPageDetail() {
       filterData(PrivateTransactionHistoryUrl, "private-payment-history-table");
 
       SeedContract = new web3.eth.Contract(SeedAbi, SeedContractAddress);
-      // PrivateAContract = new web3.eth.Contract(PrivateAAbi, PrivateSaleContractAddress);
+      PrivateAContract = new web3.eth.Contract(PrivateAAbi, PrivateSaleContractAddress);
       // PublicSaleContract = new web3.eth.Contract(PublicSaleAbi, PublicSaleContractAddress);
 
       hideShowTabs();
@@ -358,7 +364,7 @@ async function RefreshPageDetail() {
    await getTokenBalance(TokenContract, selectedAccount);
    // await getTokenUsdPrice(TokenContract);
    await getSeedInvestorDetail(SeedContract, selectedAccount);
-   // await getPrivateAInvestorDetail(PrivateAContract, selectedAccount);
+   await getPrivateAInvestorDetail(PrivateAContract, selectedAccount);
    // await getPublicSaleInvestorDetail(PublicSaleContract, selectedAccount);
    if (hash == "seed") {
       if (today <= seeddate) {
@@ -440,7 +446,7 @@ async function getPublicSaleInvestorDetail(contract, address) {
       $("#publicsale-buy-btn-div").addClass("d-none");
 
       // PublicInvestor = await getInvestorDetail(contract, address);
-      if (!PublicInvestor["tokenGenerated"]) {
+      if (!PublicInvestor["isTokenGenerated"]) {
          if (PublicInvestor["lockedAcb"] != 0) {
             $("#publicsale-tg-now-div").removeClass("d-none");
          }
@@ -468,7 +474,7 @@ async function getPublicSaleInvestorDetail(contract, address) {
 
             // PublicInvestor = await getInvestorDetail(contract, address);
             console.log("Investor Call");
-            if (!PublicInvestor["tokenGenerated"]) {
+            if (!PublicInvestor["isTokenGenerated"]) {
                if (PublicInvestor["lockedAcb"] != 0) {
                   $("#publicsale-tg-now-div").removeClass("d-none");
                   $("#publicsale-claim-now-div").addClass("d-none");
@@ -540,6 +546,7 @@ async function getSeedInvestorDetail(contract, address) {
    //    return false;
    // }
    Seed_TG_started = await isTokenGenerateStarted(contract);
+   debugger
    if (!Seed_TG_started) {
       $("#seed-buy-btn-div").removeClass("d-none");
 
@@ -552,7 +559,7 @@ async function getSeedInvestorDetail(contract, address) {
    } else {
       $("#seed-buy-btn-div").addClass("d-none");
       // SeedInvestor = await getInvestorDetail(contract, address);
-      if (!SeedInvestor["tokenGenerated"]) {
+      if (!SeedInvestor["isTokenGenerated"]) {
          if (SeedInvestor["lockedAcb"] != 0) {
             $("#seed-tg-now-div").removeClass("d-none");
          } else {
@@ -581,7 +588,7 @@ async function getSeedInvestorDetail(contract, address) {
 
             // SeedInvestor = await getInvestorDetail(contract, address);
             console.log("Investor Call");
-            if (!SeedInvestor["tokenGenerated"]) {
+            if (!SeedInvestor["isTokenGenerated"]) {
                if (SeedInvestor["lockedAcb"] != 0) {
                   $("#seed-tg-now-div").removeClass("d-none");
                   $("#seed_over_div").addClass("d-none");
@@ -625,7 +632,6 @@ async function getSeedInvestorDetail(contract, address) {
          }
       }
    }
-
    if (SeedTimer - Date.now() > 0) {
       //var deadline = new Date(Date.parse(new Date()) + 12 * 24 * 60 * 60 * 1000);
       var deadline = new Date(SeedTimer);
@@ -696,7 +702,7 @@ async function getPrivateAInvestorDetail(contract, address) {
       $("#privateA-buy-btn-div").addClass("d-none");
 
       // PrivateAInvestor = await getInvestorDetail(contract, address);
-      if (!PrivateAInvestor["tokenGenerated"]) {
+      if (!PrivateAInvestor["isTokenGenerated"]) {
          if (PrivateAInvestor["lockedAcb"] != 0) {
             $("#privateA-tg-now-div").removeClass("d-none");
          }
@@ -726,7 +732,7 @@ async function getPrivateAInvestorDetail(contract, address) {
 
             // PrivateAInvestor = await getInvestorDetail(contract, address);
             console.log("Investor Call");
-            if (!PrivateAInvestor["tokenGenerated"]) {
+            if (!PrivateAInvestor["isTokenGenerated"]) {
                if (PrivateAInvestor["lockedAcb"] != 0) {
                   $("#privateA-tg-now-div").removeClass("d-none");
                   $("#privateA-claim-now-div").addClass("d-none");
@@ -829,7 +835,7 @@ async function getPrivateBInvestorDetail(contract, address) {
       $("#privateB-buy-btn-div").addClass("d-none");
 
       // PrivateBInvestor = await getInvestorDetail(contract, address);
-      if (!PrivateBInvestor["tokenGenerated"]) {
+      if (!PrivateBInvestor["isTokenGenerated"]) {
          if (PrivateBInvestor["lockedAcb"] != 0) {
             $("#privateB-tg-now-div").removeClass("d-none");
          }
@@ -858,7 +864,7 @@ async function getPrivateBInvestorDetail(contract, address) {
 
             // PrivateBInvestor = await getInvestorDetail(contract, address);
             console.log("Investor Call");
-            if (!PrivateBInvestor["tokenGenerated"]) {
+            if (!PrivateBInvestor["isTokenGenerated"]) {
                if (PrivateBInvestor["lockedAcb"] != 0) {
                   $("#privateB-tg-now-div").removeClass("d-none");
                   $("#privateB-claim-now-div").addClass("d-none");
@@ -2101,7 +2107,7 @@ $("#privateA-pay-now-btn").click(async function (e) {
          $("#privateA_usd_amount").val('');
          $("#privateA_token_amount").val('');
          filters.investor_address = $(".Wallet_address").val();
-         filterData(privateA_history_url, "private-payment-history-table");
+         filterData(PrivateTransactionHistoryUrl, "private-payment-history-table");
       })
       .on("error", function (error, receipt) {
          Toast('User reject transaction', 3000, 0);
@@ -2671,7 +2677,6 @@ $(document).on("click", "#seed-pay-now-back-btn", function (event) {
    $("#seed-pay-now-div").addClass("d-none");
 });
 $(document).on("click", "#seed-payment-history-tab", function (event) {
-   debugger
    $("#seed-payment-history").removeClass("d-none");
    $("#seed-div").removeClass("d-none");
    $("#seed-buy-now-div").addClass("d-none");
@@ -2708,7 +2713,7 @@ $(document).on("click", "#privateA-payment-history-tab", function (event) {
    // $('#privateA-buy-now-btn').addClass('d-none');
 
    filters.investor_address = $(".Wallet_address").val();
-   filterData(privateA_history_url, "private-payment-history-table");
+   filterData(PrivateTransactionHistoryUrl, "private-payment-history-table");
 });
 
 // private B
@@ -2851,7 +2856,7 @@ async function getInvestorDetail(contract, address) {
 }
 async function getVestingTime(contract) {
    let response;
-   await contract.methods.getVestingTime().call(function (error, res) {
+   await contract.methods.vestingTimeStartFrom().call(function (error, res) {
       if (error) {
          console.log("---error---");
       }
