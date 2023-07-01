@@ -318,7 +318,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="d-flex gap-2 flex-wrap align-items-center mt-4" id="publicsale-waiting-time-div">
+                                            <div class="d-flex gap-2 flex-wrap align-items-center mt-4" id="public-sale-waiting-time-div">
                                                 <p class="m-0" id="publicsale-time-lable">Token Generate Start In:</p>
                                                 <div id='public_sale_timer' class="ico-timer"></div>
                                             </div>

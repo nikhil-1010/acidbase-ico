@@ -6,7 +6,7 @@ const result = require("dotenv").config({
 module.exports = {
     APP_PORT:1120,
     APP_ENV:process.env.APP_ENV,
-    SITE_URL:'http://54.205.247.45/',
+    SITE_URL:'http://localhost/acidbase-ico/public/',
     TOKEN: {
         TEST_RPC_URLS:{
             3:"https://sepolia.infura.io/v3/adf1c58e72404762835ed1263dee74b0",

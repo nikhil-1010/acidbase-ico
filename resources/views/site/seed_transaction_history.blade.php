@@ -1,17 +1,17 @@
 @if(count($data))
 @foreach($data as $r)
 <div class="ph-panel d-flex flex-wrap gap-3 align-items-center p-3 mb-2">
-   @if($r['status'] == config('constant.PENDING'))
+   @if($r['status'] == config('constant.TRX_STATUS.PENDING'))
    <div class="text-warning text-center border-end pe-2" style="width: 70px;">
       <i class="fa-regular fa-circle-dot fs-3 d-inline-block"></i>
       <small class="d-block">Pending</small>
    </div>
-   @elseif($r['status']== config('constant.SUCCESS'))
+   @elseif($r['status']== config('constant.TRX_STATUS.SUCCESS'))
    <div class="text-success text-center border-end pe-2" style="width: 70px;">
       <i class="fa-regular fa-circle-check fs-3 d-inline-block"></i>
       <small class="d-block">Success</small>
    </div>
-   @elseif($r['status']== config('constant.FAIL'))
+   @elseif($r['status']== config('constant.TRX_STATUS.FAIL'))
    <div class="text-danger text-center border-end pe-2" style="width: 70px;">
       <i class="fa-regular fa-circle-xmark fs-3 d-inline-block"></i>
       <small class="d-block">Fail</small>

@@ -457,7 +457,7 @@ async function getPublicSaleInvestorDetail(contract, address) {
          }
       }
    }
-
+   debugger
    if (PublicTimer - Date.now() > 0) {
       var deadline = new Date(PublicTimer);
       var c = new Clock(deadline, function () {

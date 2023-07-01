@@ -31,10 +31,6 @@ async function main(){
 
 }
 
-
-main();
-
-
 app.use(express.json());
 app.listen(Constants.APP_PORT, () => {
     console.log(`Example app listening at http://localhost:${Constants.APP_PORT}`);
