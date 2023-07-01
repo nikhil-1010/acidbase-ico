@@ -139,14 +139,28 @@ class SiteController extends Controller
         return \General::success_res();
     }
 
-    public function getPastEvent(){
+    public function getPastEvents(){
 
         $last_block = app('settings')['last_block'];
-
-        $response = \Http::post(env('NODE_URL').'/get-past-event', [
-            'name' => 'Steve',
-            'role' => 'Network Administrator',
-        ]);
+        try {
+            $response = \Http::post(env('NODE_URL').'/get-past-event', [
+                'last_block' => $last_block
+            ]);
+            
+        } catch (\Exception $e) {
+            \Log::info('check-buy-token Error');
+            \Log::info($e->getMessage());
+            return \General::error_res("Something went to wrong");
+        }
+        if($response['flag'] != 1) {
+            return \General::error_res("Something went to wrong!!");
+        }
+        
+        $obj = \App\Models\Admin\Settings::where('name','last_block')->first();
+        $obj->val = $response['data']['last_block'];
+        $obj->save();
+        
+        return \General::success_res('last update block is '.$response['data']['last_block']);
     }
 
     public function postTest(){

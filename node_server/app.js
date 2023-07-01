@@ -4,6 +4,9 @@ const app = express();
 
 rpc = require('./rpc.js');
 const Constants = require("./config/constents");
+const {getPastEvents} = require("./past_event.js");
+
+
 
 global.eth_web3 = null;
 
@@ -36,10 +39,13 @@ app.listen(Constants.APP_PORT, () => {
     console.log(`Example app listening at http://localhost:${Constants.APP_PORT}`);
 });
 
-app.get('/get-past-event', function (req, res) {
+app.post('/get-past-event',async function (req, res) {
 	console.log('Req Body');
-    console.log(req.body);
-	res.send("ok");
+    console.log(req.body);  
+    var response = await getPastEvents(req.body.last_block);
+    console.log(response);
+    res.json(response);
+    // console.log(response);
 });
 
 

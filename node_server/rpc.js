@@ -1,5 +1,4 @@
 let {Web3} = require('web3')
-Web3WsProvider = require('web3-providers-ws');
 const Constants = require("./config/constents");
 const axios = require('axios');
 
