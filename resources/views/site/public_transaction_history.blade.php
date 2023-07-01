@@ -19,7 +19,7 @@
    @endif
    <div class="text-white">
       <h6 class="m-0 text-break"><span class="fw-bold">ID</span> : <a href="{{$r['explorer']. $r['trx_id']}}" target="_blank" rel="noopener noreferrer">{{substr($r['trx_id'],0,15).'...'}}</a></h6>
-      <small class="m-0 text-white-50">{{date('d M , Y', strtotime($r['created_at']))}}</small>
+      <small class="m-0 text-white-50">{{date('d M , Y', strtotime($r['created_at']))}} | {{date('H:i:s', strtotime($r['created_at']))}}</small>
    </div>
    <small class="bg-primary text-white rounded-pill text-uppercase fw-lighter py-2 px-4 ms-auto">{{$r['token_amount']}}<span> ACB</span></small>
 </div>

@@ -255,7 +255,7 @@
 
                                         </div>
                                         <div class="tab-pane fade" id="privateA-payment-history" role="tabpanel" aria-labelledby="pills-payment-history-tab">
-                                            <div id="private-payment-history-table"></div>
+                                            <div id="private-payment-history-table" class="payment-history-wrapper></div>
                                         </div>
                                     </div>
                                 </div>
@@ -350,7 +350,7 @@
 
                                         </div>
                                         <div class="tab-pane fade" id="publicsale-payment-history" role="tabpanel" aria-labelledby="pills-payment-history-tab">
-                                            <div id="publicsale-payment-history-table"></div>
+                                            <div id="publicsale-payment-history-table" class="payment-history-wrapper></div>
                                         </div>
                                     </div>
                                 </div>
