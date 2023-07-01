@@ -565,7 +565,7 @@ async function getSeedInvestorDetail(contract, address) {
                   } else {
                      $("#seed-claim-now-div").addClass("d-none");
                      var previousClaimTime = parseInt(SeedInvestor["previousClaimTime"]);
-                     if (is_live == "live") {
+                     if (is_live != "live") {
                         addNextClaimTime = 2 * 60; // local
                      } else {
                         addNextClaimTime = 24 * 60 * 60 * 30 // live
