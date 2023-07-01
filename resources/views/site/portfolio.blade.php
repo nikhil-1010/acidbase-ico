@@ -289,7 +289,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>  
                             <div class="d-none" id="public-sale">
                                 <div id="publicsale-div" class="ico-tab">
 
@@ -350,7 +350,7 @@
 
                                         </div>
                                         <div class="tab-pane fade" id="publicsale-payment-history" role="tabpanel" aria-labelledby="pills-payment-history-tab">
-                                            <div id="publicsale-payment-history-table" class="payment-history-wrapper></div>
+                                            <div id="publicsale-payment-history-table" class="payment-history-wrapper"></div>
                                         </div>
                                     </div>
                                 </div>
