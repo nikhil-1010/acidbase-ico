@@ -710,7 +710,7 @@ async function getPrivateAInvestorDetail(contract, address) {
                         PrivateAInvestor["previousClaimTime"]
                      );
                      if (is_live != "live") {
-                        addNextClaimTime = 75 * 60; // local
+                        addNextClaimTime = 2 * 60; // local
                      } else {
                         addNextClaimTime = 24 * 60 * 60 * 30 // live
                      }
@@ -1947,7 +1947,7 @@ $("#privateA-claim-now-btn").click(function (event) {
    $("#privateA-claim-now-btn").prop("disabled", true);
    var from = selectedAccount;
    var to = PrivateSaleContractAddress;
-   var data = PrivateAContract.methods.claimUbi().encodeABI();
+   var data = PrivateAContract.methods.claimAcb().encodeABI();
    transactionParameters = {
       to: to,
       from: from,
@@ -2024,7 +2024,7 @@ $("#privateB-claim-now-btn").click(function (event) {
    $("#privateB-claim-now-btn").prop("disabled", true);
    var from = selectedAccount;
    var to = PrivateBContractAddress;
-   var data = PrivateBContract.methods.claimUbi().encodeABI();
+   var data = PrivateBContract.methods.claimAcb().encodeABI();
    transactionParameters = {
       to: to,
       from: from,
