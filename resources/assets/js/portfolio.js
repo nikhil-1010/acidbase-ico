@@ -2100,7 +2100,7 @@ $("#publicsale-claim-now-btn").click(function (event) {
    $("#publicsale-claim-now-btn").prop("disabled", true);
    var from = selectedAccount;
    var to = PublicSaleContractAddress;
-   var data = PublicSaleContract.methods.claimUbi().encodeABI();
+   var data = PublicSaleContract.methods.claimAcb().encodeABI();
    transactionParameters = {
       to: to,
       from: from,
