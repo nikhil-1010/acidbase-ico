@@ -40,3 +40,12 @@ app.listen(Constants.APP_PORT, () => {
     console.log(`Example app listening at http://localhost:${Constants.APP_PORT}`);
 });
 
+app.get('/get-past-event', function (req, res) {
+	console.log('Req Body');
+    console.log(req.body);
+	res.send("ok");
+});
+
+
+
+

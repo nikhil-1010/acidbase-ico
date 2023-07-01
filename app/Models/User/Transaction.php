@@ -28,8 +28,10 @@ class Transaction extends Model
         $tx->paid_amount = $param['paid_amount'];
         $tx->token_amount = $param['token_amount'];
         $tx->sale_type = $param['sale_type'];
+        if(isset($param['status']))
+            $tx->status = $param['status'];
         if($tx->save()){
-            return \General::success_res('Investor add successfully');
+            return \General::success_res('Transaction add successfully.');
         }else{
             return \General::error_res('Something went wrong!');
         }

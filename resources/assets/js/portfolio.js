@@ -468,6 +468,9 @@ async function getPublicSaleInvestorDetail(contract, address) {
       // publicSaleTimer = setInterval(function () {
       //    makePublicSaleTimer(PublicTimer);
       // }, 1000);
+   } else {
+      $('#public-sale-waiting-time-div').addClass('d-none');
+
    }
    $(".box-loader").hide();
 }

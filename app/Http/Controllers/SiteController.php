@@ -108,12 +108,52 @@ class SiteController extends Controller
             return \General::success_res('whitelisted.');
         }
     }
+    
+    public function postAddInvestorEvent(){
+        $param = \Input::all();
+        
+        $data = \App\Models\User\Transaction::where('trx_id',$param['trx_id'])->first();
+        if(is_null($data)){
+            $data = array(
+                "trx_id"=>$param['trx_id'],
+                "investor_address"=>$param['investor'],
+                "paid_amount"=>$param['payin_amount'],
+                "token_amount"=>$param['payout_amount'],
+                "sale_type"=>$param['sale_type'],
+                "status"=>1
+            );
+            return \App\Models\User\Transaction::addTransactionHistory($param);
+        }else{
+            $data->status = 1;
+            $data->save();
+            return \General::success_res('update transaction.');
+        }
+    }
+    public function postUpdateBlockNumber(){
+        $param = \Input::all();
+        
+        $data = \App\Models\Admin\Settings::where('name','last_block')->first();
+        $data->last_block = $param['last_block'];
+        $data->save();
+        \Log::info('Last updated Block is => '.$param['last_block']);
+        return \General::success_res();
+    }
+
+    public function getPastEvent(){
+
+        $last_block = app('settings')['last_block'];
+
+        $response = \Http::post(env('NODE_URL').'/get-past-event', [
+            'name' => 'Steve',
+            'role' => 'Network Administrator',
+        ]);
+    }
 
     public function postTest(){
         $obj = new \App\Models\Admin\Settings;
-        $obj->name = 'exchange_rate';
+        $obj->name = 'last_block';
         $obj->val = 0.0001;
-        $obj->autoload = 1;
+        $obj->autoload = 3801954;
         $obj->save();
     }
 }
