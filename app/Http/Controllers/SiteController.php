@@ -159,15 +159,15 @@ class SiteController extends Controller
         $obj = \App\Models\Admin\Settings::where('name','last_block')->first();
         $obj->val = $response['data']['last_block'];
         $obj->save();
-        
+
         return \General::success_res('last update block is '.$response['data']['last_block']);
     }
 
     public function postTest(){
         $obj = new \App\Models\Admin\Settings;
         $obj->name = 'last_block';
-        $obj->val = 0.0001;
-        $obj->autoload = 3801954;
+        $obj->val = 0;
+        $obj->autoload = 1;
         $obj->save();
     }
 }
