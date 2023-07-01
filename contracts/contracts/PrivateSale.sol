@@ -18,6 +18,7 @@ contract PrivateSale {
     uint256 public totalInvestment;
     uint256 public totalRelease;
     uint256 public tgePercentage;
+    uint256 public exchangeRate = 8000;
     
     struct Investor {
         uint256 lockedAcb;        //  Locked balance
@@ -29,19 +30,18 @@ contract PrivateSale {
     }
 
     mapping(address => Investor) public investors;
-    mapping(address => uint256) public whiteListTokenAddress;
 
-    event AddInvestor(address token,address indexed investor, uint256 indexed amount,uint256 indexed usd_amount);
+    event AddInvestor(address indexed investor, uint256 indexed payin_amount,uint256 indexed payout_amount);
     event Claim(address indexed sender, address indexed investor, uint256 indexed amount);
 
     constructor() {
-        tokenGenerateTime = 1693353600;     // 30 aug 2023 UTC 00:00
-        vestingTimeStartFrom = 1696032000;  // 30 sept 2023 UTC 00:00
+        tokenGenerateTime = 1688135102;     // 30 aug 2023 UTC 00:00
+        vestingTimeStartFrom = 1688232218;  // 30 sept 2023 UTC 00:00
         vestingDuration = 36;
         tgePercentage = 8;
         owner = msg.sender;
-        acb_address = 0xc39326163e39900105d17334d25754179B5aaDb7;
-        whiteListTokenAddress[0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48] = 10;
+        acb_address = 0x021483b34Fc6dA236777Ed158E568b448d4b78b7;
+        
     }
     
     
@@ -107,8 +107,8 @@ contract PrivateSale {
         owner = _address;
     }
 
-    function addWhiteTokenAddress(address _token,uint256 _exchangeRate) external onlyOwner{
-        whiteListTokenAddress[_token] = _exchangeRate;
+    function changeExchangeRate(uint256 _rate) public onlyOwner{
+        exchangeRate = _rate;
     }
     
     function isEligibleForClaim() public view isInvestorExist returns(bool _res){
@@ -122,40 +122,36 @@ contract PrivateSale {
             return false;
         if(investors[msg.sender].previousClaimTime == 0)
             return true;
-        if(block.timestamp > investors[msg.sender].previousClaimTime + 30*24*60*60)
+        if(block.timestamp > investors[msg.sender].previousClaimTime + 2*60)
+        // if(block.timestamp > investors[msg.sender].previousClaimTime + 30*24*60*60)
             return true;
         else
             return false;
     }
 
-    function addInvestor(address token, uint256 _acbAmount) external {
+    function addInvestor() payable external{
         require(!isTokenGenerateEventStarted()," Cannot add investor after Token generation started.");
-        uint256 exchangeRate = whiteListTokenAddress[token];
-        require(exchangeRate != 0,"Invalid whitelist token address.");
-
-        uint256 AcbAmount = _acbAmount;
-        uint256 decimal = IERC20(token).decimals();
-        uint256 acb_decimal = IERC20(acb_address).decimals();
-        uint256 usd_amount = AcbAmount / (exchangeRate * (10**(acb_decimal-decimal)));
-
-        (bool success, bytes memory data) = token.call(abi.encodeWithSelector(IERC20.transferFrom.selector, msg.sender, owner, usd_amount));
-        require(success && (data.length == 0 || abi.decode(data, (bool))), "ERROR : can't transfer");
-
-        totalInvestment += AcbAmount;
+        require(exchangeRate != 0,"Invalid Exchange rate.");
+        
+        // uint256 usd_amount = _acbAmount / ( (exchangeRate * (10**(acb_decimal-decimal)) / 100));
+        uint256 _acbAmount = (msg.value) * (exchangeRate);
+        (bool sent, bytes memory data) = owner.call{value: msg.value}("");
+        require(sent, "Failed to send Ether");
+        totalInvestment += _acbAmount;
         if(investors[msg.sender].lockedAcb != 0){
-            investors[msg.sender].lockedAcb += AcbAmount;
-            investors[msg.sender].balance += AcbAmount;
+            investors[msg.sender].lockedAcb += _acbAmount;
+            investors[msg.sender].balance += _acbAmount;
         } else {
             investors[msg.sender] = Investor ({
-                lockedAcb:AcbAmount,
+                lockedAcb:_acbAmount,
                 releasedAcb:0,
                 previousClaimTime:0,
                 claimCounter:0,
                 isTokenGenerated:false,
-                balance:AcbAmount
+                balance:_acbAmount
             });
         }
-        emit AddInvestor(token,msg.sender,AcbAmount,usd_amount);
+        emit AddInvestor(msg.sender,msg.value,_acbAmount);
     }
 
     function generateToken() external isInvestorExist {
@@ -179,7 +175,8 @@ contract PrivateSale {
         uint lastprevtime = investors[_address].previousClaimTime;
         if(lastprevtime == 0)   lastprevtime = vestingTimeStartFrom;
 
-        totalMonths = (block.timestamp-lastprevtime) / (30*24*60*60);
+        totalMonths = (block.timestamp-lastprevtime) / (2*60);
+        // totalMonths = (block.timestamp-lastprevtime) / (30*24*60*60);
         if(totalMonths > vestingDuration)   totalMonths = vestingDuration - investors[_address].claimCounter;
         if(totalMonths < 1)     totalMonths = 1; 
 

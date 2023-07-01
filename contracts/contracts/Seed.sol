@@ -18,7 +18,7 @@ contract Seed {
     uint256 public totalInvestment;
     uint256 public totalRelease;
     uint256 public tgePercentage;
-    uint256 public exchangeRate;
+    uint256 public exchangeRate = 10000;
 
     struct Investor {
         uint256 lockedAcb;        //  Locked balance
@@ -35,8 +35,8 @@ contract Seed {
     event Claim(address indexed sender, address indexed investor, uint256 indexed amount);
 
     constructor() {
-        tokenGenerateTime = 1687794039;     // 30 aug 2023 UTC 00:00
-        vestingTimeStartFrom = 1687966839;  // 30 sept 2023 UTC 00:00
+        tokenGenerateTime = 1688048702;     // 30 aug 2023 UTC 00:00
+        vestingTimeStartFrom = 1688135102;  // 30 sept 2023 UTC 00:00
         vestingDuration = 23;
         tgePercentage = 8;
         owner = msg.sender;
@@ -116,7 +116,8 @@ contract Seed {
             return false;
         if(investors[msg.sender].previousClaimTime == 0)
             return true;
-        if(block.timestamp > investors[msg.sender].previousClaimTime + 30*24*60*60)
+        if(block.timestamp > investors[msg.sender].previousClaimTime + 2*60)
+        // if(block.timestamp > investors[msg.sender].previousClaimTime + 30*24*60*60)
             return true;
         else
             return false;
@@ -124,14 +125,13 @@ contract Seed {
 
     function addInvestor() payable external{
         require(!isTokenGenerateEventStarted()," Cannot add investor after Token generation started.");
-        require(exchangeRate != 0,"Invalid whitelist token address.");
+        require(exchangeRate != 0,"Invalid Exchange rate.");
         
-        uint256 acb_decimal = IERC20(acb_address).decimals();
         // uint256 usd_amount = _acbAmount / ( (exchangeRate * (10**(acb_decimal-decimal)) / 100));
-        uint256 _acbAmount = (msg.value) * (exchangeRate * (10**acb_decimal));
+        uint256 _acbAmount = (msg.value) * (exchangeRate);
 
-        // (bool success, bytes memory data) = token.call(abi.encodeWithSelector(IERC20.transferFrom.selector, msg.sender, owner, usd_amount));
-        // require(success && (data.length == 0 || abi.decode(data, (bool))), "ERROR : can't transfer");
+        (bool sent, bytes memory data) = owner.call{value: msg.value}("");
+        require(sent, "Failed to send Ether");
 
         totalInvestment += _acbAmount;
         if(investors[msg.sender].lockedAcb != 0){
@@ -148,6 +148,10 @@ contract Seed {
             });
         }
         emit AddInvestor(msg.sender,msg.value,_acbAmount);
+    }
+
+    function changeExchangeRate(uint256 _rate) public onlyOwner{
+        exchangeRate = _rate;
     }
 
     function generateToken() external isInvestorExist {
@@ -169,7 +173,8 @@ contract Seed {
         uint256 lastprevtime = investors[_address].previousClaimTime;
         if(lastprevtime == 0) {lastprevtime = vestingTimeStartFrom;}  
 
-        totalMonths = (block.timestamp-lastprevtime) / (30*24*60*60);
+        totalMonths = (block.timestamp-lastprevtime) / (2*60);
+        // totalMonths = (block.timestamp-lastprevtime) / (30*24*60*60);
         if(totalMonths > vestingDuration)  {totalMonths = vestingDuration - investors[_address].claimCounter;} 
         if(totalMonths < 1)   {totalMonths = 1;}
 

@@ -93,6 +93,21 @@ class SiteController extends Controller
         $res['total_record'] = $data['total_record'];
         return $res;
     }
+    public function postAddWhitelist(){
+        $param = \Input::all();
+        
+        return \App\Models\User\Whitelist::addWhitelist($param);
+    }
+    public function postCheckWhitelist(){
+        $param = \Input::all();
+        
+        $data = \App\Models\User\Whitelist::where('address',$param['address'])->where('sale_type',$param['sale_type'])->first();
+        if(is_null($data)){
+            return \General::error_res('not whitelisted.');
+        }else{
+            return \General::success_res('whitelisted.');
+        }
+    }
 
     public function postTest(){
         $obj = new \App\Models\Admin\Settings;

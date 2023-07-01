@@ -17,6 +17,7 @@ var privateAdate = parseInt($("#privateAdate").val());
 var publicsaledate = parseInt($("#publicsaledate").val());
 var hash = "";
 function hideShowTabs() {
+   debugger
    hash = window.location.href.split("#")[1];
    if (typeof hash == "undefined") {
       var url = window.location.href.split("#")[0] + "#seed";
@@ -27,13 +28,13 @@ function hideShowTabs() {
 
          $("#seed").addClass("active");
          $("#seed").addClass("show");
+         $("#seed").removeClass("d-none");
          $("#private_sale_msg").addClass("d-none");
          $("#public_sale_msg").addClass("d-none");
 
-         $("#seed-tab").addClass("active");
-         $("#private-sale-a-tab").removeClass("active");
-         $("#private-sale-b-tab").removeClass("active");
-         $("#publicsale-tab").removeClass("active");
+         $("#seed-tab").addClass("gradient-btn border-0");
+         $("#private-sale-a-tab").removeClass("gradient-btn border-0");
+         $("#publicsale-tab").removeClass("gradient-btn border-0");
 
          $("#seed-inner-tab").addClass("show");
          $("#seed-inner-tab").addClass("active");
@@ -49,19 +50,17 @@ function hideShowTabs() {
          urlreplace("seed", "seed-tab");
       } else if (currentTime >= PrivateStartDate && currentTime <= PrivateEndDate) {
 
-         $("#seed").removeClass("active");
-         $("#seed").removeClass("show");
+         $("#seed").addClass("active");
+         $("#seed").addClass("d-none");
 
-         $("#privateA").addClass("active");
-         $("#privateA").addClass("show");
+         $("#privateA").removeClass("d-none");
 
-         $("#private_sale_msg").removeClass("d-none");
-         $("#public_sale_msg").addClass("d-none");
+         // $("#private_sale_msg").removeClass("d-none");
+         // $("#public_sale_msg").addClass("d-none");
 
-         $("#private-sale-a-tab").addClass("active");
-         $("#private-sale-b-tab").removeClass("active");
-         $("#seed-tab").removeClass("active");
-         $("#publicsale-tab").removeClass("active");
+         $("#private-sale-a-tab").addClass("gradient-btn border-0");
+         $("#seed-tab").removeClass("gradient-btn border-0");
+         $("#publicsale-tab").removeClass("gradient-btn border-0");
 
          $("#privateA-inner-tab").addClass("show");
          $("#privateA-inner-tab").addClass("active");
@@ -76,14 +75,11 @@ function hideShowTabs() {
          $("#public_sale_msg").removeClass("d-none");
          $("#white-list-tab").removeClass("active");
          $("#private-sale-a-tab").removeClass("active");
-         $("#private-sale-b-tab").removeClass("active");
 
          $("#seed").removeClass("active");
          $("#seed").removeClass("show");
          $("#privateA").removeClass("active");
          $("#privateA").removeClass("show");
-         $("#privateB").removeClass("active");
-         $("#privateB").removeClass("show");
 
          $("#public-sale").addClass("active");
          $("#public-sale").addClass("show");
@@ -94,10 +90,6 @@ function hideShowTabs() {
          $("#publicsale-payment-history-tab").removeClass("show");
          $("#publicsale-payment-history").removeClass("active");
          $("#publicsale-payment-history").removeClass("show");
-         $("#series-inner-b-tab").addClass("show");
-         $("#series-inner-b-tab").addClass("active");
-         $("#series-inner-b").addClass("active");
-         $("#series-inner-b").addClass("show");
          $("#publicsale-buy-now-div").addClass("d-none");
 
          urlreplace("PublicSale", "publicsale-tab");
@@ -127,19 +119,17 @@ function hideShowTabs() {
          urlreplace("seed", "seed-tab");
       } else if (currentTime >= PrivateStartDate && currentTime <= PrivateEndDate) {
 
-         $("#seed").removeClass("active");
-         $("#seed").removeClass("show");
+         $("#seed").addClass("active");
+         $("#seed").addClass("d-none");
 
-         $("#privateA").addClass("active");
-         $("#privateA").addClass("show");
+         $("#privateA").removeClass("d-none");
 
-         $("#private_sale_msg").removeClass("d-none");
-         $("#public_sale_msg").addClass("d-none");
+         // $("#private_sale_msg").removeClass("d-none");
+         // $("#public_sale_msg").addClass("d-none");
 
-         $("#private-sale-a-tab").addClass("active");
-         $("#private-sale-b-tab").removeClass("active");
-         $("#seed-tab").removeClass("active");
-         $("#publicsale-tab").removeClass("active");
+         $("#private-sale-a-tab").addClass("gradient-btn border-0");
+         $("#seed-tab").removeClass("gradient-btn border-0");
+         $("#publicsale-tab").removeClass("gradient-btn border-0");
 
          $("#privateA-inner-tab").addClass("show");
          $("#privateA-inner-tab").addClass("active");
@@ -185,15 +175,11 @@ function hideShowTabs() {
       $("#public_sale_msg").removeClass("d-none");
       $("#white-list-tab").removeClass("active");
       $("#private-sale-a-tab").removeClass("active");
-      $("#private-sale-b-tab").removeClass("active");
-      $("#kol-sale-tab").removeClass("active");
 
       $("#seed").removeClass("active");
       $("#seed").removeClass("show");
       $("#privateA").removeClass("active");
       $("#privateA").removeClass("show");
-      $("#privateB").removeClass("active");
-      $("#privateB").removeClass("show");
 
       $("#public-sale").addClass("active");
       $("#public-sale").addClass("show");
@@ -204,10 +190,6 @@ function hideShowTabs() {
       $("#publicsale-payment-history-tab").removeClass("show");
       $("#publicsale-payment-history").removeClass("active");
       $("#publicsale-payment-history").removeClass("show");
-      $("#series-inner-b-tab").addClass("show");
-      $("#series-inner-b-tab").addClass("active");
-      $("#series-inner-b").addClass("active");
-      $("#series-inner-b").addClass("show");
       $("#publicsale-buy-now-div").addClass("d-none");
 
       // $("#public-sale").removeClass('show');
@@ -236,6 +218,7 @@ jQuery(document).ready(async function ($) {
    $("#seed-tab").click(async function () {
       $("#seed").removeClass("d-none");
       $("#privateA").addClass("d-none");
+      $("#public-sale").addClass("d-none");
       $(this).addClass("gradient-btn border-0");
       $('#private-sale-a-tab').removeClass("gradient-btn border-0");
       $('#publicsale-tab').removeClass("gradient-btn border-0");
@@ -248,6 +231,7 @@ jQuery(document).ready(async function ($) {
    $("#private-sale-a-tab").click(async function () {
       $("#privateA").removeClass("d-none");
       $("#seed").addClass("d-none");
+      $("#public-sale").addClass("d-none");
       $(this).addClass("gradient-btn border-0");
       $('#seed-tab').removeClass("gradient-btn border-0");
       $('#publicsale-tab').removeClass("gradient-btn border-0");
@@ -257,18 +241,16 @@ jQuery(document).ready(async function ($) {
       await getPrivateAInvestorDetail(PrivateAContract, selectedAccount);
 
    });
-   $("#private-sale-b-tab").click(async function () {
-      $("#private_sale_msg").removeClass("d-none");
-      $("#public_sale_msg").addClass("d-none");
-      var url = window.location.href.split("#")[0] + "#privateB";
-      window.location.replace(url);
-      $(".box-loader").show();
-      await getPrivateBInvestorDetail(PrivateBContract, selectedAccount);
-   });
 
    $("#publicsale-tab").click(async function () {
-      $("#public_sale_msg").removeClass("d-none");
-      $("#private_sale_msg").addClass("d-none");
+      $("#privateA").addClass("d-none");
+      $("#seed").addClass("d-none");
+      $("#public-sale").removeClass("d-none");
+
+      $(this).addClass("gradient-btn border-0");
+      $('#seed-tab').removeClass("gradient-btn border-0");
+      $('#private-sale-a-tab').removeClass("gradient-btn border-0");
+
       var url = window.location.href.split("#")[0] + "#PublicSale";
       window.location.replace(url);
       $(".box-loader").show();
@@ -352,7 +334,7 @@ async function RefreshPageDetail() {
 
       SeedContract = new web3.eth.Contract(SeedAbi, SeedContractAddress);
       PrivateAContract = new web3.eth.Contract(PrivateAAbi, PrivateSaleContractAddress);
-      // PublicSaleContract = new web3.eth.Contract(PublicSaleAbi, PublicSaleContractAddress);
+      PublicSaleContract = new web3.eth.Contract(PublicSaleAbi, PublicSaleContractAddress);
 
       hideShowTabs();
    }
@@ -384,16 +366,6 @@ async function RefreshPageDetail() {
       $('#seed-waiting-time-div').addClass('d-none');
 
    }
-   if (hash == "privateB") {
-      if (today <= privateBdate) {
-         await getPrivateBInvestorDetail(PrivateBContract, selectedAccount);
-      }
-      $('#seed-buy-btn-div').addClass('d-none');
-      $('#privateA-buy-btn-div').addClass('d-none');
-      $('#publicsale-buy-btn-div').addClass('d-none');
-      $('#seed-waiting-time-div').addClass('d-none');
-      $('#privateA-waiting-time-div').addClass('d-none');
-   }
    if (hash == "PublicSale") {
       // if (today <= publicsaledate) {
       // }
@@ -407,13 +379,13 @@ async function RefreshPageDetail() {
    }
    HideAllTab(SeedContract, selectedAccount, "seed");
    HideAllTab(PrivateAContract, selectedAccount, "private-sale-a");
-   HideAllTab(PrivateBContract, selectedAccount, "private-sale-b");
    HideAllTab(PublicSaleContract, selectedAccount, "publicsale");
 }
 
 //======================== Public Sale Start=============================//
 async function getPublicSaleInvestorDetail(contract, address) {
-   clearInterval(publicSaleTimer);
+   // clearInterval(publicSaleTimer);
+   $('.flip-clock').remove();
    PublicInvestor = await getInvestorDetail(contract, address);
    console.log("Publicsale Investor");
    console.log(PublicInvestor);
@@ -423,8 +395,8 @@ async function getPublicSaleInvestorDetail(contract, address) {
    released_token = number_format(
       web3.utils.fromWei(PublicInvestor["releasedAcb"], "ether")
    );
-   $("#publicsale-locked-balance").html(locked_token);
-   $("#publicsale-release-balance").html(released_token);
+   $("#publicsale-locked-balance").val(locked_token);
+   $("#publicsale-release-balance").val(released_token);
 
    var PublicTimer;
 
@@ -512,9 +484,15 @@ async function getPublicSaleInvestorDetail(contract, address) {
    }
 
    if (PublicTimer - Date.now() > 0) {
-      publicSaleTimer = setInterval(function () {
-         makePublicSaleTimer(PublicTimer);
-      }, 1000);
+      var deadline = new Date(PublicTimer);
+      var c = new Clock(deadline, function () {
+         $('#public-sale-waiting-time-div').addClass('d-none');
+      });
+      var page_timer = $('#public_sale_timer');
+      page_timer.append(c.el);
+      // publicSaleTimer = setInterval(function () {
+      //    makePublicSaleTimer(PublicTimer);
+      // }, 1000);
    }
    $(".box-loader").hide();
 }
@@ -546,7 +524,6 @@ async function getSeedInvestorDetail(contract, address) {
    //    return false;
    // }
    Seed_TG_started = await isTokenGenerateStarted(contract);
-   debugger
    if (!Seed_TG_started) {
       $("#seed-buy-btn-div").removeClass("d-none");
 
@@ -612,7 +589,7 @@ async function getSeedInvestorDetail(contract, address) {
                   } else {
                      $("#seed-claim-now-div").addClass("d-none");
                      var previousClaimTime = parseInt(SeedInvestor["previousClaimTime"]);
-                     if (is_live != "live") {
+                     if (is_live == "live") {
                         addNextClaimTime = 2 * 60; // local
                      } else {
                         addNextClaimTime = 24 * 60 * 60 * 30 // live
@@ -654,7 +631,8 @@ async function getSeedInvestorDetail(contract, address) {
 async function getPrivateAInvestorDetail(contract, address) {
    // filters.investor_address = $("#address").val();
    // filterData(url,'presale-payment-history-table');
-   clearInterval(privateATimer);
+   $('.flip-clock').remove();
+   // clearInterval(privateATimer);
    PrivateAInvestor = await getInvestorDetail(contract, address);
    console.log("PrivateA Investor");
    console.log(PrivateAInvestor);
@@ -664,8 +642,8 @@ async function getPrivateAInvestorDetail(contract, address) {
    released_token = number_format(
       web3.utils.fromWei(PrivateAInvestor["releasedAcb"], "ether")
    );
-   $("#privateA-locked-balance").html(locked_token);
-   $("#privateA-release-balance").html(released_token);
+   $("#privateA-locked-balance").val(locked_token);
+   $("#privateA-release-balance").val(released_token);
 
    var PrivateATimer;
 
@@ -677,17 +655,17 @@ async function getPrivateAInvestorDetail(contract, address) {
    // }
    privateA_TG_started = await isTokenGenerateStarted(contract);
    if (!privateA_TG_started) {
-      let status = false;
-      await postAjax(whitelist_check_url, { address: address, is_sale: 1 }, function (res) {
-         status = res.status;
+      // let status = ;
+      await postAjax(whitelistCheckUrl, { address: address, sale_type: 1 }, function (res) {
+         let status = res.flag;
+         if (status == 1) {
+            $("#privateA-whitelist-btn-div").addClass("d-none");
+            $("#privateA-buy-btn-div").removeClass("d-none");
+         } else {
+            $("#privateA-whitelist-btn-div").removeClass("d-none");
+            $("#privateA-buy-btn-div").addClass("d-none");
+         }
       });
-      if (status == false) {
-         $("#privateA-whitelist-btn-div").removeClass("d-none");
-         $("#privateA-buy-btn-div").addClass("d-none");
-      } else {
-         $("#privateA-whitelist-btn-div").addClass("d-none");
-         $("#privateA-buy-btn-div").removeClass("d-none");
-      }
       $("#privateA-waiting-time-div").removeClass("d-none");
       $("#privateA-time-lable").text("Token Generate Starts In :");
       PrivateA_TG_time = await getTokenGenerateTime(contract);
@@ -775,147 +753,23 @@ async function getPrivateAInvestorDetail(contract, address) {
       }
    }
 
+
    if (PrivateATimer - Date.now() > 0) {
-      console.log("------------------------------------");
-      console.log("Private A timer call");
-      console.log("------------------------------------");
-      privateATimer = setInterval(function () {
-         makePrivateATimer(PrivateATimer);
-      }, 1000);
+      var deadline = new Date(PrivateATimer);
+      var c = new Clock(deadline, function () {
+         $('#privateA-waiting-time-div').addClass('d-none');
+      });
+      var page_timer = $('#private_sale_timer');
+      page_timer.append(c.el);
+      // privateATimer = setInterval(function () {
+      //    makePrivateATimer(PrivateATimer);
+      // }, 1000);
+   }else {
+      $('#privateA-waiting-time-div').addClass('d-none');
    }
    $(".box-loader").hide();
 }
 //======================== Private A Sale End=============================//
-
-//======================== Private B Sale Start=============================//
-async function getPrivateBInvestorDetail(contract, address) {
-   // filters.investor_address = $("#address").val();
-   // filterData(url,'presale-payment-history-table');
-   clearInterval(privateBTimer);
-   PrivateBInvestor = await getInvestorDetail(contract, address);
-   console.log("PrivateB Investor");
-   console.log(PrivateBInvestor);
-   locked_token = number_format(
-      web3.utils.fromWei(PrivateBInvestor["lockedAcb"], "ether")
-   );
-   released_token = number_format(
-      web3.utils.fromWei(PrivateBInvestor["releasedAcb"], "ether")
-   );
-   $("#privateB-locked-balance").html(locked_token);
-   $("#privateB-release-balance").html(released_token);
-
-   var PrivateBTimer;
-
-   console.log("------------------------------------");
-   console.log("Private B Call After Time Interval Clear");
-   console.log("------------------------------------");
-   // if(today>privateBdate){
-   //    return false;
-   // }
-   PrivateB_TG_started = await isTokenGenerateStarted(contract);
-   if (!PrivateB_TG_started) {
-      let status = false;
-      await postAjax(whitelist_check_url, { address: address, is_sale: 2 }, function (res) {
-         status = res.status;
-      });
-      if (status == false) {
-         $("#privateB-whitelist-btn-div").removeClass("d-none");
-         $("#privateB-buy-btn-div").addClass("d-none");
-      } else {
-         $("#privateB-whitelist-btn-div").addClass("d-none");
-         $("#privateB-buy-btn-div").removeClass("d-none");
-      }
-      $("#privateB-waiting-time-div").removeClass("d-none");
-      $("#privateB-time-lable").text("Token Generate Starts In :");
-      PrivateB_TG_time = await getTokenGenerateTime(contract);
-      console.log("Inside Token Genration>>>>>>>>>>>>>>>>>>>.", PrivateB_TG_time);
-
-      PrivateBTimer = PrivateB_TG_time;
-   } else {
-      $("#privateB-buy-btn-div").addClass("d-none");
-
-      // PrivateBInvestor = await getInvestorDetail(contract, address);
-      if (!PrivateBInvestor["isTokenGenerated"]) {
-         if (PrivateBInvestor["lockedAcb"] != 0) {
-            $("#privateB-tg-now-div").removeClass("d-none");
-         }
-      }
-
-      console.log("Private B Vesting Time Over Claim button show");
-      if (parseInt(PrivateBInvestor["lockedAcb"]) == 0 && parseInt(PrivateBInvestor["releasedAcb"]) == 0) {
-         $("#privateB_over_div").removeClass("d-none");
-         $("#privateB_claim_over_div").addClass("d-none");
-         // $("#private-sale-b-tab").prop("disabled", true);
-         $('#privateB-buy-btn-div').addClass('d-none');
-         $('#privateB-tg-now-div').addClass('d-none');
-         $('#privateB-claim-now-div').addClass('d-none');
-      } else {
-         $("#privateB_over_div").addClass("d-none");
-         PrivateB_vesting_started = await isVestingTimeStarted(contract);
-         if (!PrivateB_vesting_started) {
-            $("#privateB-waiting-time-div").removeClass("d-none");
-            // $('#privateB-buy-btn-div').removeClass('d-none');
-            $("#privateB-time-lable").text("Vesting Starts In:");
-            privateB_Vesting_time = await getVestingTime(contract);
-
-            PrivateBTimer = privateB_Vesting_time;
-         } else {
-            $("#privateB-waiting-time-div").addClass("d-none");
-
-            // PrivateBInvestor = await getInvestorDetail(contract, address);
-            console.log("Investor Call");
-            if (!PrivateBInvestor["isTokenGenerated"]) {
-               if (PrivateBInvestor["lockedAcb"] != 0) {
-                  $("#privateB-tg-now-div").removeClass("d-none");
-                  $("#privateB-claim-now-div").addClass("d-none");
-               }
-            } else {
-               isclaim = await isEligibleForClaim(contract);
-               console.log("isclaim >>>>>>>>>>>>>>>>", isclaim);
-               if (isclaim) {
-                  // clearInterval(PreSaleTimer);
-                  console.log("claim Button Show");
-                  $("#privateB-claim-now-div").removeClass("d-none");
-                  $("#privateB-tg-now-div").addClass("d-none");
-               } else {
-                  if (parseInt(PrivateBInvestor["releasedAcb"]) == parseInt(PrivateBInvestor["lockedAcb"])) {
-                     $("#privateB_claim_over_div").removeClass("d-none");
-                     $("#privateB_over_div").addClass("d-none");
-                     $("#privateB-claim-now-div").addClass("d-none");
-                  } else {
-                     $("#privateB-claim-now-div").addClass("d-none");
-                     var previousClaimTime = parseInt(
-                        PrivateBInvestor["previousClaimTime"]
-                     );
-                     if (is_live != "live") {
-                        addNextClaimTime = 2 * 60; // local
-                     } else {
-                        addNextClaimTime = 24 * 60 * 60 * 30 // live
-                     }
-                     nextClaimTime = (previousClaimTime + addNextClaimTime) * 1000;
-                     $("#privateB-waiting-time-div").removeClass("d-none");
-                     $("#privateB-time-lable").text("Next Claim Time :");
-                     PrivateBTimer = nextClaimTime;
-                     console.log(
-                        "Next Cliam time>>>>>>>>>>>>>>>>>>>>>>>>>",
-                        nextClaimTime
-                     );
-                  }
-               }
-            }
-         }
-      }
-   }
-   if (PrivateBTimer - Date.now() > 0) {
-      privateBTimer = setInterval(function () {
-         makePrivateBTimer(PrivateBTimer);
-      }, 1000);
-   }
-   $(".box-loader").hide();
-}
-//======================== Private B Sale End=============================//
-
-//============================================== Timers ====================================================//
 
 //======================== Seed Sale Time =============================//
 function makeSeedTimer(time) {
@@ -1661,31 +1515,6 @@ $("#privateA_token_amount").keyup(async function () {
    } else {
       $("#privateA_usd_amount").val(number_usd(usd));
    }
-   coin_id = $('#privateA_coin').val();
-   console.log('coin id : ', coin_id);
-   if (coin_id != '') {
-      coin_data = getCoin(coin_id);
-      ERC20Contract = new web3.eth.Contract(ERC20Abi, coin_data.contract_address);
-      tokenDecimals = await ERC20Contract.methods.decimals().call();
-      Allowance = await ERC20Contract.methods.allowance(selectedAccount, PrivateSaleContractAddress).call();
-      Allowance = Allowance / Math.pow(10, tokenDecimals);
-      // usd = usd * Math.pow(10,tokenDecimals);
-      console.log('-------------------');
-      console.log(tokenDecimals, Allowance, usd);
-      console.log('-------------------');
-      if (Allowance == 0) {
-         $('#privateA-allowance-btn').removeClass('d-none');
-         $('#privateA-pay-now-btn').addClass('d-none');
-         return false;
-      }
-      if (Allowance < usd) {
-         $('#privateA-allowance-btn').removeClass('d-none');
-         $('#privateA-pay-now-btn').addClass('d-none');
-      } else {
-         $('#privateA-allowance-btn').addClass('d-none');
-         $('#privateA-pay-now-btn').removeClass('d-none');
-      }
-   }
 });
 $("#privateA_usd_amount").keyup(async function () {
    let val = $("#privateA_usd_amount").val();
@@ -1695,107 +1524,6 @@ $("#privateA_usd_amount").keyup(async function () {
       $("#privateA_token_amount").val("");
    } else {
       $("#privateA_token_amount").val(number_token(token));
-   }
-   coin_id = $('#privateA_coin').val();
-   console.log('coin id : ', coin_id);
-   let usd = val;
-   if (coin_id != '') {
-      coin_data = getCoin(coin_id);
-      ERC20Contract = new web3.eth.Contract(ERC20Abi, coin_data.contract_address);
-      tokenDecimals = await ERC20Contract.methods.decimals().call();
-      Allowance = await ERC20Contract.methods.allowance(selectedAccount, PrivateSaleContractAddress).call();
-
-      Allowance = Allowance / Math.pow(10, tokenDecimals);
-      // usd = usd * Math.pow(10,tokenDecimals);
-      console.log('-------------------');
-      console.log(tokenDecimals, Allowance, usd);
-      console.log('-------------------');
-      if (Allowance == 0) {
-         $('#privateA-allowance-btn').removeClass('d-none');
-         $('#privateA-pay-now-btn').addClass('d-none');
-         return false;
-      }
-      if (Allowance < usd) {
-         $('#privateA-allowance-btn').removeClass('d-none');
-         $('#privateA-pay-now-btn').addClass('d-none');
-      } else {
-         $('#privateA-allowance-btn').addClass('d-none');
-         $('#privateA-pay-now-btn').removeClass('d-none');
-      }
-   }
-});
-
-//private B
-$("#privateB_token_amount").keyup(async function () {
-   val = $("#privateB_token_amount").val();
-   usdPrice = $('#privateB_to_token_amount').text();
-   usd = val * usdPrice;
-   if (val == "") {
-      $("#privateB_usd_amount").val("");
-   } else {
-      $("#privateB_usd_amount").val(number_usd(usd));
-   }
-   coin_id = $('#privateB_coin').val();
-   console.log('coin id : ', coin_id);
-   if (coin_id != '') {
-      coin_data = getCoin(coin_id);
-      console.log(coin_data);
-      ERC20Contract = new web3.eth.Contract(ERC20Abi, coin_data.contract_address);
-      tokenDecimals = await ERC20Contract.methods.decimals().call();
-      Allowance = await ERC20Contract.methods.allowance(selectedAccount, PrivateBContractAddress).call();
-
-      Allowance = Allowance / Math.pow(10, tokenDecimals);
-      // usd = usd * Math.pow(10,tokenDecimals);
-      console.log('-------------------');
-      console.log(tokenDecimals, Allowance, usd);
-      console.log('-------------------');
-      if (Allowance == 0) {
-         $('#privateB-allowance-btn').removeClass('d-none');
-         $('#privateB-pay-now-btn').addClass('d-none');
-         return false;
-      }
-      if (Allowance < usd) {
-         $('#privateB-allowance-btn').removeClass('d-none');
-         $('#privateB-pay-now-btn').addClass('d-none');
-      } else {
-         $('#privateB-allowance-btn').addClass('d-none');
-         $('#privateB-pay-now-btn').removeClass('d-none');
-      }
-   }
-});
-$("#privateB_usd_amount").keyup(async function () {
-   val = $("#privateB_usd_amount").val();
-   usdPrice = $('#privateB_to_token_amount').text();
-   token = val / usdPrice;
-   let usd = val;
-   if (val == "") {
-      $("#privateB_token_amount").val("");
-   } else {
-      $("#privateB_token_amount").val(number_token(token));
-   }
-   if (coin_id != '') {
-      coin_data = getCoin(coin_id);
-      console.log(coin_data);
-      ERC20Contract = new web3.eth.Contract(ERC20Abi, coin_data.contract_address);
-      tokenDecimals = await ERC20Contract.methods.decimals().call();
-      Allowance = await ERC20Contract.methods.allowance(selectedAccount, PrivateBContractAddress).call();
-      Allowance = Allowance / Math.pow(10, tokenDecimals);
-      console.log('-------------------');
-      console.log(tokenDecimals, Allowance, usd);
-      console.log('-------------------');
-      // usd = usd * Math.pow(10,tokenDecimals);
-      if (Allowance == 0) {
-         $('#privateB-allowance-btn').removeClass('d-none');
-         $('#privateB-pay-now-btn').addClass('d-none');
-         return false;
-      }
-      if (Allowance < usd) {
-         $('#privateB-allowance-btn').removeClass('d-none');
-         $('#privateB-pay-now-btn').addClass('d-none');
-      } else {
-         $('#privateB-allowance-btn').addClass('d-none');
-         $('#privateB-pay-now-btn').removeClass('d-none');
-      }
    }
 });
 
@@ -1809,32 +1537,6 @@ $("#publicsale_token_amount").keyup(async function () {
    } else {
       $("#publicsale_usd_amount").val(number_usd(usd));
    }
-   coin_id = $('#publicsale_coin').val();
-   console.log('coin id : ', coin_id);
-   if (coin_id != '') {
-      coin_data = getCoin(coin_id);
-      console.log(coin_data);
-      ERC20Contract = new web3.eth.Contract(ERC20Abi, coin_data.contract_address);
-      tokenDecimals = await ERC20Contract.methods.decimals().call();
-      Allowance = await ERC20Contract.methods.allowance(selectedAccount, PublicSaleContractAddress).call();
-      console.log('-------------------');
-      console.log(tokenDecimals, Allowance, usd);
-      console.log('-------------------');
-      Allowance = Allowance / Math.pow(10, tokenDecimals);
-      // usd = usd * Math.pow(10,tokenDecimals);
-      if (Allowance == 0) {
-         $('#publicsale-allowance-btn').removeClass('d-none');
-         $('#publicsale-pay-now-btn').addClass('d-none');
-         return false;
-      }
-      if (Allowance < usd) {
-         $('#publicsale-allowance-btn').removeClass('d-none');
-         $('#publicsale-pay-now-btn').addClass('d-none');
-      } else {
-         $('#publicsale-allowance-btn').addClass('d-none');
-         $('#publicsale-pay-now-btn').removeClass('d-none');
-      }
-   }
 });
 $("#publicsale_usd_amount").keyup(async function () {
    let val = $("#publicsale_usd_amount").val();
@@ -1846,32 +1548,7 @@ $("#publicsale_usd_amount").keyup(async function () {
       $("#publicsale_token_amount").val(number_token(token));
    }
    let usd = val;
-   coin_id = $('#publicsale_coin').val();
-   console.log('coin id : ', coin_id);
-   if (coin_id != '') {
-      coin_data = getCoin(coin_id);
-      console.log(coin_data);
-      ERC20Contract = new web3.eth.Contract(ERC20Abi, coin_data.contract_address);
-      tokenDecimals = await ERC20Contract.methods.decimals().call();
-      Allowance = await ERC20Contract.methods.allowance(selectedAccount, PublicSaleContractAddress).call();
-      Allowance = Allowance / Math.pow(10, tokenDecimals);
-      console.log('-------------------');
-      console.log(tokenDecimals, Allowance, usd);
-      console.log('-------------------');
-      // usd = usd * Math.pow(10,tokenDecimals);
-      if (Allowance == 0) {
-         $('#publicsale-allowance-btn').removeClass('d-none');
-         $('#publicsale-pay-now-btn').addClass('d-none');
-         return false;
-      }
-      if (Allowance < usd) {
-         $('#publicsale-allowance-btn').removeClass('d-none');
-         $('#publicsale-pay-now-btn').addClass('d-none');
-      } else {
-         $('#publicsale-allowance-btn').addClass('d-none');
-         $('#publicsale-pay-now-btn').removeClass('d-none');
-      }
-   }
+   
 });
 
 //allowance , pay btn , whitelist click
@@ -1990,7 +1667,7 @@ $("#seed-pay-now-btn").click(async function (e) {
             }
          });
 
-         Toast('Your Transaction is being confirmed', 3000, 3);
+         // Toast('Your Transaction is being confirmed', 3000, 3);
       })
       .on("receipt", async function (receipt) {
          $("#seed_pay_now_spinner").addClass("d-none");
@@ -2006,70 +1683,24 @@ $("#seed-pay-now-btn").click(async function (e) {
 
 });
 
-//private A
-$("#privateA-allowance-btn").click(async function (e) {
-   let usd_amount = $("#privateA_usd_amount").val() == "" ? 0 : parseFloat($("#privateA_usd_amount").val());
-   let min_usd = $("#private_a_minimum").html();
-   let max_usd = $("#private_a_maximum").html();
-   if (usd_amount < min_usd) {
-      Toast('Please enter USD amount greater than ' + min_usd, 3000, 0);
-      return;
-   }
-   if (usd_amount > max_usd) {
-      Toast('Please enter USD amount less than ' + max_usd, 3000, 0);
-      return;
-   }
-   $("#privateA_allowance_spinner").removeClass("d-none");
-   $("#privateA-allowance-btn").prop("disabled", true);
-   coin_id = $('#privateA_coin').val();
-   coin_data = getCoin(coin_id);
-   ERC20Contract = new web3.eth.Contract(ERC20Abi, coin_data.contract_address);
-   tokenDecimals = await ERC20Contract.methods.decimals().call();
-   if (is_live != "live") {
-      allowance_amount = "20000000000000000000000000000";
-   } else {
-      allowance_amount = 20000000000 * Math.pow(10, tokenDecimals);
-      allowance_amount = allowance_amount.toString();
-   }
-   var data = ERC20Contract.methods.approve(PrivateSaleContractAddress, allowance_amount).encodeABI();
-   transactionParameters = {
-      from: selectedAccount,
-      to: coin_data.contract_address,
-      data: data,
-      value: '0x00'
-   };
-
-   web3.eth.sendTransaction(transactionParameters)
-      .once('transactionHash', function (payload) {
-         Toast('Your Transaction is being confirmed', 3000, 3);
-      })
-      .on("receipt", async function (receipt) {
-         $("#privateA_allowance_spinner").addClass("d-none");
-         $("#privateA-allowance-btn").prop("disabled", false);
-         $('#privateA-allowance-btn').addClass('d-none');
-         $('#privateA-pay-now-btn').removeClass('d-none');
-      })
-      .on("error", function (error, receipt) {
-         Toast('User reject transaction', 3000, 0);
-         $("#privateA_allowance_spinner").addClass("d-none");
-         $("#privateA-allowance-btn").prop("disabled", false);
-      })
-
-});
 $("#privateA-pay-now-btn").click(async function (e) {
-   let usd_amount = $("#privateA_usd_amount").val() == "" ? 0 : parseFloat($("#privateA_usd_amount").val());
-   let min_usd = $("#private_a_minimum").html();
-   let max_usd = $("#private_a_maximum").html();
-   if (usd_amount < min_usd) {
-      Toast('Please enter USD amount greater than ' + min_usd, 3000, 0);
-      return;
-   }
-   if (usd_amount > max_usd) {
-      Toast('Please enter USD amount less than ' + max_usd, 3000, 0);
-      return;
-   }
    $("#privateA_pay_now_spinner").removeClass("d-none");
    $("#privateA-pay-now-btn").prop("disabled", true);
+   let usd_amount = $("#privateA_usd_amount").val() == "" ? 0 : parseFloat($("#privateA_usd_amount").val());
+   let min_usd = $("#private_a_minimum").html();
+   let max_usd = $("#private_a_maximum").html();
+   if (usd_amount < min_usd) {
+      Toast('Please enter USD amount greater than ' + min_usd, 3000, 0);
+      $("#privateA_pay_now_spinner").addClass("d-none");
+      $("#privateA-pay-now-btn").prop("disabled", false);
+      return;
+   }
+   if (usd_amount > max_usd) {
+      $("#privateA_pay_now_spinner").addClass("d-none");
+      $("#privateA-pay-now-btn").prop("disabled", false);
+      Toast('Please enter USD amount less than ' + max_usd, 3000, 0);
+      return;
+   }
 
    acb_amount = $('#privateA_token_amount').val();
    if (acb_amount == '') {
@@ -2078,28 +1709,45 @@ $("#privateA-pay-now-btn").click(async function (e) {
       $("#privateA-pay-now-btn").prop("disabled", false);
       return false;
    }
-   usd_amount = $("#privateA_usd_amount").val();
-   coin_id = $('#privateA_coin').val();
-   coin_data = getCoin(coin_id);
-   ERC20Contract = new web3.eth.Contract(ERC20Abi, coin_data.contract_address);
-   tokenDecimals = await TokenContract.methods.decimals().call();
+   multiplier = Math.pow(10, 18);
+   let tokenAmount = acb_amount;
+   let ethAmount = usd_amount;
 
-   multiplier = Math.pow(10, tokenDecimals);
-   acb_amount = BigInt(acb_amount * multiplier);
+   acb_amount = web3.utils.toWei(acb_amount.toString(), 'ether');
+   usd_amount = web3.utils.toWei(usd_amount.toString(), 'ether');
+   console.log(acb_amount, usd_amount);
    acb_amount = acb_amount.toString();
-   console.log(coin_data.contract_address, usd_amount);
-   var data = PrivateAContract.methods.addInvestor(coin_data.contract_address, acb_amount).encodeABI();
+   usd_amount = usd_amount.toString();
+   console.log(acb_amount, usd_amount);
+
+   var data = PrivateAContract.methods.addInvestor().encodeABI();
    transactionParameters = {
       from: selectedAccount,
       to: PrivateSaleContractAddress,
       data: data,
-      value: '0x00'
+      value: usd_amount
    };
 
    web3.eth.sendTransaction(transactionParameters)
       .once('transactionHash', function (payload) {
          console.log(payload);
-         Toast('Your Transaction is being confirmed', 3000, 3);
+         $("#privateA_pay_now_spinner").addClass("d-none");
+         $("#privateA-pay-now-btn").prop("disabled", false);
+         $("#privateA_usd_amount").val('');
+         $("#privateA_token_amount").val('');
+         let data = {
+            investor_address: selectedAccount,
+            trx_id: payload,
+            paid_amount: ethAmount,
+            token_amount: tokenAmount,
+            sale_type: 2
+         }
+         postAjax(addTransactionUrl, data, function (res) {
+            if(res.flag==1){
+               $('#privateA-payment-history-tab').trigger('click');
+            }
+         });
+         // Toast('Your Transaction is being confirmed', 3000, 3);
       })
       .on("receipt", async function (receipt) {
          $("#privateA_pay_now_spinner").addClass("d-none");
@@ -2119,7 +1767,7 @@ $("#privateA-pay-now-btn").click(async function (e) {
 $("#privateA-whitelist-btn").click(async function (e) {
    $("#privateA_whitelist_spinner").removeClass('d-none');
    $("#privateA-whitelist-btn").prop("disabled", true);
-   await postAjax(whitelist_url, { address: selectedAccount, is_sale: 1 }, function (res) {
+   await postAjax(whitelistAddUrl, { address: selectedAccount, sale_type: 1 }, function (res) {
       Toast(res.msg, 3000, res.flag);
       if (res.flag == 1) {
          $("#privateA-buy-btn-div").removeClass("d-none");
@@ -2130,200 +1778,58 @@ $("#privateA-whitelist-btn").click(async function (e) {
    });
 });
 
-//private B 
-$("#privateB-allowance-btn").click(async function (e) {
-   let usd_amount = $("#privateB_usd_amount").val() == "" ? 0 : parseFloat($("#privateB_usd_amount").val());
-   let min_usd = $("#private_b_minimum").html();
-   let max_usd = $("#private_b_maximum").html();
-   if (usd_amount < min_usd) {
-      Toast('Please enter USD amount greater than ' + min_usd, 3000, 0);
-      return;
-   }
-   if (usd_amount > max_usd) {
-      Toast('Please enter USD amount less than ' + max_usd, 3000, 0);
-      return;
-   }
-   $("#privateB_allowance_spinner").removeClass("d-none");
-   $("#privateB-allowance-btn").prop("disabled", true);
-   coin_id = $("#privateB_coin").val();
-   coin_data = getCoin(coin_id);
-   ERC20Contract = new web3.eth.Contract(ERC20Abi, coin_data.contract_address);
-   tokenDecimals = await ERC20Contract.methods.decimals().call();
-   if (is_live != "live") {
-      allowance_amount = "20000000000000000000000000000";
-   } else {
-      allowance_amount = 20000000000 * Math.pow(10, tokenDecimals);
-      allowance_amount = allowance_amount.toString();
-   }
-   var data = ERC20Contract.methods.approve(PrivateBContractAddress, allowance_amount).encodeABI();
-   transactionParameters = {
-      from: selectedAccount,
-      to: coin_data.contract_address,
-      data: data,
-      value: '0x00'
-   };
-
-   web3.eth.sendTransaction(transactionParameters)
-      .once('transactionHash', function (payload) {
-         Toast('Your Transaction is being confirmed', 3000, 3);
-      })
-      .on("receipt", async function (receipt) {
-         $("#privateB_allowance_spinner").addClass("d-none");
-         $("#privateB-allowance-btn").prop("disabled", false);
-         $('#privateB-allowance-btn').addClass('d-none');
-         $('#privateB-pay-now-btn').removeClass('d-none');
-      })
-      .on("error", function (error, receipt) {
-         Toast('User reject transaction', 3000, 0);
-         $("#privateB_allowance_spinner").addClass("d-none");
-         $("#privateB-allowance-btn").prop("disabled", false);
-      })
-
-});
-$("#privateB-pay-now-btn").click(async function (e) {
-   let usd_amount = $("#privateB_usd_amount").val() == "" ? 0 : parseFloat($("#privateB_usd_amount").val());
-   let min_usd = $("#private_b_minimum").html();
-   let max_usd = $("#private_b_maximum").html();
-   if (usd_amount < min_usd) {
-      Toast('Please enter USD amount greater than ' + min_usd, 3000, 0);
-      return;
-   }
-   if (usd_amount > max_usd) {
-      Toast('Please enter USD amount less than ' + max_usd, 3000, 0);
-      return;
-   }
-   $("#privateB_pay_now_spinner").removeClass("d-none");
-   $("#privateB-pay-now-btn").prop("disabled", true);
-
-   acb_amount = $('#privateB_token_amount').val();
-   if (acb_amount == '') {
-      Toast('Please, Enter ACB amount', 3000, 0);
-      $("#privateB_pay_now_spinner").addClass("d-none");
-      $("#privateB-pay-now-btn").prop("disabled", false);
-      return false;
-   }
-   usd_amount = $("#privateB_usd_amount").val();
-   coin_id = $("#privateB_coin").val();
-   coin_data = getCoin(coin_id);
-   ERC20Contract = new web3.eth.Contract(ERC20Abi, coin_data.contract_address);
-   tokenDecimals = await TokenContract.methods.decimals().call();
-
-   multiplier = Math.pow(10, tokenDecimals);
-   acb_amount = BigInt(acb_amount * multiplier);
-   acb_amount = acb_amount.toString();
-   console.log(coin_data.contract_address, usd_amount);
-   var data = PrivateBContract.methods.addInvestor(coin_data.contract_address, acb_amount).encodeABI();
-   transactionParameters = {
-      from: selectedAccount,
-      to: PrivateBContractAddress,
-      data: data,
-      value: '0x00'
-   };
-
-   web3.eth.sendTransaction(transactionParameters)
-      .once('transactionHash', function (payload) {
-         console.log(payload);
-         Toast('Your Transaction is being confirmed', 3000, 3);
-      })
-      .on("receipt", async function (receipt) {
-         $("#privateB_pay_now_spinner").addClass("d-none");
-         $("#privateB-pay-now-btn").prop("disabled", false);
-         $("#privateB_usd_amount").val('');
-         $("#privateB_token_amount").val('');
-         filters.investor_address = $(".Wallet_address").val();
-         filterData(privateB_history_url, "privateB-payment-history-table");
-      })
-      .on("error", function (error, receipt) {
-         Toast('User reject transaction', 3000, 0);
-         $("#privateB_pay_now_spinner").addClass("d-none");
-         $("#privateB-pay-now-btn").prop("disabled", false);
-      })
-
-});
-$("#privateB-whitelist-btn").click(async function (e) {
-   $("#privateB_whitelist_spinner").removeClass('d-none');
-   $("#privateB-whitelist-btn").prop("disabled", true);
-   await postAjax(whitelist_url, { address: selectedAccount, is_sale: 2 }, function (res) {
-      Toast(res.msg, 3000, res.flag);
-      if (res.flag == 1) {
-         $("#privateB-buy-btn-div").removeClass("d-none");
-         $("#privateB-whitelist-btn-div").addClass("d-none");
-      }
-      $("#privateB_whitelist_spinner").addClass('d-none');
-      $("#privateB-whitelist-btn").prop("disabled", false);
-   });
-});
-
 //public sale
-$("#publicsale-allowance-btn").click(async function (e) {
-   $("#publicsale_allowance_spinner").removeClass("d-none");
-   $("#publicsale-allowance-btn").prop("disabled", true);
-   coin_id = $("#publicsale_coin").val();
-   coin_data = getCoin(coin_id);
-   ERC20Contract = new web3.eth.Contract(ERC20Abi, coin_data.contract_address);
-   tokenDecimals = await ERC20Contract.methods.decimals().call();
-   if (is_live != "live") {
-      allowance_amount = "20000000000000000000000000000";
-   } else {
-      allowance_amount = 20000000000 * Math.pow(10, tokenDecimals);
-      allowance_amount = allowance_amount.toString();
-   }
-   var data = ERC20Contract.methods.approve(PublicSaleContractAddress, allowance_amount).encodeABI();
-   transactionParameters = {
-      from: selectedAccount,
-      to: coin_data.contract_address,
-      data: data,
-      value: '0x00'
-   };
-
-   web3.eth.sendTransaction(transactionParameters)
-      .once('transactionHash', function (payload) {
-         Toast('Your Transaction is being confirmed', 3000, 3);
-      })
-      .on("receipt", async function (receipt) {
-         $("#publicsale_allowance_spinner").addClass("d-none");
-         $("#publicsale-allowance-btn").prop("disabled", false);
-         $('#publicsale-allowance-btn').addClass('d-none');
-         $('#publicsale-pay-now-btn').removeClass('d-none');
-      })
-      .on("error", function (error, receipt) {
-         Toast('User reject transaction', 3000, 0);
-         $("#publicsale_allowance_spinner").addClass("d-none");
-         $("#publicsale-allowance-btn").prop("disabled", false);
-      })
-});
 $("#publicsale-pay-now-btn").click(async function (e) {
    $("#publicsale_pay_now_spinner").removeClass("d-none");
    $("#publicsale-pay-now-btn").prop("disabled", true);
 
    acb_amount = $('#publicsale_token_amount').val();
+   usd_amount = $("#publicsale_usd_amount").val();
    if (acb_amount == '') {
       Toast('Please, Enter ACB amount', 3000, 0);
       $("#publicsale_pay_now_spinner").addClass("d-none");
       $("#publicsale-pay-now-btn").prop("disabled", false);
       return false;
    }
-   usd_amount = $("#publicsale_usd_amount").val();
-   coin_data = getCoin(coin_id);
-   ERC20Contract = new web3.eth.Contract(ERC20Abi, coin_data.contract_address);
-   tokenDecimals = await TokenContract.methods.decimals().call();
+   multiplier = Math.pow(10, 18);
+   let tokenAmount = acb_amount;
+   let ethAmount = usd_amount;
 
-   multiplier = Math.pow(10, tokenDecimals);
-   acb_amount = BigInt(acb_amount * multiplier);
+   acb_amount = web3.utils.toWei(acb_amount.toString(), 'ether');
+   usd_amount = web3.utils.toWei(usd_amount.toString(), 'ether');
+   console.log(acb_amount, usd_amount);
    acb_amount = acb_amount.toString();
-   console.log(coin_data.contract_address, usd_amount);
-   var data = PublicSaleContract.methods.addInvestor(coin_data.contract_address, acb_amount).encodeABI();
+   usd_amount = usd_amount.toString();
+   console.log(acb_amount, usd_amount);
+
+   var data = PublicSaleContract.methods.addInvestor().encodeABI();
    transactionParameters = {
       from: selectedAccount,
       to: PublicSaleContractAddress,
       data: data,
-      value: '0x00'
+      value: usd_amount
    };
 
    web3.eth.sendTransaction(transactionParameters)
       .once('transactionHash', function (payload) {
+         $("#publicsale_pay_now_spinner").addClass("d-none");
+         $("#publicsale-pay-now-btn").prop("disabled", false);
+         $("#publicsale_usd_amount").val('');
+         $("#publicsale_token_amount").val('');
          console.log(payload);
-         Toast('Your Transaction is being confirmed', 3000, 3);
+         let data = {
+            investor_address: selectedAccount,
+            trx_id: payload,
+            paid_amount: ethAmount,
+            token_amount: tokenAmount,
+            sale_type: 3
+         }
+         postAjax(addTransactionUrl, data, function (res) {
+            if(res.flag==1){
+               $('#publicsale-payment-history-tab').trigger('click');
+            }
+         });
+         // Toast('Your Transaction is being confirmed', 3000, 3);
       })
       .on("receipt", async function (receipt) {
          $("#publicsale_pay_now_spinner").addClass("d-none");
@@ -2331,7 +1837,7 @@ $("#publicsale-pay-now-btn").click(async function (e) {
          $("#publicsale_usd_amount").val('');
          $("#publicsale_token_amount").val('');
          filters.investor_address = $(".Wallet_address").val();
-         filterData(public_history_url, "publicsale-payment-history-table");
+         filterData(PublicTransactionHistoryUrl, "publicsale-payment-history-table");
       })
       .on("error", function (error, receipt) {
          Toast('User reject transaction', 3000, 0);
@@ -2709,43 +2215,12 @@ $(document).on("click", "#privateA-pay-now-back-btn", function (event) {
 });
 $(document).on("click", "#privateA-payment-history-tab", function (event) {
    $("#privateA-payment-history").removeClass("d-none");
-   $("#privateA-pay-now-div").addClass("d-none");
+   $("#privateA-div").removeClass("d-none");
+   $("#privateA-buy-now-div").addClass("d-none");
    // $('#privateA-buy-now-btn').addClass('d-none');
 
    filters.investor_address = $(".Wallet_address").val();
    filterData(PrivateTransactionHistoryUrl, "private-payment-history-table");
-});
-
-// private B
-$("#private-sale-b-tab").click(async function (event) {
-   clearAllInterval();
-});
-$(document).on("click", "#privateB-inner-tab", function (event) {
-   $("#privateB-payment-history").addClass("d-none");
-   $("#privateB-pay-now-div").addClass("d-none");
-   $("#privateB-inner").addClass("active");
-});
-$(document).on("click", "#privateB-buy-now-btn", function (event) {
-   $("#privateB-div").addClass("d-none");
-   $("#privateB-buy-now-div").removeClass("d-none");
-});
-$(document).on("click", "#privateB-buy-now-back-btn", async function (event) {
-   await getPrivateBInvestorDetail(PrivateBContract, selectedAccount);
-   $("#privateB-div").removeClass("d-none");
-   $("#privateB-buy-now-div").addClass("d-none");
-});
-$(document).on("click", "#privateB-pay-now-back-btn", function (event) {
-   $("#privateB-div").removeClass("d-none");
-   $("#privateB-payment-history").removeClass("d-none");
-   $("#privateB-pay-now-div").addClass("d-none");
-});
-$(document).on("click", "#privateB-payment-history-tab", function (event) {
-   $("#privateB-payment-history").removeClass("d-none");
-   $("#privateB-pay-now-div").addClass("d-none");
-   // $('#privateB-buy-now-btn').addClass('d-none');
-
-   filters.investor_address = $(".Wallet_address").val();
-   filterData(privateB_history_url, "privateB-payment-history-table");
 });
 
 // public sale
@@ -2754,11 +2229,12 @@ $("#publicsale-tab").click(async function (event) {
 });
 $(document).on("click", "#publicsale-payment-history-tab", function (event) {
    $("#publicsale-payment-history").removeClass("d-none");
-   $("#publicsale-pay-now-div").addClass("d-none");
+   $("#publicsale-div").removeClass("d-none");
+   $("#publicsale-buy-now-div").addClass("d-none");
    // $('#publicsale-buy-now-btn').addClass('d-none');
 
    filters.investor_address = $(".Wallet_address").val();
-   filterData(public_history_url, "publicsale-payment-history-table");
+   filterData(PublicTransactionHistoryUrl, "publicsale-payment-history-table");
 });
 $(document).on("click", "#series-inner-b-tab", function (event) {
    $("#publicsale-buy-now-btn").removeClass("d-none");

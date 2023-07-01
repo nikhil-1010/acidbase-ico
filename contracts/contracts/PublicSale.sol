@@ -18,6 +18,7 @@ contract PublicSale {
     uint256 public totalInvestment;
     uint256 public totalRelease;
     uint256 public tgePercentage;
+    uint256 public exchangeRate = 5000;
     
     struct Investor {
         uint256 lockedAcb;        //  Locked balance
@@ -31,7 +32,7 @@ contract PublicSale {
     mapping(address => Investor) public investors;
     mapping(address => uint256) public whiteListTokenAddress;
 
-    event AddInvestor(address token,address indexed investor, uint256 indexed amount,uint256 indexed usd_amount);
+    event AddInvestor(address indexed investor, uint256 indexed payin_amount,uint256 indexed payout_amount);
     event Claim(address indexed sender, address indexed investor, uint256 indexed amount);
     
     constructor() {
@@ -122,23 +123,22 @@ contract PublicSale {
             return false;
         if(investors[msg.sender].previousClaimTime == 0)
             return true;
-        if(block.timestamp > investors[msg.sender].previousClaimTime + 30*24*60*60)
+        if(block.timestamp > investors[msg.sender].previousClaimTime + 2*60)
+        // if(block.timestamp > investors[msg.sender].previousClaimTime + 30*24*60*60)
             return true;
         else
             return false;
     }
 
-    function addInvestor(address token, uint256 _acbAmount) external {
+    function addInvestor() payable external{
         require(!isTokenGenerateEventStarted()," Cannot add investor after Token generation started.");
-        uint256 exchangeRate = whiteListTokenAddress[token];
-        require(exchangeRate != 0,"Invalid whitelist token address.");
+        require(exchangeRate != 0,"Invalid Exchange rate.");
         
-        uint256 decimal = IERC20(token).decimals();
-        uint256 acb_decimal = IERC20(acb_address).decimals();
-        uint256 usd_amount = _acbAmount / ( exchangeRate  * (10**(acb_decimal-decimal)));
+        // uint256 usd_amount = _acbAmount / ( (exchangeRate * (10**(acb_decimal-decimal)) / 100));
+        uint256 _acbAmount = (msg.value) * (exchangeRate);
 
-        (bool success, bytes memory data) = token.call(abi.encodeWithSelector(IERC20.transferFrom.selector, msg.sender, owner, usd_amount));
-        require(success && (data.length == 0 || abi.decode(data, (bool))), "ERROR : can't transfer");
+        (bool sent, bytes memory data) = owner.call{value: msg.value}("");
+        require(sent, "Failed to send Ether");
 
         totalInvestment += _acbAmount;
         if(investors[msg.sender].lockedAcb != 0){
@@ -154,7 +154,7 @@ contract PublicSale {
                 balance:_acbAmount
             });
         }
-        emit AddInvestor(token,msg.sender,_acbAmount,usd_amount);
+        emit AddInvestor(msg.sender,msg.value,_acbAmount);
     }
     
     function generateToken() external isInvestorExist {
@@ -178,7 +178,8 @@ contract PublicSale {
         uint lastprevtime = investors[_address].previousClaimTime;
         if(lastprevtime == 0)   lastprevtime = vestingTimeStartFrom;
 
-        totalMonths = (block.timestamp-lastprevtime) / (30*24*60*60);
+        totalMonths = (block.timestamp-lastprevtime) / (2*60);
+        // totalMonths = (block.timestamp-lastprevtime) / (30*24*60*60);
         if(totalMonths > vestingDuration)   totalMonths = vestingDuration - investors[_address].claimCounter;
         if(totalMonths < 1)     totalMonths = 1; 
 

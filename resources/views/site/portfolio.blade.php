@@ -82,9 +82,9 @@
         <section class="my-5 d-none" id="disconnect-wallet-div">
             <div class="container">
                 <div class="card py-5">
-                            <div class="d-flex align-items-center justify-content-center h-100">
-                                <p class="m-0 fs-5 fw-lighter text-center text-white py-5">Please connect your wallet account to view your portfolio</p>
-                            </div>
+                    <div class="d-flex align-items-center justify-content-center h-100">
+                        <p class="m-0 fs-5 fw-lighter text-center text-white py-5">Please connect your wallet account to view your portfolio</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -135,22 +135,26 @@
                                                 <div id='flip_timer' class="ico-timer"></div>
                                             </div>
 
-                                            <div class="d-flex gap-3 flex-wrap justify-content-center mt-2 d-none" id="seed-buy-btn-div">
-                                                <button type="button" class="btn btn-primary btn-lg rounded-3 fs-6" id="seed-buy-now-btn">Buy Now 
+                                            <div class="d-flex gap-3 flex-wrap justify-content-center mt-3 d-none" id="seed-buy-btn-div">
+                                                <button type="button" class="btn btn-primary btn-lg rounded-3 fs-6" id="seed-buy-now-btn">Buy Now
                                             </div>
-                                            
-                                            <div class="d-flex gap-3 flex-wrap justify-content-center d-none" id="seed-tg-now-div">
-                                                <button type="button" class="btn btn-primary btn-lg rounded-3 fs-6" id="seed-tg-now-btn">Generate Token 
+
+                                            <div class="d-flex gap-3 flex-wrap justify-content-center mt-3 d-none" id="seed-tg-now-div">
+                                                <button type="button" class="btn btn-primary btn-lg rounded-3 fs-6" id="seed-tg-now-btn">Generate Token
                                                     <span class="btn_spinner d-none" id="seed_tg_now_spinner">
                                                         <i class="fa fa-spinner fa-spin"></i>
                                                     </span>
                                                 </button>
                                             </div>
-                                            <div class="d-flex gap-3 flex-wrap justify-content-center d-none" id="seed-claim-now-div">
-                                                <button type="button" class="btn btn-primary btn-lg rounded-3 fs-6" id="seed-claim-now-btn">Claim Now</button>
+                                            <div class="d-flex gap-3 flex-wrap justify-content-center mt-3 d-none" id="seed-claim-now-div">
+                                                <button type="button" class="btn btn-primary btn-lg rounded-3 fs-6" id="seed-claim-now-btn">Claim Now
+                                                    <span class="btn_spinner d-none" id="seed_claim_now_spinner">
+                                                        <i class="fa fa-spinner fa-spin"></i>
+                                                    </span>
+                                                </button>
                                             </div>
 
-                                            <div class="portfolio-notice text-center d-none" id="seed_over_div">
+                                            <div class="portfolio-notice text-center mt-3 d-none" id="seed_over_div">
                                                 <p class="text-center text-white m-0 fs-6 mt-4">The Seed Sale time duration is over and if you would like to buy more tokens, <a href="#">please click here</a></p>
                                             </div>
 
@@ -161,7 +165,7 @@
                                     </div>
                                 </div>
                                 <div class="buy-otg-box d-none" id="seed-buy-now-div">
-                                    <div class="d-flex gap-3 text-white align-items-center justify-content-between">    
+                                    <div class="d-flex gap-3 text-white align-items-center justify-content-between">
                                         <h3 class="fw-bold m-0 text-uppercase"><i class="fa-solid fa-arrow-left fs-5 me-2 cursor-pointer" id="seed-buy-now-back-btn"></i> Buy ACB</h3>
                                         <h6 class="m-0">1 ACB = <span class="token_usd_price" id="seed_to_token_amount">{{app('settings')['exchange_rate']}}</span> ETH</h3>
                                     </div>
@@ -181,7 +185,7 @@
                                                 </div>
                                             </div>
                                             <div class="d-flex gap-3 flex-wrap justify-content-center mt-4">
-                                                <button type="button" class="btn btn-primary btn-lg rounded-3 fs-6" id="seed-pay-now-btn">Pay Now 
+                                                <button type="button" class="btn btn-primary btn-lg rounded-3 fs-6" id="seed-pay-now-btn">Pay Now
                                                     <span class="d-none btn_spinner" id="seed_pay_now_spinner">
                                                         <i class="fa fa-spinner fa-spin"></i>
                                                     </span>
@@ -221,15 +225,21 @@
 
                                             <div class="d-flex gap-2 flex-wrap align-items-center mt-4" id="privateA-waiting-time-div">
                                                 <p class="m-0" id="privateA-time-lable">Token Generate Start In:</p>
-                                                <div id='flip_timer' class="ico-timer"></div>
+                                                <div id='private_sale_timer' class="ico-timer"></div>
                                             </div>
 
                                             <div class="d-flex gap-3 flex-wrap justify-content-center mt-2 d-none" id="privateA-buy-btn-div">
-                                                <button type="button" class="btn btn-primary btn-lg rounded-3 fs-6" id="privateA-buy-now-btn">Buy Now 
+                                                <button type="button" class="btn btn-primary btn-lg rounded-3 fs-6" id="privateA-buy-now-btn">Buy Now
                                             </div>
-                                            
+                                            <div class="d-flex gap-3 flex-wrap justify-content-center mt-3 d-none" id="privateA-whitelist-btn-div">
+                                                <button type="button" class="btn btn-primary btn-lg rounded-3 fs-6" id="privateA-whitelist-btn">Whitelist Now
+                                                    <span class="btn_spinner d-none" id="privateA_whitelist_spinner">
+                                                        <i class="fa fa-spinner fa-spin"></i>
+                                                    </span>
+                                            </div>
+
                                             <div class="d-flex gap-3 flex-wrap justify-content-center d-none" id="privateA-tg-now-div">
-                                                <button type="button" class="btn btn-primary btn-lg rounded-3 fs-6" id="privateA-tg-now-btn">Generate Token 
+                                                <button type="button" class="btn btn-primary btn-lg rounded-3 fs-6" id="privateA-tg-now-btn">Generate Token
                                                     <span class="btn_spinner d-none" id="privateA_tg_now_spinner">
                                                         <i class="fa fa-spinner fa-spin"></i>
                                                     </span>
@@ -245,14 +255,14 @@
 
                                         </div>
                                         <div class="tab-pane fade" id="privateA-payment-history" role="tabpanel" aria-labelledby="pills-payment-history-tab">
-                                            <div id="privateA-payment-history-table"></div>
+                                            <div id="private-payment-history-table"></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="buy-otg-box d-none" id="privateA-buy-now-div">
-                                    <div class="d-flex gap-3 text-white align-items-center justify-content-between">    
+                                    <div class="d-flex gap-3 text-white align-items-center justify-content-between">
                                         <h3 class="fw-bold m-0 text-uppercase"><i class="fa-solid fa-arrow-left fs-5 me-2 cursor-pointer" id="privateA-buy-now-back-btn"></i> Buy ACB</h3>
-                                        <h6 class="m-0">1 ACB = <span class="token_usd_price" id="privateA_to_token_amount">{{app('settings')['exchange_rate']}}</span> ETH</h3>
+                                        <h6 class="m-0">1 ACB = <span class="token_usd_price" id="privateA_to_token_amount">0.000125</span> ETH</h3>
                                     </div>
 
                                     <hr class="bg-white my-4">
@@ -270,8 +280,103 @@
                                                 </div>
                                             </div>
                                             <div class="d-flex gap-3 flex-wrap justify-content-center mt-4">
-                                                <button type="button" class="btn btn-primary btn-lg rounded-3 fs-6" id="privateA-pay-now-btn">Pay Now 
+                                                <button type="button" class="btn btn-primary btn-lg rounded-3 fs-6" id="privateA-pay-now-btn">Pay Now
                                                     <span class="d-none btn_spinner" id="privateA_pay_now_spinner">
+                                                        <i class="fa fa-spinner fa-spin"></i>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-none" id="public-sale">
+                                <div id="publicsale-div" class="ico-tab">
+
+                                    <ul class="nav nav-tabs nav-justified mb-0" id="tab" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link py-3 active" id="publicsale-inner-tab" data-bs-toggle="tab" data-bs-target="#publicsale-inner" type="button" role="tab" aria-controls="publicsale-inner" aria-selected="true"><i class="fa-solid fa-seedling me-1"></i> Public Round</button>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link py-3" id="publicsale-payment-history-tab" data-bs-toggle="tab" data-bs-target="#publicsale-payment-history" type="button" role="tab" aria-controls="payment-history" aria-selected="false"><i class="fa-solid fa-clock-rotate-left me-1"></i> Payment History</button>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content text-white py-4" id="tabContent">
+                                        <div class="tab-pane fade show active" id="publicsale-inner" role="tabpanel" aria-labelledby="publicsale-inner-tab">
+                                            <div class="row g-4">
+                                                <div class="col-md-6">
+                                                    <div class="form-floating">
+                                                        <input type="text" class="form-control bg-transparent" id="publicsale-locked-balance" placeholder="0" value="0" disabled>
+                                                        <label for="floatingInput">Locked Balance</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-floating">
+                                                        <input type="email" class="form-control bg-transparent" id="publicsale-release-balance" value="0" placeholder="0" disabled>
+                                                        <label for="floatingInput">Released Balance</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="d-flex gap-2 flex-wrap align-items-center mt-4" id="publicsale-waiting-time-div">
+                                                <p class="m-0" id="publicsale-time-lable">Token Generate Start In:</p>
+                                                <div id='public_sale_timer' class="ico-timer"></div>
+                                            </div>
+
+                                            <div class="d-flex gap-3 flex-wrap justify-content-center mt-2 d-none" id="publicsale-buy-btn-div">
+                                                <button type="button" class="btn btn-primary btn-lg rounded-3 fs-6" id="publicsale-buy-now-btn">Buy Now
+                                            </div>
+                                            <div class="d-flex gap-3 flex-wrap justify-content-center mt-3 d-none" id="publicsale-whitelist-btn-div">
+                                                <button type="button" class="btn btn-primary btn-lg rounded-3 fs-6" id="publicsale-whitelist-btn">Whitelist Now
+                                                    <span class="btn_spinner d-none" id="publicsale_whitelist_spinner">
+                                                        <i class="fa fa-spinner fa-spin"></i>
+                                                    </span>
+                                            </div>
+
+                                            <div class="d-flex gap-3 flex-wrap justify-content-center d-none" id="publicsale-tg-now-div">
+                                                <button type="button" class="btn btn-primary btn-lg rounded-3 fs-6" id="publicsale-tg-now-btn">Generate Token
+                                                    <span class="btn_spinner d-none" id="publicsale_tg_now_spinner">
+                                                        <i class="fa fa-spinner fa-spin"></i>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                            <div class="d-flex gap-3 flex-wrap justify-content-center d-none" id="publicsale-claim-now-div">
+                                                <button type="button" class="btn btn-primary btn-lg rounded-3 fs-6" id="publicsale-claim-now-btn">Claim Now</button>
+                                            </div>
+
+                                            <div class="portfolio-notice text-center d-none" id="publicsale_over_div">
+                                                <p class="text-center text-white m-0 fs-6 mt-4">The publicsale Sale time duration is over and if you would like to buy more tokens, <a href="#">please click here</a></p>
+                                            </div>
+
+                                        </div>
+                                        <div class="tab-pane fade" id="publicsale-payment-history" role="tabpanel" aria-labelledby="pills-payment-history-tab">
+                                            <div id="publicsale-payment-history-table"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="buy-otg-box d-none" id="publicsale-buy-now-div">
+                                    <div class="d-flex gap-3 text-white align-items-center justify-content-between">
+                                        <h3 class="fw-bold m-0 text-uppercase"><i class="fa-solid fa-arrow-left fs-5 me-2 cursor-pointer" id="publicsale-buy-now-back-btn"></i> Buy ACB</h3>
+                                        <h6 class="m-0">1 ACB = <span class="token_usd_price" id="publicsale_to_token_amount">0.0002</span> ETH</h3>
+                                    </div>
+
+                                    <hr class="bg-white my-4">
+                                    <div class="row g-4 text-white align-items-center">
+                                        <div class="col-12">
+                                            <div class="d-md-flex justify-content-between align-items-center gap-3">
+                                                <div class="form-floating w-100">
+                                                    <input type="text" class="form-control bg-transparent" id="publicsale_token_amount" placeholder="0">
+                                                    <label for="publicsale_token_amount">ACB Token</label>
+                                                </div>
+                                                <div class="text-white display-6 fw-light text-center">=</div>
+                                                <div class="form-floating w-100">
+                                                    <input type="text" class="form-control bg-transparent" id="publicsale_usd_amount" placeholder="0">
+                                                    <label for="publicsale_usd_amount">ETH Amount</label>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex gap-3 flex-wrap justify-content-center mt-4">
+                                                <button type="button" class="btn btn-primary btn-lg rounded-3 fs-6" id="publicsale-pay-now-btn">Pay Now
+                                                    <span class="d-none btn_spinner" id="publicsale_pay_now_spinner">
                                                         <i class="fa fa-spinner fa-spin"></i>
                                                     </span>
                                                 </button>
@@ -334,7 +439,7 @@
             </div>
         </div>
     </div>
-                <input type="hidden" class="Wallet_address">
+    <input type="hidden" class="Wallet_address">
 </body>
 <script>
     var is_live = `{{env('APP_ENV')}}`;
@@ -345,15 +450,17 @@
     var PublicSaleContractAddress = `{{env('PUBLIC_SALE_CONTRACT')}}`;
     var SeedStartDate = `1687535196`;
     var SeedEndDate = `1688139965`;
-    var PrivateStartDate = `1688139965`;
-    var PrivateEndDate = `1687976839`;
-    var PublicStartDate = `1687976839`;
-    var PublicEndDate = `1687986839`;
+    var PrivateStartDate = `1688054918`;
+    var PrivateEndDate = `1688227718`;
+    var PublicStartDate = `1688227718`;
+    var PublicEndDate = `1688314118`;
     var currentTime = `{{time()}}`;
     var seedTransactionHistoryUrl = `{{url('seed-trasaction-filter')}}`
     var PrivateTransactionHistoryUrl = `{{url('private-trasaction-filter')}}`
     var PublicTransactionHistoryUrl = `{{url('public-trasaction-filter')}}`
     var addTransactionUrl = `{{url('add-transaction')}}`
+    var whitelistCheckUrl = `{{url('check-whitelist')}}`
+    var whitelistAddUrl = `{{url('add-whitelist')}}`
 </script>
 <?php
 if (isset($footer['js'])) {

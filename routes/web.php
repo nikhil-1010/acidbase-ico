@@ -21,4 +21,6 @@ Route::post('/seed-trasaction-filter',[SiteController::class,"postSeedTransactio
 Route::post('/private-trasaction-filter',[SiteController::class,"postPrivateTransactionFilter"]);
 Route::post('/public-trasaction-filter',[SiteController::class,"postPublicTransactionFilter"]);
 Route::post('/add-transaction',[SiteController::class,"postAddTransaction"]);
+Route::post('/check-whitelist',[SiteController::class,"postCheckWhitelist"]);
+Route::post('/add-whitelist',[SiteController::class,"postAddWhitelist"]);
 Route::get('/test',[SiteController::class,"postTest"]);
