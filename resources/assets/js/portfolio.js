@@ -502,6 +502,7 @@ async function getPublicSaleInvestorDetail(contract, address) {
 async function getSeedInvestorDetail(contract, address) {
    // filters.investor_address = $("#address").val();
    // filterData(url,'presale-payment-history-table');
+   debugger
    $('.flip-clock').remove();
    SeedInvestor = await getInvestorDetail(contract, address);
    console.log("Seed Investor");
@@ -631,7 +632,7 @@ async function getSeedInvestorDetail(contract, address) {
 async function getPrivateAInvestorDetail(contract, address) {
    // filters.investor_address = $("#address").val();
    // filterData(url,'presale-payment-history-table');
-   $('.flip-clock').remove();
+   $('#private_sale_timer > .flip-clock').remove();
    // clearInterval(privateATimer);
    PrivateAInvestor = await getInvestorDetail(contract, address);
    console.log("PrivateA Investor");
