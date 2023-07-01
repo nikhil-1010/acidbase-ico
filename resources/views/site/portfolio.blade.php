@@ -228,7 +228,7 @@
                                                 <div id='private_sale_timer' class="ico-timer"></div>
                                             </div>
 
-                                            <div class="d-flex gap-3 flex-wrap justify-content-center mt-2 d-none" id="privateA-buy-btn-div">
+                                            <div class="d-flex gap-3 flex-wrap justify-content-center mt-3 d-none" id="privateA-buy-btn-div">
                                                 <button type="button" class="btn btn-primary btn-lg rounded-3 fs-6" id="privateA-buy-now-btn">Buy Now
                                             </div>
                                             <div class="d-flex gap-3 flex-wrap justify-content-center mt-3 d-none" id="privateA-whitelist-btn-div">
@@ -238,18 +238,18 @@
                                                     </span>
                                             </div>
 
-                                            <div class="d-flex gap-3 flex-wrap justify-content-center d-none" id="privateA-tg-now-div">
+                                            <div class="d-flex gap-3 flex-wrap justify-content-center mt-3 d-none" id="privateA-tg-now-div">
                                                 <button type="button" class="btn btn-primary btn-lg rounded-3 fs-6" id="privateA-tg-now-btn">Generate Token
                                                     <span class="btn_spinner d-none" id="privateA_tg_now_spinner">
                                                         <i class="fa fa-spinner fa-spin"></i>
                                                     </span>
                                                 </button>
                                             </div>
-                                            <div class="d-flex gap-3 flex-wrap justify-content-center d-none" id="privateA-claim-now-div">
+                                            <div class="d-flex gap-3 flex-wrap justify-content-center mt-3 d-none" id="privateA-claim-now-div">
                                                 <button type="button" class="btn btn-primary btn-lg rounded-3 fs-6" id="privateA-claim-now-btn">Claim Now</button>
                                             </div>
 
-                                            <div class="portfolio-notice text-center d-none" id="privateA_over_div">
+                                            <div class="portfolio-notice text-center d-none mt-3" id="privateA_over_div">
                                                 <p class="text-center text-white m-0 fs-6 mt-4">The privateA Sale time duration is over and if you would like to buy more tokens, <a href="#">please click here</a></p>
                                             </div>
 
@@ -323,7 +323,7 @@
                                                 <div id='public_sale_timer' class="ico-timer"></div>
                                             </div>
 
-                                            <div class="d-flex gap-3 flex-wrap justify-content-center mt-2 d-none" id="publicsale-buy-btn-div">
+                                            <div class="d-flex gap-3 flex-wrap justify-content-center mt-3 d-none" id="publicsale-buy-btn-div">
                                                 <button type="button" class="btn btn-primary btn-lg rounded-3 fs-6" id="publicsale-buy-now-btn">Buy Now
                                             </div>
                                             <div class="d-flex gap-3 flex-wrap justify-content-center mt-3 d-none" id="publicsale-whitelist-btn-div">
@@ -333,18 +333,18 @@
                                                     </span>
                                             </div>
 
-                                            <div class="d-flex gap-3 flex-wrap justify-content-center d-none" id="publicsale-tg-now-div">
+                                            <div class="d-flex gap-3 flex-wrap justify-content-center mt-3 d-none" id="publicsale-tg-now-div">
                                                 <button type="button" class="btn btn-primary btn-lg rounded-3 fs-6" id="publicsale-tg-now-btn">Generate Token
                                                     <span class="btn_spinner d-none" id="publicsale_tg_now_spinner">
                                                         <i class="fa fa-spinner fa-spin"></i>
                                                     </span>
                                                 </button>
                                             </div>
-                                            <div class="d-flex gap-3 flex-wrap justify-content-center d-none" id="publicsale-claim-now-div">
+                                            <div class="d-flex gap-3 flex-wrap justify-content-center  mt-3 d-none" id="publicsale-claim-now-div">
                                                 <button type="button" class="btn btn-primary btn-lg rounded-3 fs-6" id="publicsale-claim-now-btn">Claim Now</button>
                                             </div>
 
-                                            <div class="portfolio-notice text-center d-none" id="publicsale_over_div">
+                                            <div class="portfolio-notice text-center d-none mt-3" id="publicsale_over_div">
                                                 <p class="text-center text-white m-0 fs-6 mt-4">The publicsale Sale time duration is over and if you would like to buy more tokens, <a href="#">please click here</a></p>
                                             </div>
 
