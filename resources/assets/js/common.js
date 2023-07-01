@@ -190,22 +190,51 @@ function setPagination(table){
 }
 
 
-function Toast(val,time) {
-	
-    $('body').append('<div id="toast"></div>');
-    $('#toast').html(val);
-    var x = document.getElementById("toast");
-    
-    x.className = "show";
-    if(typeof time == 'undefined' || time == null){
-        time = 3000;
+function Toast(val, time, flag) {
+    $('#toast').remove();
+    var id = "toast";
+    var noti_html = document.createElement('div');
+    var att = document.createAttribute("id");
+    att.value = "toast";
+    noti_html.setAttributeNode(att);
+    var f_class = "";
+    if (flag == 1) {
+        f_class = "bg-success";
+        strong = 'SUCCESS';
     }
-    
-    setTimeout(function(){
-     x.className = x.className.replace("show", "");
-     $('#toast').remove();time == null;
- 	}, time);
+    else if(flag == 0){
+        f_class = "bg-danger";
+        strong = 'ERROR';
+    }
+    else{
+        f_class = "bg-warning";
+        strong = 'WARNING';
+    }
+    msg = `<div class="toast-container position-fixed bottom-0 end-0 p-3" id="toast">
+                <div class="toast align-items-center show `+f_class+` text-white border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="d-flex"><div class="toast-body">`+val+`</div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    </div>
+                    </div>`
+    // msg = '<div class="oaerror '+f_class+'"><strong>'+strong+'</strong>  - '+val +'<div>';
+    $('body').append(noti_html);
+    $(noti_html).html(msg);
+    var x = document.getElementById("toast");
+
+    if (typeof time == 'undefined' || time == null) {
+        time = 30000000;
+    }
+    setTimeout(function() {
+        x.className = x.className.replace("show-msg", "");
+        $('#toast').remove();
+        time == null;
+        setTimeout(() => {
+            $('#toast').remove();
+        }, 1000);
+    }, time);
 }
+
 
 function getBaseURL(){
     var url = $("#base_url").val();

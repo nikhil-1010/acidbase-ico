@@ -160,7 +160,7 @@
 
                                         </div>
                                         <div class="tab-pane fade" id="seed-payment-history" role="tabpanel" aria-labelledby="pills-payment-history-tab">
-                                            <div id="seed-payment-history-table"></div>
+                                            <div id="seed-payment-history-table" class="payment-history-wrapper"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -200,7 +200,7 @@
 
                                     <ul class="nav nav-tabs nav-justified mb-0" id="tab" role="tablist">
                                         <li class="nav-item" role="presentation">
-                                            <button class="nav-link py-3 active" id="privateA-inner-tab" data-bs-toggle="tab" data-bs-target="#privateA-inner" type="button" role="tab" aria-controls="privateA-inner" aria-selected="true"><i class="fa-solid fa-seedling me-1"></i> Private Round</button>
+                                            <button class="nav-link py-3 active" id="privateA-inner-tab" data-bs-toggle="tab" data-bs-target="#privateA-inner" type="button" role="tab" aria-controls="privateA-inner" aria-selected="true"><i class="fa-solid fa-briefcase me-1"></i> Private Round</button>
                                         </li>
                                         <li class="nav-item" role="presentation">
                                             <button class="nav-link py-3" id="privateA-payment-history-tab" data-bs-toggle="tab" data-bs-target="#privateA-payment-history" type="button" role="tab" aria-controls="payment-history" aria-selected="false"><i class="fa-solid fa-clock-rotate-left me-1"></i> Payment History</button>
@@ -295,7 +295,7 @@
 
                                     <ul class="nav nav-tabs nav-justified mb-0" id="tab" role="tablist">
                                         <li class="nav-item" role="presentation">
-                                            <button class="nav-link py-3 active" id="publicsale-inner-tab" data-bs-toggle="tab" data-bs-target="#publicsale-inner" type="button" role="tab" aria-controls="publicsale-inner" aria-selected="true"><i class="fa-solid fa-seedling me-1"></i> Public Round</button>
+                                            <button class="nav-link py-3 active" id="publicsale-inner-tab" data-bs-toggle="tab" data-bs-target="#publicsale-inner" type="button" role="tab" aria-controls="publicsale-inner" aria-selected="true"><i class="fa-solid fa-user-tie me-1"></i> Public Round</button>
                                         </li>
                                         <li class="nav-item" role="presentation">
                                             <button class="nav-link py-3" id="publicsale-payment-history-tab" data-bs-toggle="tab" data-bs-target="#publicsale-payment-history" type="button" role="tab" aria-controls="payment-history" aria-selected="false"><i class="fa-solid fa-clock-rotate-left me-1"></i> Payment History</button>
@@ -448,12 +448,12 @@
     var SeedContractAddress = `{{env('SEED_CONTRACT')}}`;
     var PrivateSaleContractAddress = `{{env('PRIVATE_SALE_CONTRACT')}}`;
     var PublicSaleContractAddress = `{{env('PUBLIC_SALE_CONTRACT')}}`;
-    var SeedStartDate = `1688191424`;
-    var SeedEndDate = `1688193644`;
-    var PrivateStartDate = `1688193644`;
-    var PrivateEndDate = `1688195444`;
-    var PublicStartDate = `1688195444`;
-    var PublicEndDate = `1688197244`;
+    var SeedStartDate = `1688202957`;
+    var SeedEndDate = `1688204457`;
+    var PrivateStartDate = `1688204457`;
+    var PrivateEndDate = `1688205657`;
+    var PublicStartDate = `1688205657`;
+    var PublicEndDate = `1688206257`;
     var currentTime = `{{time()}}`;
     var seedTransactionHistoryUrl = `{{url('seed-trasaction-filter')}}`
     var PrivateTransactionHistoryUrl = `{{url('private-trasaction-filter')}}`

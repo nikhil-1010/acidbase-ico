@@ -1,58 +1,77 @@
-Web3 = require('web3');
+let {Web3} = require('web3')
 Web3WsProvider = require('web3-providers-ws');
 const Constants = require("./config/constents");
 const axios = require('axios');
 
 
 var methods = {
-   
+    
     'seed_addInvestor': async function () {
-        // console.log("ETH connection call..");
+        
         eth_web3 = new Web3(Constants.TOKEN.WSS_URL);
-        seed_wss_contract = new eth_web3.eth.Contract(Constants.TOKEN.SEED_TOKEN_ABI, Constants.TOKEN.SEED_CONTRACT_ADDRESS);
+        seed_wss_contract = new eth_web3.eth.Contract(Constants.TOKEN.SEED_TOKEN_ABI,Constants.TOKEN.SEED_CONTRACT_ADDRESS);
         let option = {
-            fromBlock: 'latest'
-
+            fromBlock: 0
         };
-        seed_wss_contract.events.AddInvestor(option)
-            .on("connected", function (subscriptionId) {
-                console.log('WSS Seed AddInvestor Connected');
-                console.log(new Date().toLocaleString());
-                console.log("==============================");
-            })
-            .on('data', function (event, error) {
-                console.log(event);
-                request_param = {
-                    "token_address": event.returnValues.token,
-                    "sale_type": 1,
-                    "trx_id": event.transactionHash,
-                    "investor": event.returnValues.investor,
-                    "amount": event.returnValues.amount,
-                    "usd_amount": event.returnValues.usd_amount,
-                };
-                console.log('Request params');
-                console.log(request_param);
-                axios.post(Constants.SITE_URL + 'add-investor-event',request_param)
-                  .then(function (response) {
-                    console.log('=========Axios Seed Response====================');
-                    console.log(response.data);
-                  })
-                  .catch(function (error) {
-                    console.log('=========Axios Seed Error====================');
-                    console.log(error);
-                });
+        console.log(seed_wss_contract.events);
 
-            })
-            .on('error', function (error) {
-                console.log("On Seed AddInvestor  Error: ", error);
-                setTimeout(async function () {
-                    module.exports.seed_addInvestor();
-                }, 3000);
 
-            })
-            .on('close', function (data) {
-                console.log("On Seed AddInvestor ETH close: ", data);
-            })
+
+        seed_wss_contract.events.AddInvestor(option, function(error, event){ 
+            console.log('event');
+            console.log(event); 
+        })
+        .on("connected", function(subscriptionId){
+            console.log(subscriptionId);
+        })
+
+
+        // seed_wss_contract.getPastEvents('AddInvestor', {
+        //     // filter: {myIndexedParam: [20,23], myOtherIndexedParam: '0x123456789...'}, // Using an array means OR: e.g. 20 or 23
+        //     fromBlock: 0,
+        //     toBlock: 'latest'
+        // }, function(error, events){ console.log(events); })
+        // .then(function(events){
+        //     console.log(events) // same results as the optional callback above
+        // });
+            // .on("connected", function (subscriptionId) {
+            //     console.log('WSS Seed AddInvestor Connected');
+            //     console.log(new Date().toLocaleString());
+            //     console.log("==============================");
+            // })
+            // .on('data', function (event, error) {
+            //     console.log(event);
+            //     request_param = {
+            //         "token_address": event.returnValues.token,
+            //         "sale_type": 1,
+            //         "trx_id": event.transactionHash,
+            //         "investor": event.returnValues.investor,
+            //         "amount": event.returnValues.amount,
+            //         "usd_amount": event.returnValues.usd_amount,
+            //     };
+            //     console.log('Request params');
+            //     console.log(request_param);
+            //     axios.post(Constants.SITE_URL + 'add-investor-event',request_param)
+            //       .then(function (response) {
+            //         console.log('=========Axios Seed Response====================');
+            //         console.log(response.data);
+            //       })
+            //       .catch(function (error) {
+            //         console.log('=========Axios Seed Error====================');
+            //         console.log(error);
+            //     });
+
+            // })
+            // .on('error', function (error) {
+            //     console.log("On Seed AddInvestor  Error: ", error);
+            //     setTimeout(async function () {
+            //         module.exports.seed_addInvestor();
+            //     }, 3000);
+
+            // })
+            // .on('close', function (data) {
+            //     console.log("On Seed AddInvestor ETH close: ", data);
+            // })
 
     },
     'privateA_addInvestor': async function () {

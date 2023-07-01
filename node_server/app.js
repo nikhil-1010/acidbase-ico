@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 
 
-// rpc = require('./rpc.js');
+rpc = require('./rpc.js');
 const Constants = require("./config/constents");
 
 global.eth_web3 = null;
@@ -12,9 +12,8 @@ global.eth_wss_contract = null;
 async function main(){
     
     rpc['seed_addInvestor']();
-    rpc['privateA_addInvestor']();
-    rpc['privateB_addInvestor']();
-    rpc['publicsale_addInvestor']();
+    // rpc['privateA_addInvestor']();
+    // rpc['publicsale_addInvestor']();
 
     // setInterval(() => {
     //     eth_web3.currentProvider.connection.close();
@@ -33,11 +32,11 @@ async function main(){
 }
 
 
-// main();
+main();
 
 
 app.use(express.json());
-app.listen(Constants.PORT, () => {
-    console.log(`Example app listening at http://localhost:${Constants.PORT}`);
+app.listen(Constants.APP_PORT, () => {
+    console.log(`Example app listening at http://localhost:${Constants.APP_PORT}`);
 });
 

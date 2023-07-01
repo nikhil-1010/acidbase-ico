@@ -70,19 +70,16 @@ function hideShowTabs() {
          urlreplace("privateA", "private-sale-a-tab");
       } else {
 
-         $("#publicsale-tab").addClass("active");
+         $("#publicsale-tab").addClass("gradient-btn border-0");
          $("#private_sale_msg").addClass("d-none");
          $("#public_sale_msg").removeClass("d-none");
-         $("#white-list-tab").removeClass("active");
-         $("#private-sale-a-tab").removeClass("active");
+         $("#seed-tab").removeClass("gradient-btn border-0");
+         $("#private-sale-a-tab").removeClass("gradient-btn border-0");
 
-         $("#seed").removeClass("active");
-         $("#seed").removeClass("show");
-         $("#privateA").removeClass("active");
-         $("#privateA").removeClass("show");
+         $("#seed").addClass("d-none");
+         $("#privateA").addClass("d-none");
 
-         $("#public-sale").addClass("active");
-         $("#public-sale").addClass("show");
+         $("#public-sale").removeClass("d-none");
 
          $("#publicsale-div").removeClass("d-none");
          $("#publicsale-pay-now-div").addClass("d-none");
@@ -119,9 +116,7 @@ function hideShowTabs() {
          urlreplace("seed", "seed-tab");
       } else if (currentTime >= PrivateStartDate && currentTime <= PrivateEndDate) {
 
-         $("#seed").addClass("active");
          $("#seed").addClass("d-none");
-
          $("#privateA").removeClass("d-none");
 
          // $("#private_sale_msg").removeClass("d-none");
@@ -139,21 +134,13 @@ function hideShowTabs() {
          urlreplace("privateA", "private-sale-a-tab");
       } else {
 
-         $("#publicsale-tab").addClass("active");
-         $("#private_sale_msg").addClass("d-none");
-         $("#public_sale_msg").removeClass("d-none");
-         $("#private-sale-a-tab").removeClass("active");
-         $("#private-sale-b-tab").removeClass("active");
+         $("#publicsale-tab").addClass("gradient-btn border-0");
+         $("#private-sale-a-tab").removeClass("gradient-btn border-0");
 
-         $("#seed").removeClass("active");
-         $("#seed").removeClass("show");
-         $("#privateA").removeClass("active");
-         $("#privateA").removeClass("show");
-         $("#privateB").removeClass("active");
-         $("#privateB").removeClass("show");
+         $("#seed").addClass("d-none");
+         $("#privateA").addClass("d-none");
 
-         $("#public-sale").addClass("active");
-         $("#public-sale").addClass("show");
+         $("#public-sale").removeClass("d-none");
 
          $("#publicsale-div").removeClass("d-none");
          $("#publicsale-pay-now-div").addClass("d-none");
@@ -161,28 +148,19 @@ function hideShowTabs() {
          $("#publicsale-payment-history-tab").removeClass("show");
          $("#publicsale-payment-history").removeClass("active");
          $("#publicsale-payment-history").removeClass("show");
-         $("#series-inner-b-tab").addClass("show");
-         $("#series-inner-b-tab").addClass("active");
-         $("#series-inner-b").addClass("active");
-         $("#series-inner-b").addClass("show");
          $("#publicsale-buy-now-div").addClass("d-none");
 
          urlreplace("PublicSale", "publicsale-tab");
       }
    } else if (hash == "PublicSale") {
-      $("#publicsale-tab").addClass("active");
-      $("#private_sale_msg").addClass("d-none");
-      $("#public_sale_msg").removeClass("d-none");
-      $("#white-list-tab").removeClass("active");
-      $("#private-sale-a-tab").removeClass("active");
+      $("#publicsale-tab").addClass("gradient-btn border-0");
+      $("#private-sale-a-tab").removeClass("gradient-btn border-0");
+      $("#seed-tab").removeClass("gradient-btn border-0");
 
-      $("#seed").removeClass("active");
-      $("#seed").removeClass("show");
-      $("#privateA").removeClass("active");
-      $("#privateA").removeClass("show");
+      $("#seed").addClass("d-none");
+      $("#privateA").addClass("d-none");
 
-      $("#public-sale").addClass("active");
-      $("#public-sale").addClass("show");
+      $("#public-sale").removeClass("d-none");
 
       $("#publicsale-div").removeClass("d-none");
       $("#publicsale-pay-now-div").addClass("d-none");
@@ -191,9 +169,6 @@ function hideShowTabs() {
       $("#publicsale-payment-history").removeClass("active");
       $("#publicsale-payment-history").removeClass("show");
       $("#publicsale-buy-now-div").addClass("d-none");
-
-      // $("#public-sale").removeClass('show');
-      // $("#public-sale").removeClass('active');
 
       urlreplace("PublicSale", "publicsale-tab");
    } else {
@@ -765,7 +740,7 @@ async function getPrivateAInvestorDetail(contract, address) {
       // privateATimer = setInterval(function () {
       //    makePrivateATimer(PrivateATimer);
       // }, 1000);
-   }else {
+   } else {
       $('#privateA-waiting-time-div').addClass('d-none');
    }
    $(".box-loader").hide();
@@ -1549,7 +1524,7 @@ $("#publicsale_usd_amount").keyup(async function () {
       $("#publicsale_token_amount").val(number_token(token));
    }
    let usd = val;
-   
+
 });
 
 //allowance , pay btn , whitelist click
@@ -1663,7 +1638,7 @@ $("#seed-pay-now-btn").click(async function (e) {
             sale_type: 1
          }
          postAjax(addTransactionUrl, data, function (res) {
-            if(res.flag==1){
+            if (res.flag == 1) {
                $('#seed-payment-history-tab').trigger('click');
             }
          });
@@ -1744,7 +1719,7 @@ $("#privateA-pay-now-btn").click(async function (e) {
             sale_type: 2
          }
          postAjax(addTransactionUrl, data, function (res) {
-            if(res.flag==1){
+            if (res.flag == 1) {
                $('#privateA-payment-history-tab').trigger('click');
             }
          });
@@ -1826,7 +1801,7 @@ $("#publicsale-pay-now-btn").click(async function (e) {
             sale_type: 3
          }
          postAjax(addTransactionUrl, data, function (res) {
-            if(res.flag==1){
+            if (res.flag == 1) {
                $('#publicsale-payment-history-tab').trigger('click');
             }
          });

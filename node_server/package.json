@@ -1,5 +1,5 @@
 {
-  "name": "node_server",
+  "name": "acidbase",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -10,9 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^1.4.0",
-    "crypto": "^1.0.1",
     "dotenv": "^16.3.1",
-    "web3": "^4.0.1",
-    "web3-providers-http": "^4.0.1"
+    "web3": "^4.0.2",
+    "web3-providers-http": "^4.0.2"
   }
 }

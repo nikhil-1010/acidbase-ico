@@ -1001,6 +1001,15 @@ footer a.text-secondary:hover {
     font-size: 48px;
 }
 
+.payment-history-wrapper {
+    overflow: auto;
+    max-height: 450px;
+    padding-right: 10px;
+}
+
+.toast-container {
+    z-index: 999999;
+}
 
 /* Responsive */
 
