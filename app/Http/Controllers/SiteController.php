@@ -122,7 +122,7 @@ class SiteController extends Controller
                 "sale_type"=>$param['sale_type'],
                 "status"=>1
             );
-            return \App\Models\User\Transaction::addTransactionHistory($param);
+            return \App\Models\User\Transaction::addTransactionHistory($data);
         }else{
             $data->status = 1;
             $data->save();
