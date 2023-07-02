@@ -495,6 +495,30 @@ option {
     font-family: "PlusJakartaSans", sans-serif;
 }
 
+/* box loader */
+.box-loader {
+    background: rgba(23, 20, 15, 0.8);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 1;
+}
+.box-loader > span {
+    color: #2f12d4;
+    font-size: 80px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0px;
+    right: 0px;
+    text-align: center;
+}
+/*  */
+
 .card_panel {
     display: block;
     position: relative;

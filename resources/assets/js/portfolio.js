@@ -17,7 +17,6 @@ var privateAdate = parseInt($("#privateAdate").val());
 var publicsaledate = parseInt($("#publicsaledate").val());
 var hash = "";
 function hideShowTabs() {
-   debugger
    hash = window.location.href.split("#")[1];
    if (typeof hash == "undefined") {
       var url = window.location.href.split("#")[0] + "#seed";
@@ -320,47 +319,48 @@ async function RefreshPageDetail() {
    TokenContract = new web3.eth.Contract(TokenAbi, TokenContractAddress);
    await getTokenBalance(TokenContract, selectedAccount);
    // await getTokenUsdPrice(TokenContract);
-   await getSeedInvestorDetail(SeedContract, selectedAccount);
-   await getPrivateAInvestorDetail(PrivateAContract, selectedAccount);
+   // await getSeedInvestorDetail(SeedContract, selectedAccount);
+   // await getPrivateAInvestorDetail(PrivateAContract, selectedAccount);
    // await getPublicSaleInvestorDetail(PublicSaleContract, selectedAccount);
+   // today = Math.floor(Date.now());
    if (hash == "seed") {
-      if (today <= seeddate) {
-         await getSeedInvestorDetail(SeedContract, selectedAccount);
-      }
-      $('#publicsale-buy-btn-div').addClass('d-none');
-      $('#privateA-buy-btn-div').addClass('d-none');
-      $('#privateB-buy-btn-div').addClass('d-none');
+      // if (today <= SeedEndDate) {
+      // }
+      await getSeedInvestorDetail(SeedContract, selectedAccount);
+      // $('#publicsale-buy-btn-div').addClass('d-none');
+      // $('#privateA-buy-btn-div').addClass('d-none');
+      // $('#privateB-buy-btn-div').addClass('d-none');
    }
    if (hash == "privateA") {
-      if (today <= privateAdate) {
-         await getPrivateAInvestorDetail(PrivateAContract, selectedAccount);
-      }
-      $('#seed-buy-btn-div').addClass('d-none');
-      $('#publicsale-buy-btn-div').addClass('d-none');
-      $('#privateB-buy-btn-div').addClass('d-none');
-      $('#seed-waiting-time-div').addClass('d-none');
+      // if (today <= privateAdate) {
+      // }
+      await getPrivateAInvestorDetail(PrivateAContract, selectedAccount);
+      // $('#seed-buy-btn-div').addClass('d-none');
+      // $('#publicsale-buy-btn-div').addClass('d-none');
+      // $('#privateB-buy-btn-div').addClass('d-none');
+      // $('#seed-waiting-time-div').addClass('d-none');
 
    }
    if (hash == "PublicSale") {
       // if (today <= publicsaledate) {
       // }
       await getPublicSaleInvestorDetail(PublicSaleContract, selectedAccount);
-      $('#seed-buy-btn-div').addClass('d-none');
-      $('#privateA-buy-btn-div').addClass('d-none');
-      $('#privateB-buy-btn-div').addClass('d-none');
-      $('#seed-waiting-time-div').addClass('d-none');
-      $('#privateA-waiting-time-div').addClass('d-none');
-      $('#privateB-waiting-time-div').addClass('d-none');
+      // $('#seed-buy-btn-div').addClass('d-none');
+      // $('#privateA-buy-btn-div').addClass('d-none');
+      // $('#privateB-buy-btn-div').addClass('d-none');
+      // $('#seed-waiting-time-div').addClass('d-none');
+      // $('#privateA-waiting-time-div').addClass('d-none');
+      // $('#privateB-waiting-time-div').addClass('d-none');
    }
-   HideAllTab(SeedContract, selectedAccount, "seed");
-   HideAllTab(PrivateAContract, selectedAccount, "private-sale-a");
-   HideAllTab(PublicSaleContract, selectedAccount, "publicsale");
+   // HideAllTab(SeedContract, selectedAccount, "seed");
+   // HideAllTab(PrivateAContract, selectedAccount, "private-sale-a");
+   // HideAllTab(PublicSaleContract, selectedAccount, "publicsale");
 }
 
 //======================== Public Sale Start=============================//
 async function getPublicSaleInvestorDetail(contract, address) {
    // clearInterval(publicSaleTimer);
-   $('.flip-clock').remove();
+   
    PublicInvestor = await getInvestorDetail(contract, address);
    console.log("Publicsale Investor");
    console.log(PublicInvestor);
@@ -457,11 +457,14 @@ async function getPublicSaleInvestorDetail(contract, address) {
          }
       }
    }
-   debugger
+   $('#public_sale_timer > .flip-clock').remove();
    if (PublicTimer - Date.now() > 0) {
       var deadline = new Date(PublicTimer);
-      var c = new Clock(deadline, function () {
+      var c = new Clock(deadline,async function () {
          $('#public-sale-waiting-time-div').addClass('d-none');
+         setTimeout(async () => {
+            await RefreshPageDetail();
+         }, 5000);
       });
       var page_timer = $('#public_sale_timer');
       page_timer.append(c.el);
@@ -481,7 +484,7 @@ async function getSeedInvestorDetail(contract, address) {
    // filters.investor_address = $("#address").val();
    // filterData(url,'presale-payment-history-table');
    debugger
-   $('.flip-clock').remove();
+   
    SeedInvestor = await getInvestorDetail(contract, address);
    console.log("Seed Investor");
    console.log(SeedInvestor);
@@ -588,11 +591,16 @@ async function getSeedInvestorDetail(contract, address) {
          }
       }
    }
+   $('#flip_timer > .flip-clock').remove();
    if (SeedTimer - Date.now() > 0) {
       //var deadline = new Date(Date.parse(new Date()) + 12 * 24 * 60 * 60 * 1000);
       var deadline = new Date(SeedTimer);
-      var c = new Clock(deadline, function () {
+      var c = new Clock(deadline,async function () {
+         console.log('finised');
          $('#seed-waiting-time-div').addClass('d-none');
+         setTimeout(async () => {
+            await RefreshPageDetail();
+         }, 5000);
       });
       var page_timer = $('#flip_timer');
       page_timer.append(c.el);
@@ -610,7 +618,7 @@ async function getSeedInvestorDetail(contract, address) {
 async function getPrivateAInvestorDetail(contract, address) {
    // filters.investor_address = $("#address").val();
    // filterData(url,'presale-payment-history-table');
-   $('#private_sale_timer > .flip-clock').remove();
+   
    // clearInterval(privateATimer);
    PrivateAInvestor = await getInvestorDetail(contract, address);
    console.log("PrivateA Investor");
@@ -732,11 +740,14 @@ async function getPrivateAInvestorDetail(contract, address) {
       }
    }
 
-
+   $('#private_sale_timer > .flip-clock').remove();
    if (PrivateATimer - Date.now() > 0) {
       var deadline = new Date(PrivateATimer);
-      var c = new Clock(deadline, function () {
+      var c = new Clock(deadline,async function () {
          $('#privateA-waiting-time-div').addClass('d-none');
+         setTimeout(async () => {
+            await RefreshPageDetail();
+         }, 5000);
       });
       var page_timer = $('#private_sale_timer');
       page_timer.append(c.el);
@@ -1853,9 +1864,9 @@ $("#seed-tg-now-btn").click(function (event) {
          $("#seed_tg_now_spinner").hide();
          $("#seed-tg-now-btn").prop("disabled", false);
          Toast("Token Generate Successfully done", 3000, 1);
-         setTimeout(function () {
-            location.reload();
-         }, 2000);
+         setTimeout(async function () {
+            await RefreshPageDetail();
+         }, 3000);
       })
       .on("error", function (error, receipt) {
          if (typeof receipt != "undefined") {
@@ -1890,9 +1901,9 @@ $("#seed-claim-now-btn").click(function (event) {
          $("#seed_claim_now_spinner").hide();
          $("#seed-claim-now-btn").prop("disabled", false);
          Toast("Claim Successfully done", 3000, 1);
-         setTimeout(function () {
-            location.reload();
-         }, 2000);
+         setTimeout(async function () {
+            await RefreshPageDetail();
+         }, 6000);
       })
       .on("error", function (error, receipt) {
          if (typeof receipt != "undefined") {
@@ -1929,9 +1940,9 @@ $("#privateA-tg-now-btn").click(function (event) {
          $("#privateA_tg_now_spinner").hide();
          $("#privateA-tg-now-btn").prop("disabled", false);
          Toast("Token Generate Successfully done", 3000, 1);
-         setTimeout(function () {
-            location.reload();
-         }, 2000);
+         setTimeout(async function () {
+            await RefreshPageDetail();
+         }, 3000);
       })
       .on("error", function (error, receipt) {
          if (typeof receipt != "undefined") {
@@ -1966,9 +1977,9 @@ $("#privateA-claim-now-btn").click(function (event) {
          $("#privateA_claim_now_spinner").hide();
          $("#privateA-claim-now-btn").prop("disabled", false);
          Toast("Claim Successfully done", 3000, 1);
-         setTimeout(function () {
-            location.reload();
-         }, 2000);
+         setTimeout(async function () {
+            await RefreshPageDetail();
+         }, 6000);
       })
       .on("error", function (error, receipt) {
          if (typeof receipt != "undefined") {
@@ -1978,83 +1989,6 @@ $("#privateA-claim-now-btn").click(function (event) {
          }
          $("#privateA_claim_now_spinner").hide();
          $("#privateA-claim-now-btn").prop("disabled", false);
-         return;
-      });
-});
-
-//private B
-$("#privateB-tg-now-btn").click(function (event) {
-
-   $("#privateB_tg_now_spinner").show();
-   $("#privateB_tg_now_spinner").removeClass("d-none");
-   $("#privateB-tg-now-btn").prop("disabled", true);
-   var from = selectedAccount;
-   var to = PrivateBContractAddress;
-   var data = PrivateBContract.methods.generateToken().encodeABI();
-   transactionParameters = {
-      to: to,
-      from: from,
-      data: data,
-      value: "0x00",
-   };
-   web3.eth
-      .sendTransaction(transactionParameters)
-      .once("transactionHash", function (payload) {
-         Toast("Your Transaction is being confirmed", 3000, 3);
-      })
-      .on("receipt", function (receipt) {
-         $("#privateB_tg_now_spinner").hide();
-         $("#privateB-tg-now-btn").prop("disabled", false);
-         Toast("Token Generate Successfully done", 3000, 1);
-         setTimeout(function () {
-            location.reload();
-         }, 2000);
-      })
-      .on("error", function (error, receipt) {
-         if (typeof receipt != "undefined") {
-         } else {
-            $("#toast").remove();
-            Toast("It seems like your transaction failed.", 3000, 0);
-         }
-         $("#privateB_tg_now_spinner").hide();
-         $("#privateB-tg-now-btn").prop("disabled", false);
-         return;
-      });
-});
-$("#privateB-claim-now-btn").click(function (event) {
-   $("#privateB_claim_now_spinner").removeClass("d-none");
-   $("#privateB_claim_now_spinner").show();
-   $("#privateB-claim-now-btn").prop("disabled", true);
-   var from = selectedAccount;
-   var to = PrivateBContractAddress;
-   var data = PrivateBContract.methods.claimAcb().encodeABI();
-   transactionParameters = {
-      to: to,
-      from: from,
-      data: data,
-      value: "0x00",
-   };
-   web3.eth
-      .sendTransaction(transactionParameters)
-      .once("transactionHash", function (payload) {
-         Toast("Your Transaction is being confirmed", 3000, 3);
-      })
-      .on("receipt", function (receipt) {
-         $("#privateB_claim_now_spinner").hide();
-         $("#privateB-claim-now-btn").prop("disabled", false);
-         Toast("Claim Successfully done", 3000, 1);
-         setTimeout(function () {
-            location.reload();
-         }, 2000);
-      })
-      .on("error", function (error, receipt) {
-         if (typeof receipt != "undefined") {
-         } else {
-            $("#toast").remove();
-            Toast("It seems like your transaction failed.", 3000, 0);
-         }
-         $("#privateB_claim_now_spinner").hide();
-         $("#privateB-claim-now-btn").prop("disabled", false);
          return;
       });
 });
@@ -2082,9 +2016,9 @@ $("#publicsale-tg-now-btn").click(function (event) {
          $("#publicsale_tg_now_spinner").hide();
          $("#publicsale-tg-now-btn").prop("disabled", false);
          Toast("Token Generate Successfully done", 3000, 1);
-         setTimeout(function () {
-            location.reload();
-         }, 2000);
+         setTimeout(async function () {
+            await RefreshPageDetail();
+         }, 6000);
       })
       .on("error", function (error, receipt) {
          if (typeof receipt != "undefined") {
@@ -2119,9 +2053,9 @@ $("#publicsale-claim-now-btn").click(function (event) {
          $("#presale_claim_now_spinner").hide();
          $("#presale-claim-now-btn").prop("disabled", false);
          Toast("Claim Successfully done", 3000, 1);
-         setTimeout(function () {
-            location.reload();
-         }, 2000);
+         setTimeout(async function () {
+            await RefreshPageDetail();
+         }, 6000);
       })
       .on("error", function (error, receipt) {
          if (typeof receipt != "undefined") {

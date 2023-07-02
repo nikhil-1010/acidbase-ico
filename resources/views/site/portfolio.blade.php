@@ -104,7 +104,7 @@
                         <div class="col-lg-8 col-xl-9">
                             <div id="seed">
                                 <div id="seed-div" class="ico-tab">
-
+                                <div class="box-loader"><span><i class="fas fa-spinner fa-fw fa-spin"></i></span></div>
                                     <ul class="nav nav-tabs nav-justified mb-0" id="tab" role="tablist">
                                         <li class="nav-item" role="presentation">
                                             <button class="nav-link py-3 active" id="seed-inner-tab" data-bs-toggle="tab" data-bs-target="#seed-inner" type="button" role="tab" aria-controls="seed-inner" aria-selected="true"><i class="fa-solid fa-seedling me-1"></i> Seed Round</button>
@@ -197,7 +197,7 @@
                             </div>
                             <div class="d-none" id="privateA">
                                 <div id="privateA-div" class="ico-tab">
-
+                                <div class="box-loader"><span><i class="fas fa-spinner fa-fw fa-spin"></i></span></div>
                                     <ul class="nav nav-tabs nav-justified mb-0" id="tab" role="tablist">
                                         <li class="nav-item" role="presentation">
                                             <button class="nav-link py-3 active" id="privateA-inner-tab" data-bs-toggle="tab" data-bs-target="#privateA-inner" type="button" role="tab" aria-controls="privateA-inner" aria-selected="true"><i class="fa-solid fa-briefcase me-1"></i> Private Round</button>
@@ -292,7 +292,7 @@
                             </div>  
                             <div class="d-none" id="public-sale">
                                 <div id="publicsale-div" class="ico-tab">
-
+                                <div class="box-loader"><span><i class="fas fa-spinner fa-fw fa-spin"></i></span></div>
                                     <ul class="nav nav-tabs nav-justified mb-0" id="tab" role="tablist">
                                         <li class="nav-item" role="presentation">
                                             <button class="nav-link py-3 active" id="publicsale-inner-tab" data-bs-toggle="tab" data-bs-target="#publicsale-inner" type="button" role="tab" aria-controls="publicsale-inner" aria-selected="true"><i class="fa-solid fa-user-tie me-1"></i> Public Round</button>
@@ -448,12 +448,12 @@
     var SeedContractAddress = `{{env('SEED_CONTRACT')}}`;
     var PrivateSaleContractAddress = `{{env('PRIVATE_SALE_CONTRACT')}}`;
     var PublicSaleContractAddress = `{{env('PUBLIC_SALE_CONTRACT')}}`;
-    var SeedStartDate = `1688208544`;
-    var SeedEndDate = `1688209804`;
-    var PrivateStartDate = `1688209804`;
-    var PrivateEndDate = `1688210404`;
-    var PublicStartDate = `1688210404`;
-    var PublicEndDate = `1688211004`;
+    var SeedStartDate = `1688279246`;
+    var SeedEndDate = `1689056832`;
+    var PrivateStartDate = `1689056832`;
+    var PrivateEndDate = `1689229632`;
+    var PublicStartDate = `1689229632`;
+    var PublicEndDate = `1689402432`;
     var currentTime = `{{time()}}`;
     var seedTransactionHistoryUrl = `{{url('seed-trasaction-filter')}}`
     var PrivateTransactionHistoryUrl = `{{url('private-trasaction-filter')}}`
