@@ -60,6 +60,7 @@ function filterData(url,table){
                 $("#"+table).html(res.blade);
                 filters.totalItems = res['total_record'];
                 filters.totalPages = filters.totalItems > 0 ? Math.ceil(filters.totalItems / filters.itemPerPage) : 0;
+                console.log(filters);
                 setPagination(table);
             }
             
@@ -118,9 +119,11 @@ function setPagination(table){
 
     var p = prevPage(cp,tp,0);
     var li = '';
-    var pp = '<div class="theme-pagination-box "><div class="theme-pagination-prev page_no" data-page="'+p+'" data-type="p"  data-table="'+table+'" ><span><img src="'+base_url +'public/assets/images/icon/arrowhead-left.png" alt=""> Previous</span></div><div class="pagination-item "><ul>';
+    // var pp = '<div class="theme-pagination-box "><div class="theme-pagination-prev page_no" data-page="'+p+'" data-type="p"  data-table="'+table+'" ><span><img src="'+base_url +'public/assets/images/icon/arrowhead-left.png" alt=""> Previous</span></div><div class="pagination-item "><ul>';
+    var pp = '<li class="page-item page_no" data-page="'+p+'" data-type="p"  data-table="'+table+'"><a href="javascript:void(0)" class="page-link " >Previous</a></li>';
     var p = prevPage(cp,tp,1);
-    var np = ' </ul></div><div class="theme-pagination-next page_no" data-page="'+p+'" data-type="n"  data-table="'+table+'" ><span>Next <img src="'+base_url+'public/assets/images/icon/arrowhead-right.png" alt=""></span></div></div>';
+    // var np = ' </ul></div><div class="theme-pagination-next page_no" data-page="'+p+'" data-type="n"  data-table="'+table+'" ><span>Next <img src="'+base_url+'public/assets/images/icon/arrowhead-right.png" alt=""></span></div></div><ul>';
+    var np = '<li class="page-item page_no" data-page="'+p+'" data-type="n"  data-table="'+table+'"><a class="page-link " href="javascript:void(0)" >Next</a></li>';
     var ns = '';
     var ps = '';
     var prev = cp - 7;
@@ -135,7 +138,8 @@ function setPagination(table){
     }
     if(tp < 7){
         for(i = 1;i<=tp;i++){
-            li+='<li href="#" data-page="'+i+'" data-type="'+i+'"  data-table="'+table+'" class="page_no" ><span>'+i+'</span></li>';
+            // li+='<li href="#" data-page="'+i+'" data-type="'+i+'"  data-table="'+table+'" class="page_no" ><span>'+i+'</span></li>';
+            li+='<li class="page-item page_no" data-page="'+i+'" data-type="'+i+'"  data-table="'+table+'" aria-current="page"><a class="page-link" href="javascript:void(0)">'+i+'</a></li>';
         }
     }else{
         var nd = nextDigit(cp,tp,1);
@@ -174,7 +178,7 @@ function setPagination(table){
             $(this).addClass('active');
         }
     });
-    
+    debugger
     if(cp == 1){
         $(cls2+'.pagination a:first-child').removeClass('page_no').addClass('pagination-disable');
         $(cls2+'.pagination a:nth-child(2)').removeClass('page_no').addClass('pagination-disable');
@@ -240,6 +244,18 @@ function getBaseURL(){
     var url = $("#base_url").val();
     return url;
 }
+
+$(document).ready(function(){
+    
+    $(document).on('click','.page_no',function(){
+        var cp = $(this).data('page');
+        var table = $(this).data('table');
+        filters.currentPage = cp;
+        var furl = multipleFilter[table]['filter_url'];
+        filterData(furl,table);
+    });
+    
+});
 
 function postAjax(url,data,cb){
     var token = $("#token").val();

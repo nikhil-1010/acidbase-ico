@@ -16,7 +16,9 @@ use App\Http\Controllers\AdminController;
 //get route
 Route::get('/login/{sec_token}',[AdminController::class,"getLogin"]);
 Route::get('/dashboard',[AdminController::class,'getDashboard']);
+Route::get('/whitelist-account',[AdminController::class,'getWhitelistAccount']);
 Route::get('/profile',[AdminController::class,'getProfile']);
+Route::get('/transaction',[AdminController::class,'getTransaction']);
 Route::get('/settings',[AdminController::class,'getSettings']);
 Route::get('logout',[AdminController::class,'getLogout']);
 
@@ -25,3 +27,5 @@ Route::post('/login',[AdminController::class,"postLogin"]);
 Route::post('/change-password',[AdminController::class,"postChangePassword"]);
 Route::post('/update-profile',[AdminController::class,"postUpdateProfile"]);
 Route::post('/save-settings',[AdminController::class,'postSaveSettings']);
+Route::post('/whitelist-filter',[AdminController::class,'postWhitelistFilter']);
+Route::post('/transaction-filter',[AdminController::class,'postTransactionFilter']);

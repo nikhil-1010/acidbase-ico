@@ -105,6 +105,58 @@ class AdminController extends Controller
         ];
         return view('admin.dashboard', $view_data);
     }
+    public function getWhitelistAccount()
+    {
+        $view_data = [
+            'header' => [
+                "title" => 'Whitelist Account | Admin Panel ',
+            ],
+            'body' => [
+                'id'    => 'whitelist',
+                'label' => 'Whitelist',
+                'header_title' => 'Whitelist Account',
+            ],
+            "footer" => [
+                'js' => ['admin/whitelist.min.js']
+            ]
+        ];
+        return view('admin.whitelist', $view_data);
+    }
+    public function postWhitelistFilter()
+    {
+        $param = \Input::all();
+        $data = \App\Models\User\Whitelist::filter($param);
+        $res = \General::success_res();
+        $res['blade'] = view("admin.whitelist_filter", $data)->render();
+        $res['total_record'] = $data['total_record'];
+        return $res;
+    }
+    public function getTransaction()
+    {
+        $view_data = [
+            'header' => [
+                "title" => 'Transaction | Admin Panel ',
+            ],
+            'body' => [
+                'id'    => 'transaction',
+                'label' => 'Transaction',
+                'header_title' => 'Transaction',
+            ],
+            "footer" => [
+                'js' => ['admin/transaction.min.js']
+            ]
+        ];
+        return view('admin.transaction', $view_data);
+    }
+    public function postTransactionFilter()
+    {
+        $param = \Input::all();
+        $data = \App\Models\User\Transaction::filter($param);
+        $res = \General::success_res();
+        $res['blade'] = view("admin.transaction_filter", $data)->render();
+        $res['total_record'] = $data['total_record'];
+        return $res;
+    }
     public function getProfile()
     {
         $view_data = [

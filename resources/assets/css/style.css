@@ -519,6 +519,10 @@ option {
 }
 /*  */
 
+/* .pagination-disable{
+    cursor:not-allowed;
+} */
+
 .card_panel {
     display: block;
     position: relative;

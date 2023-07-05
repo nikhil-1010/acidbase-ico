@@ -4,5 +4,7 @@
     "/assets/js/home.min.js": "/assets/js/home.min.js",
     "/assets/js/web3.min.js": "/assets/js/web3.min.js",
     "/assets/js/admin/profile.min.js": "/assets/js/admin/profile.min.js",
+    "/assets/js/admin/whitelist.min.js": "/assets/js/admin/whitelist.min.js",
+    "/assets/js/admin/transaction.min.js": "/assets/js/admin/transaction.min.js",
     "/assets/css/admin_app.min.css": "/assets/css/admin_app.min.css"
 }

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="{{url('assets/css/admin_app.min.css')}}" />
     <link rel="icon" type="image/x-icon" href="{{url('/assets/img/favicon.png')}}">
+    <input type="hidden" id="token" value="{{csrf_token()}}">
     <?php
     //        dd($header);
     if (isset($header['css']) && count($header['css']) > 0)
@@ -20,13 +21,13 @@
 </head>
 
 <body>
-    <div class="loader" id="loader">
+    <!-- <div class="loader" id="loader">
         <div class="loader-inner">
             <span></span>
             <span></span>
             <span></span>
         </div>
-    </div>
+    </div> -->
     <header>
         <nav class="cat-topnav navbar navbar-expand">
             <!-- Navbar Brand-->

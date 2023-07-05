@@ -4,9 +4,17 @@
             <nav class="cat-sidenav accordion" id="sidenavAccordion">
                 <div class="cat-sidenav-menu">
                     <div class="nav">
-                        <a class="nav-link active" href="{{url('admin/dashboard')}}">
+                        <a class="nav-link active" id="dashboard" href="{{url('admin/dashboard')}}">
                             <div class="cat-nav-link-icon"><i class="fa-solid fa-gauge"></i></div>
                             Dashboard
+                        </a>
+                        <a class="nav-link" id="whitelist" href="{{url('admin/whitelist-account')}}">
+                            <div class="cat-nav-link-icon"><i class="fa-solid fa-gauge"></i></div>
+                            Whitelist Account
+                        </a>
+                        <a class="nav-link" id="transaction" href="{{url('admin/transaction')}}">
+                            <div class="cat-nav-link-icon"><i class="fa-solid fa-gauge"></i></div>
+                            Transactions
                         </a>
                         <!-- <a class="nav-link collapsed" href="" data-bs-toggle="collapse" data-bs-target="#collapseBillList" aria-expanded="false" aria-controls="collapseBillList">
                             <div class="cat-nav-link-icon"><i class="fa-solid fa-diagram-project"></i></div>

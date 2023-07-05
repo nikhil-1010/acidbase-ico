@@ -52,6 +52,12 @@ mix.scripts([
 .scripts([
     "resources/assets/js/admin/profile.js",
 ], "public/assets/js/admin/profile.min.js")
+.scripts([
+    "resources/assets/js/admin/whitelist.js",
+], "public/assets/js/admin/whitelist.min.js")
+.scripts([
+    "resources/assets/js/admin/transaction.js",
+], "public/assets/js/admin/transaction.min.js")
 .styles([
     "resources/assets/css/all.min.css",
     "resources/assets/css/slick-slider.css",
