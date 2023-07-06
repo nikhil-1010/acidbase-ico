@@ -70,16 +70,16 @@ var oilData = {
 	datasets: [{
 		data: [15, 15, 30, 10, 2.5, 5, 6, 6, 8, 2.5],
 		backgroundColor: [
-			"#f1548e40",
-			"#f9731640",
-			"#1251a040",
-			"#22c55e40",
-			"#2271eb40",
-			"#702b9140",
-			"#f64a7340",
-			"#22c55e40",
-			"#2cdcb840",
-			"#2b29ae40"
+			"rgba(241, 84, 142, 0.25)",
+			"rgba(249, 115, 22, 0.25)",
+			"rgba(18, 81, 160, 0.25)",
+			"rgba(34, 197, 94, 0.25)",
+			"rgba(34, 113, 235, 0.25)",
+			"rgba(112, 43, 145, 0.25)",
+			"rgba(246, 74, 115, 0.25)",
+			"rgba(34, 197, 94, 0.25)",
+			"rgba(44, 220, 184, 0.25)",
+			"rgba(43, 41, 174, 0.25)"
 		],
 		borderColor: [
 			"#f1548e",
@@ -94,6 +94,22 @@ var oilData = {
 			"#2b29ae"
 		],
 		borderWidth: 2,
+		hoverBorderWidth: 7,
+		hoverShadowColor: 'rgba(0, 0, 0, 0.5)',
+		hoverShadowOffsetX: 10,
+		hoverShadowOffsetY: 5,
+		hoverBackgroundColor:  [
+			"#f1548e",
+			"#f97316",
+			"#1251a0",
+			"#22c55e",
+			"#2271eb",
+			"#702b91",
+			"#f64a73",
+			"#22c55e",
+			"#2cdcb8",
+			"#2b29ae"
+		],
 	}]
 };
 
