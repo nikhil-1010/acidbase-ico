@@ -165,8 +165,23 @@ class SiteController extends Controller
 
     public function postTest(){
         $obj = new \App\Models\Admin\Settings;
+        $obj->name = 'admin_login_url_token';
+        $obj->val = 'ico';
+        $obj->autoload = 1;
+        $obj->save();
+        $obj = new \App\Models\Admin\Settings;
+        $obj->name = 'exchange_rate';
+        $obj->val = '0.0001';
+        $obj->autoload = 1;
+        $obj->save();
+        $obj = new \App\Models\Admin\Settings;
+        $obj->name = 'maintenance_mode';
+        $obj->val = '0';
+        $obj->autoload = 1;
+        $obj->save();
+        $obj = new \App\Models\Admin\Settings;
         $obj->name = 'last_block';
-        $obj->val = 0;
+        $obj->val = '3808836';
         $obj->autoload = 1;
         $obj->save();
     }
