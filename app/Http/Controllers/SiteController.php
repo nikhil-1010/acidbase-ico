@@ -164,25 +164,33 @@ class SiteController extends Controller
     }
 
     public function postTest(){
-        $obj = new \App\Models\Admin\Settings;
-        $obj->name = 'admin_login_url_token';
-        $obj->val = 'ico';
-        $obj->autoload = 1;
-        $obj->save();
-        $obj = new \App\Models\Admin\Settings;
-        $obj->name = 'exchange_rate';
-        $obj->val = '0.0001';
-        $obj->autoload = 1;
-        $obj->save();
-        $obj = new \App\Models\Admin\Settings;
-        $obj->name = 'maintenance_mode';
-        $obj->val = '0';
-        $obj->autoload = 1;
-        $obj->save();
-        $obj = new \App\Models\Admin\Settings;
-        $obj->name = 'last_block';
-        $obj->val = '3808836';
-        $obj->autoload = 1;
+        // $obj = new \App\Models\Admin\Settings;
+        // $obj->name = 'admin_login_url_token';
+        // $obj->val = 'ico';
+        // $obj->autoload = 1;
+        // $obj->save();
+        // $obj = new \App\Models\Admin\Settings;
+        // $obj->name = 'exchange_rate';
+        // $obj->val = '0.0001';
+        // $obj->autoload = 1;
+        // $obj->save();
+        // $obj = new \App\Models\Admin\Settings;
+        // $obj->name = 'maintenance_mode';
+        // $obj->val = '0';
+        // $obj->autoload = 1;
+        // $obj->save();
+        // $obj = new \App\Models\Admin\Settings;
+        // $obj->name = 'last_block';
+        // $obj->val = '3808836';
+        // $obj->autoload = 1;
+        // $obj->save();
+        $obj = new \App\Models\Admin\Admin;
+        $obj->email = 'a@a.com';
+        $obj->mobile = '1234569870';
+        $obj->password = \Hash::make('123456');
+        $obj->username = 'admin';
+        $obj->status = 1;
+        $obj->avatar = '';
         $obj->save();
     }
 }
