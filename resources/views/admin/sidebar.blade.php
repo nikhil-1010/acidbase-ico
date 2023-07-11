@@ -9,11 +9,11 @@
                             Dashboard
                         </a>
                         <a class="nav-link" id="whitelist" href="{{url('admin/whitelist-account')}}">
-                            <div class="cat-nav-link-icon"><i class="fa-solid fa-gauge"></i></div>
+                            <div class="cat-nav-link-icon"><i class="fa-solid fa-arrow-right-arrow-left"></i></div>
                             Whitelist Account
                         </a>
                         <a class="nav-link" id="transaction" href="{{url('admin/transaction')}}">
-                            <div class="cat-nav-link-icon"><i class="fa-solid fa-gauge"></i></div>
+                            <div class="cat-nav-link-icon"><i class="fa-solid fa-money-bill-transfer"></i></div>
                             Transactions
                         </a>
                         <!-- <a class="nav-link collapsed" href="" data-bs-toggle="collapse" data-bs-target="#collapseBillList" aria-expanded="false" aria-controls="collapseBillList">
