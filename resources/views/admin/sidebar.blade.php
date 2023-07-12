@@ -17,15 +17,15 @@
                             Transactions
                         </a>
                         <a class="nav-link {{\Request::is('admin/faq') ? 'active':''}}" id="faq" href="{{url('admin/faq')}}">
-                            <div class="cat-nav-link-icon"><i class="fa-solid fa-money-bill-transfer"></i></div>
+                            <div class="cat-nav-link-icon"><i class="fa-solid fa-question-circle"></i></div>
                             Faq
                         </a>
-                        <a class="nav-link {{\Request::is('admin/site-content') ? 'active':''}}" id="site_content" href="{{url('admin/site-content')}}">
+                        <!-- <a class="nav-link {{\Request::is('admin/site-content') ? 'active':''}}" id="site_content" href="{{url('admin/site-content')}}">
                             <div class="cat-nav-link-icon"><i class="fa-solid fa-money-bill-transfer"></i></div>
                             Site Content
-                        </a>
+                        </a> -->
                         <a class="nav-link {{\Request::is('admin/settings') ? 'active':''}}" id="setting" href="{{url('admin/settings')}}">
-                            <div class="cat-nav-link-icon"><i class="fa-solid fa-money-bill-transfer"></i></div>
+                            <div class="cat-nav-link-icon"><i class="fa-solid fa-tools"></i></div>
                             Setting
                         </a>
                         <!-- <a class="nav-link collapsed" href="" data-bs-toggle="collapse" data-bs-target="#collapseBillList" aria-expanded="false" aria-controls="collapseBillList">

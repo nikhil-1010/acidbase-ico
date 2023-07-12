@@ -707,6 +707,14 @@ option {
     border: 1px solid var(--bs-secondary);
 }
 
+.pagination .page-link {
+    color: #fff;
+}
+
+.team-member h6 {
+    bottom: -23px;
+}
+
 .meet-us-video::after {
     content: "";
     position: absolute;

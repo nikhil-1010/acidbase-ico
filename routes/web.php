@@ -18,6 +18,8 @@ use App\Http\Controllers\AdminController;
 Route::get('/',[SiteController::class,"getHome"]);
 Route::get('/maintainence',[AdminController::class,"getMaintenance"]);
 Route::get('/portfolio',[SiteController::class,"getPortfolio"]);
+Route::get('/contact-us',[SiteController::class,"getContactUs"]);
+Route::get('/about',[SiteController::class,"getAbout"]);
 Route::get('/trasaction-notify',[SiteController::class,"getTransactionNotify"]);
 Route::get('/get-past-events',[SiteController::class,"getPastEvents"]);
 

@@ -49,6 +49,38 @@ class SiteController extends Controller
 
         return view("site.portfolio", $view_data);
     }
+    public function getContactUs()
+    {
+        $view_data = [
+            "header" => [
+                'title'=>'Contact Us | '.self::$platform
+            ],
+            "body" => [
+                'id' => 'contact_us',
+            ],
+            "footer" => [
+                'js' => ['home.min.js']
+            ]
+        ];
+
+        return view("site.contact-us", $view_data);
+    }
+    public function getAbout()
+    {
+        $view_data = [
+            "header" => [
+                'title'=>'About Us | '.self::$platform
+            ],
+            "body" => [
+                'id' => 'about_us',
+            ],
+            "footer" => [
+                'js' => ['home.min.js']
+            ]
+        ];
+
+        return view("site.about_us", $view_data);
+    }
     public function getTransactionNotify()
     {
         $view_data = [

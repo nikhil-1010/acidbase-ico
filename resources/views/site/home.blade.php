@@ -51,19 +51,19 @@
                         <ul class="navbar-nav ms-auto gap-lg-3">
                             <hr class="bg-white d-lg-none">
                             <li class="nav-item">
-                                <a class="nav-link text-white fw-lighter active" aria-current="page" href="{{url('#home')}}">Home</a>
+                                <a class="nav-link text-white fw-lighter active" aria-current="page" href="{{url('/#home')}}">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white fw-lighter" href="{{url('#feature')}}">Features</a>
+                                <a class="nav-link text-white fw-lighter" href="{{url('/#feature')}}">Features</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white fw-lighter" href="{{url('#tokenomics')}}">Tokenomics</a>
+                                <a class="nav-link text-white fw-lighter" href="{{url('/#tokenomics')}}">Tokenomics</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white fw-lighter" href="{{url('#roadmap')}}">Roadmap</a>
+                                <a class="nav-link text-white fw-lighter" href="{{url('/#roadmap')}}">Roadmap</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white fw-lighter" href="{{url('#team')}}">Team</a>
+                                <a class="nav-link text-white fw-lighter" href="{{url('/#team')}}">Team</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white fw-lighter" href="#">Whitepaper</a>
@@ -633,11 +633,7 @@
                             <a href="" class="text-white"><i class="fa-brands fa-reddit"></i></a>
                             <a href="" class="text-white"><i class="fa-brands fa-linkedin"></i></a>
                         </div>
-                        <p class="m-0 fw-lighter ms-auto">© Copyright
-                            <script>
-                                document.write(new Date().getFullYear());
-                            </script> acidbase. All rights reserved.
-                        </p>
+                        <p class="m-0 fw-lighter ms-auto">© Copyright {{date('Y')}} acidbase. All rights reserved.</p>
                     </div>
                 </div>
             </div>
