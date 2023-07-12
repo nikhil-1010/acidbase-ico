@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('site_content', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('content');
+            $table->text('name');
+            $table->text('content');
             $table->dateTime('created_at')->useCurrent();
             $table->dateTime('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
