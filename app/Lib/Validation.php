@@ -32,8 +32,8 @@ class Validation
 			'contactus' => [
 				"name" => "required",
 				"email" => "required|email|regex:/^[a-zA-Z0-9._-]+@[a-zA-Z.]+\.[a-zA-Z]{2,10}$/i",
-				"phone" => "required|numeric|regex:/^[0-9]+$/u",
-				"message" => "required|min:3|max:255",
+				"subject" => "required|max:100",
+				"message" => "required",
 			],
 		],
 		"user" => [

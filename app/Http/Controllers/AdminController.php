@@ -200,6 +200,15 @@ class AdminController extends Controller
         $res['total_record'] = $data['total_record'];
         return $res;
     }
+    public function postContactFilter()
+    {
+        $param = \Input::all();
+        $data = \App\Models\User\ContactUs::filter($param);
+        $res = \General::success_res();
+        $res['blade'] = view("admin.contact_filter", $data)->render();
+        $res['total_record'] = $data['total_record'];
+        return $res;
+    }
     public function getProfile()
     {
         $view_data = [
@@ -216,6 +225,23 @@ class AdminController extends Controller
             ]
         ];
         return view('admin.profile', $view_data);
+    }
+    public function getContacts()
+    {
+        $view_data = [
+            'header' => [
+                "title" => 'Contact | Admin Panel ',
+            ],
+            'body' => [
+                'id'    => 'contact',
+                'label' => 'Contact',
+                'header_title' => 'Contact',
+            ],
+            "footer" => [
+                'js' => ['admin/contact_us.min.js']
+            ]
+        ];
+        return view('admin.contact', $view_data);
     }
     public function getSettings()
     {

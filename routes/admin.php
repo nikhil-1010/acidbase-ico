@@ -21,6 +21,7 @@ Route::get('/profile',[AdminController::class,'getProfile']);
 Route::get('/transaction',[AdminController::class,'getTransaction']);
 Route::get('/faq',[AdminController::class,'getFaq']);
 Route::get('/settings',[AdminController::class,'getSettings']);
+Route::get('/contacts',[AdminController::class,'getContacts']);
 Route::get('logout',[AdminController::class,'getLogout']);
 
 // //post route
@@ -31,6 +32,7 @@ Route::post('/save-settings',[AdminController::class,'postSaveSettings']);
 Route::post('/whitelist-filter',[AdminController::class,'postWhitelistFilter']);
 Route::post('/transaction-filter',[AdminController::class,'postTransactionFilter']);
 Route::post('/faq-filter',[AdminController::class,'postFaqFilter']);
+Route::post('/contact-filter',[AdminController::class,'postContactFilter']);
 Route::post('/add-faq',[AdminController::class,'postAddFaq']);
 Route::post('/site-content-filter',[AdminController::class,'postSiteContentFilter']);
 Route::post('/change-maintenance-mode',[AdminController::class,'postChangeMaintenanceMode']);

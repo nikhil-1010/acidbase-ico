@@ -95,34 +95,35 @@
                     <div class="col-lg-8">
                             <div class="bg-light rounded-5 p-5">
                             <h3 class="mb-4 fw-bold">Let's collaborate</h3>
-                        <form>
+                        <form id="contact_form" method="post" action="{{url('contact')}}">
+                            @csrf
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-floating w-100 mb-3">
-                                        <input type="text" class="form-control bg-transparent" id="floatingInputGrid" placeholder="Erica Jordon" value="">
+                                        <input type="text" class="form-control bg-transparent" id="floatingInputGrid" name="name" placeholder="Erica Jordon" value="">
                                         <label for="floatingInputGrid">Full Name</label>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-floating w-100 mb-3">
-                                        <input type="email" class="form-control bg-transparent" id="floatingInputGrid2" placeholder="ericajordon@example.com" value="">
+                                        <input type="email" class="form-control bg-transparent" id="floatingInputGrid2" name="email" placeholder="ericajordon@example.com" value="">
                                         <label for="floatingInputGrid2">Email Address</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating w-100 mb-3">
-                                        <input type="text" class="form-control bg-transparent" id="floatingInputGrid" placeholder="name@example.com" value="">
+                                        <input type="text" class="form-control bg-transparent" id="floatingInputGrid" name="subject" placeholder="name@example.com" value="">
                                         <label for="floatingInputGrid">Subjet</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating mb-3">
-                                        <textarea class="form-control bg-transparent" placeholder="Enter your message" id="floatingTextarea" style="height: 100px;"></textarea>
+                                        <textarea class="form-control bg-transparent" placeholder="Enter your message" name="message" id="floatingTextarea" style="height: 100px;"></textarea>
                                         <label for="floatingTextarea">Message</label>
                                     </div>
                                 </div>
                             </div>
-                            <button type="button" class="btn btn-lg gradient-btn text-white text-uppercase rounded-pill px-5 py-3 fs-6">Submit</button>
+                            <button type="button" class="btn btn-lg gradient-btn text-white text-uppercase rounded-pill px-5 py-3 fs-6" id="contact-btn">Submit</button>
                         </form>
                         </div>
                     </div>

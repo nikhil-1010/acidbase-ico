@@ -67,6 +67,19 @@ mix.scripts([
 .scripts([
     "resources/assets/js/admin/site_content.js",
 ], "public/assets/js/admin/site_content.min.js")
+.scripts([
+    "resources/assets/js/admin/contact_us.js",
+], "public/assets/js/admin/contact_us.min.js")
+.scripts([
+    "resources/assets/js/jquery.min.js",
+    "resources/assets/js/jquery.form.min.js",
+    "resources/assets/js/bootstrap.bundle.min.js",
+    "resources/assets/js/slick.js",
+    "resources/assets/js/chart.min.js",
+    "resources/assets/js/common.js",
+    "resources/assets/js/custom.js",
+    "resources/assets/js/contact_us.js",
+], "public/assets/js/contact_us.min.js")
 .styles([
     "resources/assets/css/all.min.css",
     "resources/assets/css/slick-slider.css",

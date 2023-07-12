@@ -620,6 +620,7 @@
                     <a href="" class="text-uppercase text-secondary text-decoration-none fw-lighter">Whitepaper</a>
                     <a href="" class="text-uppercase text-secondary text-decoration-none fw-lighter">Privacy Policy</a>
                     <a href="" class="text-uppercase text-secondary text-decoration-none fw-lighter">Terms of use</a>
+                    <a href="{{url('contact-us')}}" class="text-uppercase text-secondary text-decoration-none fw-lighter">Contact Us</a>
                 </div>
             </div>
             <div class="py-4 border-top border-secondary fs-14 text-white">

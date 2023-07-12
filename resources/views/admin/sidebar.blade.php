@@ -20,6 +20,10 @@
                             <div class="cat-nav-link-icon"><i class="fa-solid fa-question-circle"></i></div>
                             Faq
                         </a>
+                        <a class="nav-link {{\Request::is('admin/contacts') ? 'active':''}}" id="contact" href="{{url('admin/contacts')}}">
+                            <div class="cat-nav-link-icon"><i class="fa-solid fa-id-badge"></i></div>
+                            Contacts
+                        </a>
                         <!-- <a class="nav-link {{\Request::is('admin/site-content') ? 'active':''}}" id="site_content" href="{{url('admin/site-content')}}">
                             <div class="cat-nav-link-icon"><i class="fa-solid fa-money-bill-transfer"></i></div>
                             Site Content

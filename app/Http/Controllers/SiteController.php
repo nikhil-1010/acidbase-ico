@@ -59,7 +59,7 @@ class SiteController extends Controller
                 'id' => 'contact_us',
             ],
             "footer" => [
-                'js' => ['home.min.js']
+                'js' => ['contact_us.min.js']
             ]
         ];
 
@@ -163,6 +163,18 @@ class SiteController extends Controller
             $data->save();
             return \General::success_res('update transaction.');
         }
+    }
+    public function postContact(){
+        $param = \Input::all();
+        
+        $validator = \Validator::make(\Input::all(), \Validation::get_rules("site", "contactus"));
+        if ($validator->fails()) {
+            $err_msg = $validator->errors()->first();
+            return \General::error_res($err_msg);
+        }
+
+        return \App\Models\User\ContactUs::addContact($param);
+        
     }
     public function postUpdateBlockNumber(){
         $param = \Input::all();

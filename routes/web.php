@@ -30,5 +30,6 @@ Route::post('/add-transaction',[SiteController::class,"postAddTransaction"]);
 Route::post('/check-whitelist',[SiteController::class,"postCheckWhitelist"]);
 Route::post('/add-whitelist',[SiteController::class,"postAddWhitelist"]);
 Route::post('event/add-investor-event',[SiteController::class,"postAddInvestorEvent"]);
+Route::post('contact',[SiteController::class,"postContact"]);
 
 Route::get('/test',[SiteController::class,"postTest"]);
