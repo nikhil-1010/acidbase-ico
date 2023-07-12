@@ -350,8 +350,8 @@
         <section class="inner-space" id="roadmap">
             <div class="container">
                 <div class="text-center">
-                <h2 class="section-title display-5 text-uppercase text-secondary d-inline-block">ROADMAP</h2>
-                <p class="fw-lighter text-white mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <h2 class="section-title display-5 text-uppercase text-secondary d-inline-block">ROADMAP</h2>
+                    <p class="fw-lighter text-white mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </div>
                 <!-- <div class="d-flex flex-column gap-4 gap-lg-0 text-start text-white position-relative">
                     <div class="row gx-0 align-items-center">
@@ -539,10 +539,10 @@
             <div class="container">
                 <h2 class="section-title display-5 text-uppercase text-secondary d-inline-block">faqs</h2>
                 <p class="fw-lighter mb-5">Are you curious about how Acidbase can benefit you? Here are the most common questions and answers.</p>
-                <div class="row gx-4">
-                    <div class="col-lg-6">
-                        <div class="accordion faq-panel" id="accordionFlushExample">
-                            @foreach($body['faq'] as $key => $f)
+                <div class="accordion faq-panel" id="accordionFlushExample">
+                    <div class="row g-4">
+                        @foreach($body['faq'] as $key => $f)
+                        <div class="col-lg-6">
                             <div class="accordion-item">
                                 <button id="flush-heading{{$key}}" class="accordion-button shadow-none bg-transparent fw-lighter fs-5 text-white px-0 py-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{$key}}" aria-expanded="false" aria-controls="flush-collapse{{$key}}">
                                     {{$f['query']}}
@@ -551,8 +551,8 @@
                                     <div class="accordion-body text-start px-0 fw-lighter fs-14">{{$f['content']}}</div>
                                 </div>
                             </div>
-                            @endforeach
                         </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -575,7 +575,7 @@
 
         <section class="text-center text-white inner-space">
             <div class="container">
-            <h2 class="section-title text-secondary display-4 text-uppercase mb-4 d-inline-block">Featured In</h2>
+                <h2 class="section-title text-secondary display-4 text-uppercase mb-4 d-inline-block">Featured In</h2>
                 <div class="row g-4">
                     <div class="col-lg-3 col-sm-6">
                         <div class="px-4 py-3 featured-logo"><img src="{{url('assets/img/coindesk.png')}}" alt="coindesk" class="img-fluid" /></div>

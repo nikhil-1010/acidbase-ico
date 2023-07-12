@@ -723,7 +723,6 @@ option {
     background-color: rgba(50, 247, 170, 0.1);
     border: 1px solid var(--bs-secondary);
     padding: 15px 25px;
-    margin: 20px 0;
     display: block;
     border-radius: 20px;
     box-shadow: 0 0 5px 0 rgba(50, 247, 170, 0.2);
