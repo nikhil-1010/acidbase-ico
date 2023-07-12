@@ -6,5 +6,8 @@
     "/assets/js/admin/profile.min.js": "/assets/js/admin/profile.min.js",
     "/assets/js/admin/whitelist.min.js": "/assets/js/admin/whitelist.min.js",
     "/assets/js/admin/transaction.min.js": "/assets/js/admin/transaction.min.js",
+    "/assets/js/admin/setting.min.js": "/assets/js/admin/setting.min.js",
+    "/assets/js/admin/faq.min.js": "/assets/js/admin/faq.min.js",
+    "/assets/js/admin/site_content.min.js": "/assets/js/admin/site_content.min.js",
     "/assets/css/admin_app.min.css": "/assets/css/admin_app.min.css"
 }

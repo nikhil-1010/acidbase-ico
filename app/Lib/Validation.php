@@ -82,13 +82,10 @@ class Validation
 				'delete_id' => 'required',
 				'type' => 'required',
 			],
-			'add-restaurant-food' => [
-				"restaurant_id" => "required",
-				"food_id" => "required",
-				"category" => "required",
-				"restaurant_price" => "required|numeric",
-				"price" => "required|numeric",
-				'image' => 'nullable|mimes:jpeg,jpg,png,gif|max:5000'
+			'add_faq' => [
+				"query" => "required",
+				"content" => "required",
+				"sort_order" => "required",
 			],
 			'update-restaurant-food' => [
 				"restaurant_id" => "required",

@@ -17,7 +17,9 @@
             </tr>
             @endforeach
         @else
-            <tr>No data found</tr>
+        <tr>
+            <td class="text-center text-uppercase fw-bold text-white" colspan="3">No data found</td>
+        </tr>
         @endif
     </tbody>
 </table>

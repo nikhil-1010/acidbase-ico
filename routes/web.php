@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,7 @@ use App\Http\Controllers\SiteController;
 */
 
 Route::get('/',[SiteController::class,"getHome"]);
+Route::get('/maintainence',[AdminController::class,"getMaintenance"]);
 Route::get('/portfolio',[SiteController::class,"getPortfolio"]);
 Route::get('/trasaction-notify',[SiteController::class,"getTransactionNotify"]);
 Route::get('/get-past-events',[SiteController::class,"getPastEvents"]);

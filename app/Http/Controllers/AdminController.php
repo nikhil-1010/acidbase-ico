@@ -27,7 +27,7 @@ class AdminController extends Controller
             return redirect('/');
             // return view('undermaintenance');
         } else {
-            return view('undermaintenance');
+            return view('site.undermaintenance');
         }
     }
     public function getLogin($sec_token = "")
@@ -157,6 +157,49 @@ class AdminController extends Controller
         $res['total_record'] = $data['total_record'];
         return $res;
     }
+    public function getFaq()
+    {
+        $view_data = [
+            'header' => [
+                "title" => 'Faq | Admin Panel ',
+            ],
+            'body' => [
+                'id'    => 'faq',
+                'label' => 'Faq',
+                'header_title' => 'Faq',
+            ],
+            "footer" => [
+                'js' => ['admin/faq.min.js']
+            ]
+        ];
+        return view('admin.faq', $view_data);
+    }
+    public function postAddFaq()
+    {
+        $param = \Input::all();
+
+        $validator = \Validator::make(\Input::all(), \Validation::get_rules("admin", "add_faq"));
+        if ($validator->fails()) {
+            $err_msg = $validator->errors()->first();
+            return \General::error_res($err_msg);
+        }
+
+        if(isset($param['update_id']) && $param['update_id'] != ''){
+            return \App\Models\Admin\Faq::updateFaq($param);
+        }else{
+            return \App\Models\Admin\Faq::addFaq($param);
+        }
+
+    }
+    public function postFaqFilter()
+    {
+        $param = \Input::all();
+        $data = \App\Models\Admin\Faq::filter($param);
+        $res = \General::success_res();
+        $res['blade'] = view("admin.faq_filter", $data)->render();
+        $res['total_record'] = $data['total_record'];
+        return $res;
+    }
     public function getProfile()
     {
         $view_data = [
@@ -173,6 +216,25 @@ class AdminController extends Controller
             ]
         ];
         return view('admin.profile', $view_data);
+    }
+    public function getSettings()
+    {
+        $setting = app('settings');
+        $view_data = [
+            'header' => [
+                "title" => 'Setting | Admin Panel ',
+            ],
+            'body' => [
+                'id'    => 'setting',
+                'label' => 'Setting',
+                'header_title' => 'Profile',
+                'setting'=>$setting
+            ],
+            "footer" => [
+                'js' => ['admin/setting.min.js']
+            ]
+        ];
+        return view('admin.setting', $view_data);
     }
     public function postSaveSettings()
     {
@@ -214,6 +276,14 @@ class AdminController extends Controller
         $res = \App\Models\Admin\Admin::change_admin_password($param);
 
         return $res;
+    }
+    public function postChangeMaintenanceMode()
+    {
+        $param = \Input::all();
+        $setting = \App\Models\Admin\Settings::where('name','maintenance_mode')->first();
+        $setting->val = $param['maintenance_mode'];
+        $setting->save();
+        return \General::success_res('Change maintenance mode successfully.');
     }
     public function postUpdateProfile()
     {

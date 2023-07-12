@@ -31,7 +31,7 @@ class maintenance
                 ];
                 return response()->json($res,200); 
             }
-            \Auth::guard('user')->logout();
+            // \Auth::guard('user')->logout();
             return redirect ('/maintainence');
             
         }else{

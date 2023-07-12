@@ -542,81 +542,16 @@
                 <div class="row gx-4">
                     <div class="col-lg-6">
                         <div class="accordion faq-panel" id="accordionFlushExample">
+                            @foreach($body['faq'] as $key => $f)
                             <div class="accordion-item">
-                                <button id="flush-headingOne" class="accordion-button shadow-none bg-transparent fw-lighter fs-5 text-white px-0 py-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                    What is Acidbase?
+                                <button id="flush-heading{{$key}}" class="accordion-button shadow-none bg-transparent fw-lighter fs-5 text-white px-0 py-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{$key}}" aria-expanded="false" aria-controls="flush-collapse{{$key}}">
+                                    {{$f['query']}}
                                 </button>
-                                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body text-start px-0 fw-lighter fs-14">Acidbase is a revolutionary platform that harnesses the power of artificial intelligence (AI) to create AI-driven digital personas that immortalize individuals and enable them to interact with future generations. The
-                                        platform allows users to submit diverse personal data, including text, images, and audio, for AI-driven digital persona creation, which can be used to connect with digitally preserved loved ones, share wisdom with
-                                        future generations, and receive personalized learning opportunities.</div>
+                                <div id="flush-collapse{{$key}}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{$key}}" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body text-start px-0 fw-lighter fs-14">{{$f['content']}}</div>
                                 </div>
                             </div>
-                            <div class="accordion-item">
-                                <button id="flush-headingTwo" class="accordion-button shadow-none bg-transparent fw-lighter fs-5 text-white px-0 py-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                    What is the Acidbase token used for?
-                                </button>
-                                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body text-start px-0 fw-lighter fs-14">The Acidbase token (ACB) is the native token of our platform. It is used for transaction fees and as a means of accessing our full suite of tools and features. By holding ACB, you can benefit from discounts, rewards,
-                                        and more.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <button id="flush-headingThree" class="accordion-button shadow-none bg-transparent fw-lighter fs-5 text-white px-0 py-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                                    How can I purchase ACB?
-                                </button>
-                                <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body text-start px-0 fw-lighter fs-14">ACB can be purchased during our presale by clicking the 'Buy Now' button and following the instructions to purchase tokens using ETH. You can also buy ACB on decentralized exchanges (DEXs) and centralized platforms
-                                        (CEXs) that list our token.</div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <button id="flush-headingFour" class="accordion-button shadow-none bg-transparent fw-lighter fs-5 text-white px-0 py-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-                                    How do I store my ACB?
-                                </button>
-                                <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body text-start px-0 fw-lighter fs-14">You can store your ACB in any wallet that supports ERC-20 tokens. We recommend using a hardware wallet for maximum security.</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="accordion faq-panel" id="accordionFlushExample2">
-                            <div class="accordion-item">
-                                <button id="flush-headingFive" class="accordion-button shadow-none bg-transparent fw-lighter fs-5 text-white px-0 py-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
-                                    Is Acidbase secure?
-                                </button>
-                                <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample2">
-                                    <div class="accordion-body text-start px-0 fw-lighter fs-14">Yes, Acidbase uses SHA-256 encryption to ensure that your data and identity are secure. Additionally, our platform is built on the Ethereum blockchain, which is known for its security and decentralization.</div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <button id="flush-headingSix" class="accordion-button shadow-none bg-transparent fw-lighter fs-5 text-white px-0 py-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
-                                    Do I need technical knowledge to use Acidbase?
-                                </button>
-                                <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample2">
-                                    <div class="accordion-body text-start px-0 fw-lighter fs-14">No, Acidbase is designed to be user-friendly and accessible to everyone. You don't need technical knowledge to use or trade your ACB or NFTs.</div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <button id="flush-headingSeven" class="accordion-button shadow-none bg-transparent fw-lighter fs-5 text-white px-0 py-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSeven" aria-expanded="false" aria-controls="flush-collapseSeven">
-                                    What factors affect the value of my Acidbase NFT?
-                                </button>
-                                <div id="flush-collapseSeven" class="accordion-collapse collapse" aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample2">
-                                    <div class="accordion-body text-start px-0 fw-lighter fs-14">The value of your Acidbase NFT depends on market demand, the rarity of your DNA data, and other factors. Holding onto your NFT can allow you to benefit from the growth of the DeFi ecosystem and the increasing demand
-                                        for decentralized identity management.</div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <button id="flush-headingEight" class="accordion-button shadow-none bg-transparent fw-lighter fs-5 text-white px-0 py-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseEight" aria-expanded="false" aria-controls="flush-collapseEight">
-                                    How can I get involved with Acidbase?
-                                </button>
-                                <div id="flush-collapseEight" class="accordion-collapse collapse" aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample2">
-                                    <div class="accordion-body text-start px-0 fw-lighter fs-14">You can get involved with Acidbase by participating in our presale, buying and holding ACB, and contributing to our community through social media, forums, and other channels. Together, we can revolutionize the way
-                                        we manage personal data and identity!</div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

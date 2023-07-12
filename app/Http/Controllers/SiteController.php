@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin\Faq;
 use App\Models\Admin\Settings;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
@@ -16,12 +17,14 @@ class SiteController extends Controller
     }
     public function getHome()
     {
+        $faq = Faq::orderBy('sort_order','asc')->get()->toArray();
         $view_data = [
             "header" => [
                 'title'=>'Home | '.self::$platform
             ],
             "body" => [
                 'id' => 'home',
+                'faq'=>$faq
             ],
             "footer" => [
                 'js' => ['home.min.js']
