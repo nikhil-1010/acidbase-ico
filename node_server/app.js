@@ -4,7 +4,7 @@ const app = express();
 
 rpc = require('./rpc.js');
 const Constants = require("./config/constents");
-const {getPastEvents} = require("./past_event.js");
+const {getPastEvents,getContractBalance} = require("./past_event.js");
 
 
 
@@ -46,6 +46,13 @@ app.post('/get-past-event',async function (req, res) {
     console.log(response);
     res.json(response);
     // console.log(response);
+});
+app.post('/get-contract-balance',async function (req, res) {
+	console.log('Req Body');
+    console.log(req.body);  
+    var response = await getContractBalance();
+    console.log(response);
+    res.json(response);
 });
 
 

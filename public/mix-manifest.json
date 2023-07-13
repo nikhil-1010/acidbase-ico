@@ -8,6 +8,7 @@
     "/assets/js/admin/transaction.min.js": "/assets/js/admin/transaction.min.js",
     "/assets/js/admin/setting.min.js": "/assets/js/admin/setting.min.js",
     "/assets/js/admin/faq.min.js": "/assets/js/admin/faq.min.js",
+    "/assets/js/admin/tinymce.min.js": "/assets/js/admin/tinymce.min.js",
     "/assets/js/admin/site_content.min.js": "/assets/js/admin/site_content.min.js",
     "/assets/js/admin/contact_us.min.js": "/assets/js/admin/contact_us.min.js",
     "/assets/js/contact_us.min.js": "/assets/js/contact_us.min.js",

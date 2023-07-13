@@ -24,10 +24,10 @@
                             <div class="cat-nav-link-icon"><i class="fa-solid fa-id-badge"></i></div>
                             Contacts
                         </a>
-                        <!-- <a class="nav-link {{\Request::is('admin/site-content') ? 'active':''}}" id="site_content" href="{{url('admin/site-content')}}">
-                            <div class="cat-nav-link-icon"><i class="fa-solid fa-money-bill-transfer"></i></div>
+                        <a class="nav-link {{\Request::is('admin/site-content') ? 'active':''}}" id="site_content" href="{{url('admin/site-content')}}">
+                            <div class="cat-nav-link-icon"><i class="fa-solid fa-file-alt"></i></div>
                             Site Content
-                        </a> -->
+                        </a>
                         <a class="nav-link {{\Request::is('admin/settings') ? 'active':''}}" id="setting" href="{{url('admin/settings')}}">
                             <div class="cat-nav-link-icon"><i class="fa-solid fa-tools"></i></div>
                             Setting

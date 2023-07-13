@@ -7,7 +7,7 @@ use App\Exports\StudentExport;
 use App\Exports\ReportExport;
 use App\Imports\RestaurantImport;
 use App\Imports\SaloonImport;
-
+use App\Models\User\Transaction;
 use Maatwebsite\Excel\Facades\Excel;
 
 
@@ -93,6 +93,25 @@ class AdminController extends Controller
     }
     public function getDashboard()
     {
+        $seed_balance=0;
+        $private_balance=0;
+        $public_balance=0;
+
+        try {
+            $response = \Http::post(env('NODE_URL').'/get-contract-balance');
+        } catch (\Exception $e) {
+            \Log::info('get-contract-balance Error');
+            \Log::info($e->getMessage());
+            return \General::error_res("Something went to wrong");
+        }
+        if($response['flag'] == 1) {
+            $response = json_decode($response,true);
+            $balance = $response['data'];
+            $seed_balance = $balance['seed_balance'];
+            $private_balance = $balance['private_balance'];
+            $public_balance = $balance['public_balance'];
+        }
+        $trx = \App\Models\User\Transaction::count();
         $view_data = [
             'header' => [
                 "title" => 'Dashboard | Admin Panel ',
@@ -101,6 +120,10 @@ class AdminController extends Controller
                 'id'    => 'dashboard',
                 'label' => 'Dashboard',
                 'header_title' => 'Dashboard',
+                'transaction' => $trx,
+                'seed_balance' => number_format($seed_balance,8,'.',''),
+                'private_balance' => number_format($private_balance,8,'.',''),
+                'public_balance' => number_format($public_balance,8,'.',''),
             ],
         ];
         return view('admin.dashboard', $view_data);
@@ -243,6 +266,23 @@ class AdminController extends Controller
         ];
         return view('admin.contact', $view_data);
     }
+    public function getSiteContent()
+    {
+        $view_data = [
+            'header' => [
+                "title" => 'Site Content | Admin Panel ',
+            ],
+            'body' => [
+                'id'    => 'site_content',
+                'label' => 'Site Content',
+                'header_title' => 'Site Content',
+            ],
+            "footer" => [
+                'js' => ['admin/site_content.min.js']
+            ]
+        ];
+        return view('admin.site_content', $view_data);
+    }
     public function getSettings()
     {
         $setting = app('settings');
@@ -310,6 +350,16 @@ class AdminController extends Controller
         $setting->val = $param['maintenance_mode'];
         $setting->save();
         return \General::success_res('Change maintenance mode successfully.');
+    }
+    public function postGetContent()
+    {
+        $param = \Input::all();
+        return \App\Models\Admin\SiteContent::getContent($param);
+    }
+    public function postSetContent()
+    {
+        $param = \Input::all();
+        return \App\Models\Admin\SiteContent::setContent($param);
     }
     public function postUpdateProfile()
     {

@@ -67,18 +67,21 @@ class SiteController extends Controller
     }
     public function getAbout()
     {
+        $param['name'] = 'about_us';
+        $about = \App\Models\Admin\SiteContent::getContent($param);
         $view_data = [
             "header" => [
                 'title'=>'About Us | '.self::$platform
             ],
             "body" => [
                 'id' => 'about_us',
+                'about' => $about,
             ],
             "footer" => [
                 'js' => ['home.min.js']
             ]
         ];
-
+        
         return view("site.about_us", $view_data);
     }
     public function getTransactionNotify()
@@ -231,13 +234,25 @@ class SiteController extends Controller
         // $obj->val = '3808836';
         // $obj->autoload = 1;
         // $obj->save();
-        $obj = new \App\Models\Admin\Admin;
-        $obj->email = 'a@a.com';
-        $obj->mobile = '1234569870';
-        $obj->password = \Hash::make('123456');
-        $obj->username = 'admin';
-        $obj->status = 1;
-        $obj->avatar = '';
+        // $obj = new \App\Models\Admin\Admin;
+        // $obj->email = 'a@a.com';
+        // $obj->mobile = '1234569870';
+        // $obj->password = \Hash::make('123456');
+        // $obj->username = 'admin';
+        // $obj->status = 1;
+        // $obj->avatar = '';
+        // $obj->save();
+        $obj = new \App\Models\Admin\SiteContent;
+        $obj->name = 'about_us';
+        $obj->content = '';
+        $obj->save();
+        $obj = new \App\Models\Admin\SiteContent;
+        $obj->name = 'terms';
+        $obj->content = '';
+        $obj->save();
+        $obj = new \App\Models\Admin\SiteContent;
+        $obj->name = 'privacy_policy';
+        $obj->content = '';
         $obj->save();
     }
 }

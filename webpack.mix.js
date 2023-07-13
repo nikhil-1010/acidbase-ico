@@ -65,6 +65,9 @@ mix.scripts([
     "resources/assets/js/admin/faq.js",
 ], "public/assets/js/admin/faq.min.js")
 .scripts([
+    "resources/assets/js/tinymce.min.js",
+], "public/assets/js/admin/tinymce.min.js")
+.scripts([
     "resources/assets/js/admin/site_content.js",
 ], "public/assets/js/admin/site_content.min.js")
 .scripts([
