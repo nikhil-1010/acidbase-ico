@@ -614,12 +614,13 @@
                     </div>
                 </div>
                 <div class="d-flex flex-wrap gap-3 gap-lg-5 align-items-center justify-content-center my-5">
-                    <a href="" class="text-uppercase text-secondary text-decoration-none fw-lighter">Features</a>
-                    <a href="" class="text-uppercase text-secondary text-decoration-none fw-lighter">Tokenomics</a>
-                    <a href="" class="text-uppercase text-secondary text-decoration-none fw-lighter">Team</a>
+                    <a href="{{url('/#feature')}}" class="text-uppercase text-secondary text-decoration-none fw-lighter">Features</a>
+                    <a href="{{url('/#tokenomics')}}" class="text-uppercase text-secondary text-decoration-none fw-lighter">Tokenomics</a>
+                    <a href="{{url('/#team')}}" class="text-uppercase text-secondary text-decoration-none fw-lighter">Team</a>
                     <a href="" class="text-uppercase text-secondary text-decoration-none fw-lighter">Whitepaper</a>
-                    <a href="" class="text-uppercase text-secondary text-decoration-none fw-lighter">Privacy Policy</a>
-                    <a href="" class="text-uppercase text-secondary text-decoration-none fw-lighter">Terms of use</a>
+                    <a href="{{url('privacy-policy')}}" class="text-uppercase text-secondary text-decoration-none fw-lighter">Privacy Policy</a>
+                    <a href="{{url('terms-condition')}}" class="text-uppercase text-secondary text-decoration-none fw-lighter">Terms of use</a>
+                    <a href="{{url('about')}}" class="text-uppercase text-secondary text-decoration-none fw-lighter">About Us</a>
                     <a href="{{url('contact-us')}}" class="text-uppercase text-secondary text-decoration-none fw-lighter">Contact Us</a>
                 </div>
             </div>
