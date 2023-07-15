@@ -21,7 +21,7 @@
 
 
 </body>
-<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<!-- <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script> -->
 <script src="{{url('assets/js/admin_app.min.js')}}"></script>
 <?php
 if (isset($footer['js'])) {

@@ -278,7 +278,7 @@ class AdminController extends Controller
                 'header_title' => 'Site Content',
             ],
             "footer" => [
-                'js' => ['admin/site_content.min.js']
+                'js' => ["ckeditor/ckeditor.js",'admin/site_content.min.js']
             ]
         ];
         return view('admin.site_content', $view_data);

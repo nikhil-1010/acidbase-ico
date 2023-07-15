@@ -82,7 +82,7 @@
             </nav>
         </header>
 
-        {!! $body['about']['data'] !!}
+        {!! $body['terms']['data'] !!}
 
       
         <footer class="bg-light pt-5">

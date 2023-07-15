@@ -84,6 +84,44 @@ class SiteController extends Controller
         
         return view("site.about_us", $view_data);
     }
+    public function getPrivacyPolicy()
+    {
+        $param['name'] = 'privacy_policy';
+        $privacy_policy = \App\Models\Admin\SiteContent::getContent($param);
+        $view_data = [
+            "header" => [
+                'title'=>'Privacy Policy | '.self::$platform
+            ],
+            "body" => [
+                'id' => 'privacy_policy',
+                'privacy_policy' => $privacy_policy,
+            ],
+            "footer" => [
+                'js' => ['home.min.js']
+            ]
+        ];
+        
+        return view("site.privacy_policy", $view_data);
+    }
+    public function getTermsCondition()
+    {
+        $param['name'] = 'terms';
+        $terms = \App\Models\Admin\SiteContent::getContent($param);
+        $view_data = [
+            "header" => [
+                'title'=>'Terms & Condition | '.self::$platform
+            ],
+            "body" => [
+                'id' => 'terms',
+                'terms' => $terms,
+            ],
+            "footer" => [
+                'js' => ['home.min.js']
+            ]
+        ];
+        
+        return view("site.terms", $view_data);
+    }
     public function getTransactionNotify()
     {
         $view_data = [

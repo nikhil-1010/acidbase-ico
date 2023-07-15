@@ -20,6 +20,8 @@ Route::get('/maintainence',[AdminController::class,"getMaintenance"]);
 Route::get('/portfolio',[SiteController::class,"getPortfolio"]);
 Route::get('/contact-us',[SiteController::class,"getContactUs"]);
 Route::get('/about',[SiteController::class,"getAbout"]);
+Route::get('/privacy-policy',[SiteController::class,"getPrivacyPolicy"]);
+Route::get('/terms-condition',[SiteController::class,"getTermsCondition"]);
 Route::get('/trasaction-notify',[SiteController::class,"getTransactionNotify"]);
 Route::get('/get-past-events',[SiteController::class,"getPastEvents"]);
 
