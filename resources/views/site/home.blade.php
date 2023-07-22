@@ -276,31 +276,31 @@
                         <div class="d-flex flex-column gap-4">
                             <div>
                                 <p class="text-white fw-lighter m-0 fs-14">Team (15%)</p>
-                                <div class="progress rounded-pill bg-dark bg-opacity-50">
+                                <div class="progress rounded-pill bg-dark bg-opacity-50 hover-toggle" id="team">
                                     <div class="progress-bar" role="progressbar" style="width: 15%;background-color: #f1548e;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                             <div>
                                 <p class="text-white fw-lighter m-0 fs-14">Strategic Reserve (15%)</p>
-                                <div class="progress rounded-pill bg-dark bg-opacity-50">
+                                <div class="progress rounded-pill bg-dark bg-opacity-50 hover-toggle" id="strategic-reserve">
                                     <div class="progress-bar" role="progressbar" style="width: 15%;background-color: #f97316;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                             <div>
                                 <p class="text-white fw-lighter m-0 fs-14">Public Sale (30%)</p>
-                                <div class="progress rounded-pill bg-dark bg-opacity-50">
+                                <div class="progress rounded-pill bg-dark bg-opacity-50 hover-toggle" id="public-sale">
                                     <div class="progress-bar" role="progressbar" style="width: 30%;background-color: #1251a0;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                             <div>
                                 <p class="text-white fw-lighter m-0 fs-14">Community Rewards (10%)</p>
-                                <div class="progress rounded-pill bg-dark bg-opacity-50">
+                                <div class="progress rounded-pill bg-dark bg-opacity-50 hover-toggle" id="community-reward">
                                     <div class="progress-bar" role="progressbar" style="width: 10%;background-color: #22c55e;" aria-valuenow="10 " aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                             <div>
                                 <p class="text-white fw-lighter m-0 fs-14">Beta/Testnet Incentives (2.5%)</p>
-                                <div class="progress rounded-pill bg-dark bg-opacity-50">
+                                <div class="progress rounded-pill bg-dark bg-opacity-50 hover-toggle" id="testnet-incentive">
                                     <div class="progress-bar" role="progressbar" style="width: 2.5%;background-color: #2271eb;" aria-valuenow="2.5" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
@@ -313,31 +313,31 @@
                         <div class="d-flex flex-column gap-4">
                             <div>
                                 <p class="text-white fw-lighter m-0 fs-14">Advisors (5%)</p>
-                                <div class="progress rounded-pill bg-dark bg-opacity-50">
+                                <div class="progress rounded-pill bg-dark bg-opacity-50 hover-toggle" id="advisor">
                                     <div class="progress-bar" role="progressbar" style="width: 5%;background-color: #702b91;" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                             <div>
                                 <p class="text-white fw-lighter m-0 fs-14">Grants (6%)</p>
-                                <div class="progress rounded-pill bg-dark bg-opacity-50">
+                                <div class="progress rounded-pill bg-dark bg-opacity-50 hover-toggle" id="grants">
                                     <div class="progress-bar" role="progressbar" style="width: 6%;background-color: #f64a73;" aria-valuenow="6" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                             <div>
                                 <p class="text-white fw-lighter m-0 fs-14">Partnerships (6%)</p>
-                                <div class="progress rounded-pill bg-dark bg-opacity-50">
+                                <div class="progress rounded-pill bg-dark bg-opacity-50 hover-toggle" id="partnership">
                                     <div class="progress-bar" role="progressbar" style="width: 6%;background-color: #22c55e;" aria-valuenow="6" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                             <div>
                                 <p class="text-white fw-lighter m-0 fs-14">Marketing (8%)</p>
-                                <div class="progress rounded-pill bg-dark bg-opacity-50">
+                                <div class="progress rounded-pill bg-dark bg-opacity-50 hover-toggle" id="marketing">
                                     <div class="progress-bar" role="progressbar" style="width: 8%;background-color: #2cdcb8;" aria-valuenow="8" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                             <div>
                                 <p class="text-white fw-lighter m-0 fs-14">Liquidity Provision (2.5%)</p>
-                                <div class="progress rounded-pill bg-dark bg-opacity-50">
+                                <div class="progress rounded-pill bg-dark bg-opacity-50 hover-toggle" id="liquidity-provision">
                                     <div class="progress-bar" role="progressbar" style="width: 2.5%;background-color: #2b29ae;" aria-valuenow="2.5" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>

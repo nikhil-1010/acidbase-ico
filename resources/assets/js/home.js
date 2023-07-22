@@ -51,7 +51,39 @@ $(document).ready(function () {
 });
 
 // Tokonomics Pie Chart
-var oilCanvas = document.getElementById("oilChart");
+var currentIndex = -1;
+console.log(Chart.defaults.global);
+Chart.defaults.global.hover.onHover = function (x) {
+	if (x[0]) {
+		var index = x[0]._index;
+		if (index !== currentIndex) {
+			currentIndex = index;
+			console.log(x[0]._model.label + ': ' + x[0]._chart.config.data.datasets[0].data[index]);
+			$('.hover-toggle').removeClass('progress-hover');
+			if(x[0]._model.label == 'Team'){
+				$('#team').addClass('progress-hover');
+			}else if(x[0]._model.label == 'Strategic Reserve'){
+				$('#strategic-reserve').addClass('progress-hover');
+			}else if(x[0]._model.label == 'Public Sale'){
+				$('#public-sale').addClass('progress-hover');
+			}else if(x[0]._model.label == 'Community Rewards'){
+				$('#community-reward').addClass('progress-hover');
+			}else if(x[0]._model.label == 'Beta/Testnet Incentives'){
+				$('#testnet-incentive').addClass('progress-hover');
+			}else if(x[0]._model.label == 'Advisors'){
+				$('#advisor').addClass('progress-hover');
+			}else if(x[0]._model.label == 'Grants'){
+				$('#grants').addClass('progress-hover');
+			}else if(x[0]._model.label == 'Partnerships'){
+				$('#partnership').addClass('progress-hover');
+			}else if(x[0]._model.label == 'Marketing'){
+				$('#marketing').addClass('progress-hover');
+			}else if(x[0]._model.label == 'Liquidity Provision'){
+				$('#liquidity-provision').addClass('progress-hover');
+			}
+		}
+	}
+};
 
 var oilData = {
 
@@ -79,7 +111,7 @@ var oilData = {
 			"rgba(246, 74, 115, 0.25)",
 			"rgba(34, 197, 94, 0.25)",
 			"rgba(44, 220, 184, 0.25)",
-			"rgba(43, 41, 174, 0.25)"
+			"rgba(18, 81, 160, 0.25)"
 		],
 		borderColor: [
 			"#f1548e",
@@ -98,7 +130,7 @@ var oilData = {
 		hoverShadowColor: 'rgba(0, 0, 0, 0.5)',
 		hoverShadowOffsetX: 10,
 		hoverShadowOffsetY: 5,
-		hoverBackgroundColor:  [
+		hoverBackgroundColor: [
 			"#f1548e",
 			"#f97316",
 			"#1251a0",
@@ -122,6 +154,7 @@ var options = {
 	legend: {
 		display: false,
 	},
+	events: ['mousemove', 'mouseout', 'click', 'touchstart', 'touchmove'],
 	plugins: {
 		tooltips: {
 			callbacks: {
@@ -132,10 +165,12 @@ var options = {
 	},
 };
 
+var oilCanvas = document.getElementById("oilChart").getContext('2d');
+
 var pieChart = new Chart(oilCanvas, {
 	type: 'pie',
 	data: oilData,
-	options: options
+	options: options,
 });
 
 

@@ -151,44 +151,52 @@ html {
 }
 
 @-moz-keyframes bounce {
+
     0%,
     75%,
     100% {
         transform: translateY(0);
     }
+
     25% {
         transform: translateY(-20px);
     }
 }
 
 @-webkit-keyframes bounce {
+
     0%,
     75%,
     100% {
         transform: translateY(0);
     }
+
     25% {
         transform: translateY(-20px);
     }
 }
 
 @-o-keyframes bounce {
+
     0%,
     75%,
     100% {
         transform: translateY(0);
     }
+
     25% {
         transform: translateY(-20px);
     }
 }
 
 @keyframes bounce {
+
     0%,
     75%,
     100% {
         transform: translateY(0);
     }
+
     25% {
         transform: translateY(-20px);
     }
@@ -264,16 +272,20 @@ html {
     .layout-sidenav .layout-sidenav-nav {
         transform: translateX(0);
     }
+
     .layout-sidenav .layout-sidenav-content {
         margin-left: 0;
         transition: margin 0.15s ease-in-out;
     }
+
     .cat-sidenav-toggled .layout-sidenav .layout-sidenav-nav {
         transform: translateX(-270px);
     }
+
     .cat-sidenav-toggled .layout-sidenav .layout-sidenav-content {
         margin-left: -270px;
     }
+
     .cat-sidenav-toggled .layout-sidenav .layout-sidenav-content:before {
         display: none;
     }
@@ -507,7 +519,8 @@ option {
     right: 0px;
     z-index: 1;
 }
-.box-loader > span {
+
+.box-loader>span {
     color: #2f12d4;
     font-size: 80px;
     position: absolute;
@@ -517,6 +530,7 @@ option {
     right: 0px;
     text-align: center;
 }
+
 /*  */
 
 /* .pagination-disable{
@@ -616,10 +630,12 @@ option {
         transform: rotateX(0deg);
         z-index: 2;
     }
+
     0%,
     99% {
         opacity: 1;
     }
+
     100% {
         transform: rotateX(-90deg);
         opacity: 0;
@@ -627,15 +643,18 @@ option {
 }
 
 @keyframes flipBottom {
+
     0%,
     50% {
         z-index: -1;
         transform: rotateX(90deg);
         opacity: 0;
     }
+
     51% {
         opacity: 1;
     }
+
     100% {
         opacity: 1;
         transform: rotateX(0deg);
@@ -762,6 +781,7 @@ option {
     0% {
         transform: rotateY(360deg);
     }
+
     100% {
         transform: rotateY(0deg);
     }
@@ -771,12 +791,15 @@ option {
     0% {
         transform: translateY(0);
     }
+
     33% {
         transform: translateY(-20px);
     }
+
     66% {
         transform: translateY(20px);
     }
+
     100% {
         transform: translateY(0);
     }
@@ -823,6 +846,11 @@ section.roadmap span {
     border-radius: 20px;
 }
 
+.progress-hover {
+    border: 1px solid #fff;
+    box-shadow: 0 0 5px 0 rgba(255, 255, 255, 0.2);
+}
+
 
 /* Responsive CSS*/
 
@@ -845,6 +873,7 @@ section.roadmap span {
         text-align: center;
         z-index: 1
     }
+
     section.roadmap .box.left::before {
         content: '';
         width: 30px;
@@ -860,6 +889,7 @@ section.roadmap span {
         border-radius: 20px;
         background: var(--bs-secondary);
     }
+
     section.roadmap .box.right:after {
         content: '';
         width: 70px;
@@ -872,6 +902,7 @@ section.roadmap span {
         text-align: center;
         z-index: 1
     }
+
     section.roadmap .box.right::before {
         content: '';
         width: 30px;
@@ -887,6 +918,7 @@ section.roadmap span {
         border-radius: 20px;
         background: var(--bs-secondary);
     }
+
     .roadmap::before {
         content: '';
         position: absolute;
@@ -904,18 +936,23 @@ section.roadmap span {
     section.roadmap .box.right.first {
         margin-top: 110px !important
     }
+
     section.roadmap .box.right.second {
         top: 45px !important
     }
+
     section.roadmap .box.right.third {
         top: 88px !important
     }
+
     section.roadmap .box.left.second {
         top: -65px !important
     }
+
     section.roadmap .box.left.third {
         top: -20px !important
     }
+
     section.roadmap .box.left.fourth {
         top: 24px !important
     }
@@ -994,24 +1031,31 @@ footer a.text-secondary:hover {
     10% {
         transform: translateY(-112%);
     }
+
     25% {
         transform: translateY(-100%);
     }
+
     35% {
         transform: translateY(-212%);
     }
+
     50% {
         transform: translateY(-200%);
     }
+
     60% {
         transform: translateY(-312%);
     }
+
     75% {
         transform: translateY(-300%);
     }
+
     85% {
         transform: translateY(-412%);
     }
+
     100% {
         transform: translateY(-400%);
     }
@@ -1052,6 +1096,7 @@ footer a.text-secondary:hover {
     section.roadmap .box.left::before {
         right: -114px;
     }
+
     section.roadmap .box.right::before {
         left: -106px;
     }
@@ -1061,6 +1106,7 @@ footer a.text-secondary:hover {
     section.roadmap .box.left::before {
         right: -98px;
     }
+
     section.roadmap .box.right::before {
         left: -92px;
     }
@@ -1071,16 +1117,20 @@ footer a.text-secondary:hover {
         display: block;
         width: auto;
     }
+
     .cat-topnav .navbar-brand img.navbar-horizontal-logo {
         display: none;
     }
+
     .cat-topnav .navbar-brand {
         padding: 20px;
         width: auto;
     }
+
     .hero-banner {
         padding: 125px 0;
     }
+
     .card_panel {
         font-size: 72px;
     }
@@ -1090,6 +1140,7 @@ footer a.text-secondary:hover {
     .hero-banner {
         padding: 100px 0;
     }
+
     .hero-words {
         height: 50px;
     }
@@ -1099,6 +1150,7 @@ footer a.text-secondary:hover {
     .hero-banner {
         padding: 75px 0;
     }
+
     .hero-words {
         height: 40px;
     }
@@ -1108,6 +1160,7 @@ footer a.text-secondary:hover {
     .hero-banner {
         padding: 50px 0;
     }
+
     .hero-words {
         height: 35px;
     }
