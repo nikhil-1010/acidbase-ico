@@ -32,7 +32,7 @@ function init() {
 
    const providerOptions = {
       walletconnect: {
-         package: WalletConnectProvider,
+         // package: WalletConnectProvider,
          options: {
             rpc: {
                97: "https://speedy-nodes-nyc.moralis.io/c415cc39a145c4104109b7b0/bsc/testnet",

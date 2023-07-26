@@ -82,6 +82,12 @@
             </nav>
         </header>
 
+        <section class="inner-space text-white pb-0">
+          <div class="container">
+                <h2 class="section-title display-4 text-uppercase text-secondary d-inline-block">Privacy Policy</h2>
+            </div>
+        </section>  
+
         {!! $body['privacy_policy']['data'] !!}
 
       

@@ -99,17 +99,17 @@ class AdminController extends Controller
 
         try {
             $response = \Http::post(env('NODE_URL').'/get-contract-balance');
+            if($response['flag'] == 1) {
+                $response = json_decode($response,true);
+                $balance = $response['data'];
+                $seed_balance = $balance['seed_balance'];
+                $private_balance = $balance['private_balance'];
+                $public_balance = $balance['public_balance'];
+            }
         } catch (\Exception $e) {
             \Log::info('get-contract-balance Error');
             \Log::info($e->getMessage());
-            return \General::error_res("Something went to wrong");
-        }
-        if($response['flag'] == 1) {
-            $response = json_decode($response,true);
-            $balance = $response['data'];
-            $seed_balance = $balance['seed_balance'];
-            $private_balance = $balance['private_balance'];
-            $public_balance = $balance['public_balance'];
+            // return \General::error_res("Something went to wrong");
         }
         $trx = \App\Models\User\Transaction::count();
         $view_data = [

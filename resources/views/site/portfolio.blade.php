@@ -449,11 +449,11 @@
     var PrivateSaleContractAddress = `{{env('PRIVATE_SALE_CONTRACT')}}`;
     var PublicSaleContractAddress = `{{env('PUBLIC_SALE_CONTRACT')}}`;
     var SeedStartDate = `1688279246`;
-    var SeedEndDate = `1689056832`;
-    var PrivateStartDate = `1689056832`;
-    var PrivateEndDate = `1689229632`;
-    var PublicStartDate = `1689229632`;
-    var PublicEndDate = `1689402432`;
+    var SeedEndDate = `1690526967`;
+    var PrivateStartDate = `1690526967`;
+    var PrivateEndDate = `1690699767`;
+    var PublicStartDate = `1690526967`;
+    var PublicEndDate = `1690699767`;
     var currentTime = `{{time()}}`;
     var seedTransactionHistoryUrl = `{{url('seed-trasaction-filter')}}`
     var PrivateTransactionHistoryUrl = `{{url('private-trasaction-filter')}}`
