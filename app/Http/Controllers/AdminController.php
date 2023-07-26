@@ -14,7 +14,7 @@ use Maatwebsite\Excel\Facades\Excel;
 class AdminController extends Controller
 {
 
-    private static $bypass_url = ['getLogin', 'postLogin', 'getLogout', 'getMaintenance'];
+    private static $bypass_url = ['getLogin', 'postLogin', 'getForgotPassword','postForgotPassword','getResetPassword','postResetPassword','getLogout', 'getMaintenance'];
 
     public function __construct()
     {
@@ -84,6 +84,101 @@ class AdminController extends Controller
         }
 
         return \Redirect::to("admin/dashboard");
+    }
+    public function getForgotPassword()
+    {
+        $view_data = [
+            'header' => [
+                "title" => 'Forgot Password | Admin Panel ',
+            ],
+            'body' => [
+                'title' => 'Forgot Password',
+            ],
+            'js' => []
+        ];
+        return view('admin.forgot_password', $view_data);
+    }
+    public function postForgotPassword()
+    {
+        $view_data = [
+            'header' => [
+                "title" => 'Forgot Password | Admin Panel ',
+            ],
+            'body' => [
+                'title' => 'Forgot Password',
+            ],
+            'js' => []
+        ];
+        $param = \Input::all();
+        $validator = \Validator::make($param, \Validation::get_rules("admin", "forgot_password"));
+        if ($validator->fails()) {
+            $messages = $validator->messages();
+            $error = $messages->all();
+            return view('admin.forgot_password', $view_data)->withErrors($validator);
+        }
+        $forgotpass_token = \App\Lib\General::generateResetPasswordKey();
+        $user = \App\Models\Admin\Admin::where('email', $param['email'])->first();
+        if(!is_null($user)){
+            $user_detail = $user->toArray();
+            $user_detail['forgotpass_token'] = $forgotpass_token;
+            $user_detail['mail_subject'] = 'Forgot Password';
+            $user_detail['mail_from_email'] = config('constant.SYSTEM_EMAIL');
+            $user_detail['mail_from_name'] = config('constant.SYSTEM_EMAIL_NAME');
+            $user_detail['to_email'] = $param['email'];
+            $user_detail['name'] =  $user_detail['username'];
+            $user->remember_token = $forgotpass_token;
+            $user->save();
+            \Mail::send('emails.forget_password', $user_detail, function ($message) use ($user_detail) {
+                $message->from($user_detail['mail_from_email'], $user_detail['mail_from_name'])->to($user_detail['email'])->subject($user_detail['mail_subject']);
+            });
+        }
+        return view('admin.forgot_password', $view_data)->withSuccess('We send forgot password link to your submitted email address.');
+    }
+    public function getResetPassword($token)
+    {
+
+        $user = \App\Models\Admin\Admin::get_by_pass_token($token);
+        if(empty($user)){
+            return \Response::view('errors.404', array('msg'=>'This Link is Expired!'), 404); 
+        }
+        $view_data = [
+            'header' => [
+                "title" => "Reset Password | Admin Panel",
+                "desc"=>"",
+                "js"    => [],
+                "css"   => []
+            ],
+            'body' => [
+                'title' => 'Reset Password',
+                'token' => $token,
+            ],
+            "footer" => [
+                'js' => []
+            ]
+        ];
+        return view('admin.reset_password', $view_data);
+    }
+    public function postResetPassword()
+    {
+        $param = \Input::all();
+        $validator = \Validator::make($param, \Validation::get_rules("admin", "reset_password"));
+        if ($validator->fails()) {
+            $err_msg = $validator->errors()->first();
+            return \General::error_res($err_msg);
+        }
+        $user= \App\Models\Admin\Admin::get_by_pass_token($param['pass_token']);
+        if(empty ($user)){
+            return \General::error_res("Oops something went wrong !!!");
+        }
+        $hashPass = \Hash::make($param['confirm_password']);
+        $user = \App\Models\Admin\Admin::where("remember_token",$param['pass_token'])->first();
+        $user->password = $hashPass;
+        $user->remember_token = "";
+        if($user->save()){
+            return \General::success_res('Your password reset successfully.');
+        }else{
+           return \General::error_res("Oops something went wrong !!!"); 
+        }
     }
     public function getLogout()
     {

@@ -105,4 +105,15 @@ class Admin extends Model implements Authenticatable {
         }
         return \General::error_res('something went wrong!');
     }
+    public static function get_by_pass_token($token = "")
+    {
+        $user = [];
+        if ($token != '' && $token != null) {
+            $user = self::where("remember_token", $token)->first();
+            if ($user) {
+                $user = $user->toArray();
+            }
+        }
+        return $user;
+    }
 }

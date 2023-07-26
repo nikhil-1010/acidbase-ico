@@ -74,9 +74,14 @@ class Validation
 				'email' => 'required|email',
 				'password' => 'required'
 			],
+			'forgot_password' => [
+				'email' => 'required|email',
+			],
+			'reset_password' => [
+				'new_password' => 'required|min:6',
+				'confirm_password' => 'required|same:new_password'
+			],
 			'change_password' => [
-				'password' => 'required',
-				'new_password' => 'required'
 			],
 			'delete-item' => [
 				'delete_id' => 'required',

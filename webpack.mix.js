@@ -71,6 +71,9 @@ mix.scripts([
     "resources/assets/js/admin/site_content.js",
 ], "public/assets/js/admin/site_content.min.js")
 .scripts([
+    "resources/assets/js/admin/forgot_password.js",
+], "public/assets/js/admin/forgot_password.min.js")
+.scripts([
     "resources/assets/js/admin/contact_us.js",
 ], "public/assets/js/admin/contact_us.min.js")
 .scripts([

@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel='icon' type='image/x-icon' href='assets/img/favicon.png' />
     <link rel="stylesheet" href="{{url('assets/css/admin_app.min.css')}}" />
+    <input type="hidden" id="base_url" value="{{url('/')}}">
 </head>
 
 <body>
@@ -29,20 +30,25 @@
                             <strong>{{$errors->first()}}</strong>
                         </div>
                         @endif
+                        @if(isset($success))     
+                        <div class="alert alert-success" style="text-align: center;">
+                            <strong>{{$success}}</strong>
+                        </div>
+                        @endif
                     <div class="card p-4">
-                        <h3 class="mb-4 fw-bold">Log In</h3>
-                        <form name="form" method='Post' action="{{URL::to('admin/login')}}">
+                        <h3 class="mb-4 fw-bold">Reset Password</h3>
+                        <form name="form" method='Post' id="reset_password_form" action="{{URL::to('admin/reset-password')}}">
                             @csrf
+                            <input type="hidden" id="pass_token" name="pass_token" value="{{$body['token']}}"/>
                             <div class="form-floating w-100 mb-3">
-                                <input type="email" name="email" class="form-control bg-transparent" id="floatingInputGrid" placeholder="name@example.com" value="">
-                                <label for="floatingInputGrid">Email address</label>
+                                <input type="password" name="new_password" class="form-control bg-transparent" id="new_password" value="">
+                                <label for="new_password">New Password</label>
                             </div>
                             <div class="form-floating w-100 mb-3">
-                                <input type="password" name="password" class="form-control bg-transparent" id="floatingInputGrid2" placeholder="password" value="">
-                                <label for="floatingInputGrid2">Password</label>
+                                <input type="password" name="confirm_password" class="form-control bg-transparent" id="confirm_password" value="">
+                                <label for="confirm_password">Confirm Password</label>
                             </div>
-                            <a href="{{url('admin/forgot-password')}}">Forgot Password ?</a>
-                            <button type="submit" class="btn btn-lg gradient-btn text-white text-uppercase w-100 rounded-pill">Log In</button>
+                            <button type="button" id="submit_forgot" class="btn btn-lg gradient-btn text-white text-uppercase w-100 rounded-pill">Submit</button>
                         </form>
                     </div>
                 </div>
@@ -53,3 +59,4 @@
 </body>
 
 <script src="{{url('assets/js/admin_app.min.js')}}"></script>
+<script src="{{url('assets/js/admin/forgot_password.min.js')}}"></script>

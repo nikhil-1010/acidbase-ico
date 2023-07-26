@@ -10,6 +10,7 @@
     "/assets/js/admin/faq.min.js": "/assets/js/admin/faq.min.js",
     "/assets/js/admin/tinymce.min.js": "/assets/js/admin/tinymce.min.js",
     "/assets/js/admin/site_content.min.js": "/assets/js/admin/site_content.min.js",
+    "/assets/js/admin/forgot_password.min.js": "/assets/js/admin/forgot_password.min.js",
     "/assets/js/admin/contact_us.min.js": "/assets/js/admin/contact_us.min.js",
     "/assets/js/contact_us.min.js": "/assets/js/contact_us.min.js",
     "/assets/css/admin_app.min.css": "/assets/css/admin_app.min.css"

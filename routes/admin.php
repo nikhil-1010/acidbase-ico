@@ -15,6 +15,8 @@ use App\Http\Controllers\AdminController;
 */
 //get route
 Route::get('/login/{sec_token}',[AdminController::class,"getLogin"]);
+Route::get('/forgot-password',[AdminController::class,'getForgotPassword']);
+Route::get('/forgot-password/{token}',[AdminController::class,'getResetPassword']);
 Route::get('/dashboard',[AdminController::class,'getDashboard']);
 Route::get('/whitelist-account',[AdminController::class,'getWhitelistAccount']);
 Route::get('/profile',[AdminController::class,'getProfile']);
@@ -39,3 +41,5 @@ Route::post('/site-content-filter',[AdminController::class,'postSiteContentFilte
 Route::post('/change-maintenance-mode',[AdminController::class,'postChangeMaintenanceMode']);
 Route::post('/get-content',[AdminController::class,'postGetContent']);
 Route::post('/set-content',[AdminController::class,'postSetContent']);
+Route::post('/forgot-password',[AdminController::class,'postForgotPassword']);
+Route::post('/reset-password',[AdminController::class,'postResetPassword']);

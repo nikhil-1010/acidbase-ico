@@ -29,20 +29,20 @@
                             <strong>{{$errors->first()}}</strong>
                         </div>
                         @endif
+                        @if(isset($success))     
+                        <div class="alert alert-success" style="text-align: center;">
+                            <strong>{{$success}}</strong>
+                        </div>
+                        @endif
                     <div class="card p-4">
-                        <h3 class="mb-4 fw-bold">Log In</h3>
-                        <form name="form" method='Post' action="{{URL::to('admin/login')}}">
+                        <h3 class="mb-4 fw-bold">Forgot Password</h3>
+                        <form name="form" method='Post' action="{{URL::to('admin/forgot-password')}}">
                             @csrf
                             <div class="form-floating w-100 mb-3">
                                 <input type="email" name="email" class="form-control bg-transparent" id="floatingInputGrid" placeholder="name@example.com" value="">
                                 <label for="floatingInputGrid">Email address</label>
                             </div>
-                            <div class="form-floating w-100 mb-3">
-                                <input type="password" name="password" class="form-control bg-transparent" id="floatingInputGrid2" placeholder="password" value="">
-                                <label for="floatingInputGrid2">Password</label>
-                            </div>
-                            <a href="{{url('admin/forgot-password')}}">Forgot Password ?</a>
-                            <button type="submit" class="btn btn-lg gradient-btn text-white text-uppercase w-100 rounded-pill">Log In</button>
+                            <button type="submit" class="btn btn-lg gradient-btn text-white text-uppercase w-100 rounded-pill">Submit</button>
                         </form>
                     </div>
                 </div>
