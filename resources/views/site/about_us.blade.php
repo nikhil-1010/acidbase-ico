@@ -82,7 +82,17 @@
             </nav>
         </header>
 
-        {!! $body['about']['data'] !!}
+        <section class="inner-space text-white pb-0">
+          <div class="container">
+                <h2 class="section-title display-4 text-uppercase text-secondary d-inline-block">About Us</h2>
+            </div>
+        </section> 
+
+        <div class="inner-space">
+            <div class="container ck-editor-content">
+                {!! $body['about']['data'] !!}
+            </div>
+        </div>
 
       
         <footer class="bg-light pt-5">

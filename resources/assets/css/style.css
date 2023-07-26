@@ -851,6 +851,10 @@ section.roadmap span {
     box-shadow: 0 0 5px 0 rgba(255, 255, 255, 0.2);
 }
 
+.ck-editor-content *{
+    color: #fff;
+}
+
 
 /* Responsive CSS*/
 

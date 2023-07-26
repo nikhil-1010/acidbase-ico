@@ -82,7 +82,18 @@
             </nav>
         </header>
 
-        {!! $body['terms']['data'] !!}
+        <section class="inner-space text-white pb-0">
+          <div class="container">
+                <h2 class="section-title display-4 text-uppercase text-secondary d-inline-block">Terms & Condition</h2>
+            </div>
+        </section>  
+
+        <div class="inner-space">
+            <div class="container ck-editor-content">
+                {!! $body['terms']['data'] !!}
+            </div>
+        </div>
+
 
       
         <footer class="bg-light pt-5">

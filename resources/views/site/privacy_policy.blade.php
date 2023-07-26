@@ -88,7 +88,11 @@
             </div>
         </section>  
 
-        {!! $body['privacy_policy']['data'] !!}
+        <div class="inner-space">
+            <div class="container ck-editor-content">
+                {!! $body['privacy_policy']['data'] !!}
+            </div>
+        </div>
 
       
         <footer class="bg-light pt-5">
