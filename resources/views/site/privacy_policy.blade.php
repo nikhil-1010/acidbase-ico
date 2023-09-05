@@ -63,9 +63,6 @@
                                 <a class="nav-link text-white fw-lighter" href="{{url('/#roadmap')}}">Roadmap</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white fw-lighter" href="{{url('/#team')}}">Team</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link text-white fw-lighter" href="#">Whitepaper</a>
                             </li>
                         </ul>
@@ -118,7 +115,7 @@
                 <div class="d-flex flex-wrap gap-3 gap-lg-5 align-items-center justify-content-center my-5">
                     <a href="{{url('/#feature')}}" class="text-uppercase text-secondary text-decoration-none fw-lighter">Features</a>
                     <a href="{{url('/#tokenomics')}}" class="text-uppercase text-secondary text-decoration-none fw-lighter">Tokenomics</a>
-                    <a href="{{url('/#team')}}" class="text-uppercase text-secondary text-decoration-none fw-lighter">Team</a>
+                    
                     <a href="" class="text-uppercase text-secondary text-decoration-none fw-lighter">Whitepaper</a>
                     <a href="{{url('privacy-policy')}}" class="text-uppercase text-secondary text-decoration-none fw-lighter">Privacy Policy</a>
                     <a href="{{url('terms-condition')}}" class="text-uppercase text-secondary text-decoration-none fw-lighter">Terms of use</a>
