@@ -63,7 +63,7 @@
                                 <a class="nav-link text-white fw-lighter" href="{{url('/#roadmap')}}">Roadmap</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white fw-lighter" href="#">Whitepaper</a>
+                                <a class="nav-link text-white fw-lighter" target="_blank" href="{{url('assets/acidbase-whitepaper.pdf')}}">Whitepaper</a>
                             </li>
                         </ul>
                         <div class="rounded-pill fs-6 text-uppercase p-3 border border-2 gap-3 d-flex align-items-center justify-content-center d-lg-none d-xl-flex">
@@ -350,99 +350,6 @@
                     <h2 class="section-title display-5 text-uppercase text-secondary d-inline-block">ROADMAP</h2>
                     <p class="fw-lighter text-white mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </div>
-                <!-- <div class="d-flex flex-column gap-4 gap-lg-0 text-start text-white position-relative">
-                    <div class="row gx-0 align-items-center">
-                        <div class="col-lg-6 col-md-4 order-md-1">
-                            <img src="{{url('assets/img/checklists.png')}}" alt="" class="ms-md-4">
-                        </div>
-                        <div class="col-lg-6 col-md-8">
-                            <div class="bg-light p-4 p-sm-5">
-                                <h6 class="bg-dark bg-opacity-25 px-5 py-2 m-0 d-inline-block shadow border fw-lighter text-uppercase fs-14 font-monospace">Phase 1</h6>
-                                <h4 class="text-uppercase text-secondary my-3">Research & Assemble</h4>
-                                <hr>
-                                <ul class="m-0">
-                                    <li class="fw-lighter">Market Research & Targeting</li>
-                                    <li class="fw-lighter">Expert Team Assembly</li>
-                                    <li class="fw-lighter">AI Model Research</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row g-0 align-items-center">
-                        <div class="col-lg-6 col-md-4 text-end">
-                            <img src="{{url('assets/img/startup.png')}}" alt="" class="me-md-4">
-                        </div>
-                        <div class="col-lg-6 col-md-8">
-                            <div class="bg-light p-4 p-sm-5">
-                                <h6 class="bg-dark bg-opacity-25 px-5 py-2 m-0 d-inline-block shadow border fw-lighter text-uppercase fs-14 font-monospace">Phase 2</h6>
-                                <h4 class="text-uppercase text-secondary my-3">Launch and User Adoption</h4>
-                                <hr>
-                                <ul class="m-0">
-                                    <li class="fw-lighter">Token Presale Launch</li>
-                                    <li class="fw-lighter">Token distribution: Presale & TGE</li>
-                                    <li class="fw-lighter">Secure Exchange Partnerships</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row g-0 align-items-center">
-                        <div class="col-lg-6 col-md-4 order-md-1">
-                            <img src="{{url('assets/img/programming.png')}}" alt="" class="ms-md-4">
-                        </div>
-                        <div class="col-lg-6 col-md-8">
-                            <div class="bg-light p-4 p-sm-5">
-                                <h6 class="bg-dark bg-opacity-25 px-5 py-2 m-0 d-inline-block shadow border fw-lighter text-uppercase fs-14 font-monospace">Phase 3</h6>
-                                <h4 class="text-uppercase text-secondary my-3">Development and Testing</h4>
-                                <hr>
-                                <ul class="m-0">
-                                    <li class="fw-lighter">Alpha platform release</li>
-                                    <li class="fw-lighter">Personalized AI personas</li>
-                                    <li class="fw-lighter">AI Algorithm Development</li>
-                                    <li class="fw-lighter">User testing and iteration</li>
-                                    <li class="fw-lighter">Smart Contract/NFT Development</li>
-                                    <li class="fw-lighter">User feedback iteration</li>
-                                    <li class="fw-lighter">Mobile app release</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row g-0 align-items-center">
-                        <div class="col-lg-6 col-md-4 text-end">
-                            <img src="{{url('assets/img/decentralized.png')}}" alt="" class="me-md-4">
-                        </div>
-                        <div class="col-lg-6 col-md-8">
-                            <div class="bg-light p-4 p-sm-5">
-                                <h6 class="bg-dark bg-opacity-25 px-5 py-2 m-0 d-inline-block shadow border fw-lighter text-uppercase fs-14 font-monospace">Phase 4</h6>
-                                <h4 class="text-uppercase text-secondary my-3">Scaling and Monetization</h4>
-                                <hr>
-                                <ul class="m-0">
-                                    <li class="fw-lighter">Language & Cultural Expansion</li>
-                                    <li class="fw-lighter">Enhanced integration with blockchain</li>
-                                    <li class="fw-lighter">Enhanced AI models and algorithms</li>
-                                    <li class="fw-lighter">SDK Launch: Empowering Developers</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row g-0 align-items-center">
-                        <div class="col-lg-6 col-md-4 order-md-1">
-                            <img src="{{url('assets/img/creative.png')}}" alt="" class="ms-md-4">
-                        </div>
-                        <div class="col-lg-6 col-md-8">
-                            <div class="bg-light p-4 p-sm-5">
-                                <h6 class="bg-dark bg-opacity-25 px-5 py-2 m-0 d-inline-block shadow border fw-lighter text-uppercase fs-14 font-monospace">Phase 5</h6>
-                                <h4 class="text-uppercase text-secondary my-3">Future Innovations</h4>
-                                <hr>
-                                <ul class="m-0">
-                                    <li class="fw-lighter">Global User Scaling</li>
-                                    <li class="fw-lighter">Strategic Partnerships</li>
-                                    <li class="fw-lighter">Global Impact Campaign</li>
-                                    <li class="fw-lighter">Foundation for Acidbase created</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
                 <section class="roadmap position-relative" id="roadmap">
                     <div class="container">
                         <div class="row clearfix left">
@@ -614,7 +521,7 @@
                     <a href="{{url('/#feature')}}" class="text-uppercase text-secondary text-decoration-none fw-lighter">Features</a>
                     <a href="{{url('/#tokenomics')}}" class="text-uppercase text-secondary text-decoration-none fw-lighter">Tokenomics</a>
                     
-                    <a href="" class="text-uppercase text-secondary text-decoration-none fw-lighter">Whitepaper</a>
+                    <a target="_blank" href="{{url('assets/acidbase-whitepaper.pdf')}}" class="text-uppercase text-secondary text-decoration-none fw-lighter">Whitepaper</a>
                     <a href="{{url('privacy-policy')}}" class="text-uppercase text-secondary text-decoration-none fw-lighter">Privacy Policy</a>
                     <a href="{{url('terms-condition')}}" class="text-uppercase text-secondary text-decoration-none fw-lighter">Terms of use</a>
                     <a href="{{url('about')}}" class="text-uppercase text-secondary text-decoration-none fw-lighter">About Us</a>

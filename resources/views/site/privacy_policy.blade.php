@@ -63,7 +63,7 @@
                                 <a class="nav-link text-white fw-lighter" href="{{url('/#roadmap')}}">Roadmap</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white fw-lighter" href="#">Whitepaper</a>
+                                <a class="nav-link text-white fw-lighter" target="_blank" href="{{url('assets/acidbase-whitepaper.pdf')}}">Whitepaper</a>
                             </li>
                         </ul>
                         <div class="rounded-pill fs-6 text-uppercase p-3 border border-2 gap-3 d-flex align-items-center justify-content-center d-lg-none d-xl-flex">
@@ -116,7 +116,7 @@
                     <a href="{{url('/#feature')}}" class="text-uppercase text-secondary text-decoration-none fw-lighter">Features</a>
                     <a href="{{url('/#tokenomics')}}" class="text-uppercase text-secondary text-decoration-none fw-lighter">Tokenomics</a>
                     
-                    <a href="" class="text-uppercase text-secondary text-decoration-none fw-lighter">Whitepaper</a>
+                    <a target="_blank" href="{{url('assets/acidbase-whitepaper.pdf')}}" class="text-uppercase text-secondary text-decoration-none fw-lighter">Whitepaper</a>
                     <a href="{{url('privacy-policy')}}" class="text-uppercase text-secondary text-decoration-none fw-lighter">Privacy Policy</a>
                     <a href="{{url('terms-condition')}}" class="text-uppercase text-secondary text-decoration-none fw-lighter">Terms of use</a>
                     <a href="{{url('about')}}" class="text-uppercase text-secondary text-decoration-none fw-lighter">About Us</a>
